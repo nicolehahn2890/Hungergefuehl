@@ -131,14 +131,26 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
 .chip.active{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent;
   box-shadow:0 6px 16px rgba(255,130,190,0.35)}
 
-/* -------------------------------------------------------------- scale */
-.scale{display:flex;justify-content:space-between;gap:5px;margin:4px 0}
-.dot{flex:1;aspect-ratio:1;border-radius:50%;cursor:pointer;border:1.5px solid rgba(255,255,255,0.8);
-  background:rgba(255,255,255,0.42);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;
-  color:var(--ink-mute);transition:all .2s ease;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.dot.sel{transform:scale(1.16);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(150,110,190,0.4)}
+/* -------------------------------------------------------------- scale (ziehbarer Regler) */
+.slider{padding:8px 13px 0}
+.track{position:relative;height:16px;border-radius:100px;cursor:pointer;touch-action:none;
+  border:1px solid rgba(255,255,255,0.75);
+  background:linear-gradient(90deg,rgba(255,158,196,.6),rgba(143,227,196,.62) 33%,rgba(255,212,154,.58) 52%,rgba(196,169,240,.62));
+  box-shadow:inset 0 1px 3px rgba(120,90,160,0.15)}
+.knob{position:absolute;top:50%;left:0;width:30px;height:30px;border-radius:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 34% 28%,#fff,#f3ecfb 70%);border:1px solid rgba(255,255,255,0.95);
+  box-shadow:0 5px 14px rgba(150,110,190,0.5),inset 0 1px 0 rgba(255,255,255,0.9);pointer-events:none}
+.ticks{display:flex;justify-content:space-between;margin-top:9px;padding:0 2px}
+.ticks span{font-size:10px;color:var(--ink-mute);font-weight:500}
+.scale-hint{text-align:center;font-size:11px;color:var(--ink-mute);margin-top:10px;font-style:italic;font-family:var(--font-display);font-size:13px}
 .scale-ends{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-top:8px}
 .valdesc{font-family:var(--font-display);font-style:italic;font-size:20px;line-height:1.3;color:var(--ink-soft);min-height:52px}
+.note{width:100%;margin-top:14px;border-radius:14px;border:1px solid rgba(255,255,255,0.7);background:rgba(255,255,255,0.42);
+  padding:12px 14px;font-family:var(--font-body);font-size:13px;color:var(--ink);resize:none;min-height:58px;line-height:1.5;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.note::placeholder{color:var(--ink-mute)}
+.note:focus{outline:none;border-color:var(--accent)}
+.qlabel{font-size:11px;letter-spacing:.06em;color:var(--ink-mute);margin-bottom:9px;font-weight:500}
 
 /* -------------------------------------------------------------- misc */
 .divider{height:1px;background:rgba(120,90,160,0.14);margin:2px 0}
@@ -242,23 +254,37 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
           <div style="display:flex;justify-content:center"><div class="bead" id="b-bead" style="--c:var(--p-ideal);width:92px;height:92px"><b id="b-num" style="font-size:46px">3</b></div></div>
           <div class="valdesc" id="b-desc" style="margin:16px 6px 4px"></div>
         </div>
-        <div class="scale" id="b-scale"></div>
+        <div class="slider"><div class="track" id="b-track"><span class="knob" id="b-knob"></span></div>
+          <div class="ticks" id="b-ticks"></div></div>
         <div class="scale-ends"><span>0 · ausgehungert</span><span>satt · 10</span></div>
-        <button class="btn" onclick="bStep(1)" style="margin-top:26px">Weiter</button>
+        <p class="scale-hint">Ziehen — du darfst auch dazwischen landen.</p>
+        <button class="btn" onclick="bStep(1)" style="margin-top:22px">Weiter</button>
       </div>
 
       <div id="b-step1" style="display:none">
         <div class="overline" style="margin-bottom:6px">Vor der Mahlzeit</div>
         <h2 class="title" style="margin-bottom:4px">Bauch oder Kopf?</h2>
-        <p class="sub" style="margin-bottom:20px">Was davon trifft gerade zu? Tippe, was passt.</p>
-        <div class="chips" style="margin-bottom:20px" id="b-cues">
+        <p class="sub" style="margin-bottom:18px">Alles antippen, was zutrifft — auch mehreres, gemischt oder nichts.</p>
+        <div class="qlabel">Eher körperlich</div>
+        <div class="chips" style="margin-bottom:16px" id="b-cues-body">
           <div class="chip" data-k="bauch">Baut sich langsam auf</div>
-          <div class="chip" data-k="bauch">Magen meldet sich</div>
+          <div class="chip" data-k="bauch">Magen ist leer / knurrt</div>
+          <div class="chip" data-k="bauch">Flaues, hohles Gefühl im Magen</div>
+          <div class="chip" data-k="bauch">Energieloch, Konzentration lässt nach</div>
+          <div class="chip" data-k="bauch">Leicht gereizt / „hangry“</div>
           <div class="chip" data-k="bauch">Ich könnte auch etwas Einfaches essen</div>
-          <div class="chip" data-k="kopf">Kam plötzlich</div>
+          <div class="chip" data-k="bauch">Länger nichts gegessen</div>
+        </div>
+        <div class="qlabel">Eher Kopf / äußerlich</div>
+        <div class="chips" style="margin-bottom:18px" id="b-cues-head">
+          <div class="chip" data-k="kopf">Kam ganz plötzlich</div>
           <div class="chip" data-k="kopf">Nur ein ganz bestimmtes Essen</div>
-          <div class="chip" data-k="kopf">Gerade gestresst / gelangweilt</div>
-          <div class="chip" data-k="kopf">Sitzt im Kopf, nicht im Magen</div>
+          <div class="chip" data-k="kopf">Lust auf süß / fettig speziell</div>
+          <div class="chip" data-k="kopf">Gestresst / gelangweilt / traurig</div>
+          <div class="chip" data-k="kopf">Sitzt im Kopf oder Mund</div>
+          <div class="chip" data-k="kopf">Anblick / Geruch / Werbung</div>
+          <div class="chip" data-k="kopf">Aus Gewohnheit / weil andere essen</div>
+          <div class="chip" data-k="neutral">Bin mir nicht sicher</div>
         </div>
         <div class="glass" style="padding:16px 18px;margin-bottom:8px">
           <div class="eyebrow" style="margin-bottom:10px">Der Apfel-Check</div>
@@ -266,10 +292,12 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
             „Hätte ich jetzt auch Lust auf einen Apfel — oder etwas ganz Einfaches?“</p>
           <div class="chips" id="b-apple">
             <div class="chip" data-a="ja">Ja, klar</div>
+            <div class="chip" data-a="teils">Vielleicht</div>
             <div class="chip" data-a="nein">Nein, es muss etwas Bestimmtes sein</div>
           </div>
         </div>
-        <button class="btn" onclick="bResult()" style="margin-top:22px">Auswerten</button>
+        <textarea class="note" id="b-note" placeholder="Etwas ergänzen, das nicht dabei war? (optional)"></textarea>
+        <button class="btn" onclick="bResult()" style="margin-top:18px">Auswerten</button>
       </div>
 
       <div id="b-step2" style="display:none">
@@ -301,9 +329,11 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
           <div style="display:flex;justify-content:center"><div class="bead" id="a-bead" style="--c:var(--p-ideal);width:92px;height:92px"><b id="a-num" style="font-size:46px">7</b></div></div>
           <div class="valdesc" id="a-desc" style="margin:16px 6px 4px"></div>
         </div>
-        <div class="scale" id="a-scale"></div>
+        <div class="slider"><div class="track" id="a-track"><span class="knob" id="a-knob"></span></div>
+          <div class="ticks" id="a-ticks"></div></div>
         <div class="scale-ends"><span>0 · ausgehungert</span><span>übervoll · 10</span></div>
-        <button class="btn" onclick="aStep(1)" style="margin-top:26px">Weiter</button>
+        <p class="scale-hint">Ziehen — du darfst auch dazwischen landen.</p>
+        <button class="btn" onclick="aStep(1)" style="margin-top:22px">Weiter</button>
       </div>
 
       <div id="a-step1" style="display:none">
@@ -313,21 +343,26 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
           <p class="serif" style="font-style:italic;font-size:17px;margin-bottom:14px;color:var(--ink)">
             Wann wurde der Geschmack neutraler — weniger intensiv als beim ersten Bissen?</p>
           <div class="chips" id="a-taste">
-            <div class="chip" data-t="früh">Früh — hab's gemerkt</div>
-            <div class="chip" data-t="spät">Erst spät</div>
-            <div class="chip" data-t="nein">Gar nicht darauf geachtet</div>
+            <div class="chip" data-t="früh">Früh — deutlich gemerkt</div>
+            <div class="chip" data-t="mitte">Etwa in der Mitte</div>
+            <div class="chip" data-t="spät">Erst spät / am Ende</div>
+            <div class="chip" data-t="gleich">Blieb gleich intensiv</div>
+            <div class="chip" data-t="nein">Nicht darauf geachtet</div>
           </div>
         </div>
         <div class="glass" style="padding:18px;margin-bottom:8px">
           <p class="serif" style="font-style:italic;font-size:17px;margin-bottom:14px;color:var(--ink)">
-            Hast du beim angenehmen Punkt (~7, leicht &amp; zufrieden) gestoppt?</p>
+            Wo hast du aufgehört zu essen?</p>
           <div class="chips" id="a-stop">
-            <div class="chip" data-s="ja">Ja, ungefähr da</div>
-            <div class="chip" data-s="drüber">Etwas drüber</div>
-            <div class="chip" data-s="weit">Deutlich drüber</div>
+            <div class="chip" data-s="früh">Noch hungrig — zu früh</div>
+            <div class="chip" data-s="ja">Beim angenehmen Punkt (~7)</div>
+            <div class="chip" data-s="drüber">Kurz drüber</div>
+            <div class="chip" data-s="weit">Deutlich drüber, zu voll</div>
+            <div class="chip" data-s="unsicher">Weiß nicht genau</div>
           </div>
         </div>
-        <button class="btn" onclick="aResult()" style="margin-top:22px">Abschließen</button>
+        <textarea class="note" id="a-note" placeholder="Etwas ergänzen? Z. B. was dich zum Aufhören gebracht hat (optional)"></textarea>
+        <button class="btn" onclick="aResult()" style="margin-top:18px">Abschließen</button>
       </div>
 
       <div id="a-step2" style="display:none">
@@ -483,31 +518,46 @@ function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.re
   document.getElementById('nav').classList.toggle('hidden',id==='s-before'||id==='s-after');}
 function goHome(){show('s-home');}
 
-/* scale */
-function buildScale(el,val,onPick){el.innerHTML='';
-  for(let i=0;i<=10;i++){const d=document.createElement('div');d.className='dot'+(i===val?' sel':'');d.textContent=i;
-    if(i===val)d.style.background=colFor(i);d.onclick=()=>onPick(i);el.appendChild(d);}}
-function paintScale(el,val,numEl,descEl,beadEl){
-  [...el.children].forEach((d,i)=>{d.classList.toggle('sel',i===val);d.style.background=i===val?colFor(i):'';});
-  numEl.textContent=val;descEl.textContent=SCALE[val].d;beadEl.style.setProperty('--c',colFor(val));}
+/* scale — ziehbarer Regler mit Halbschritten */
+const SHORT=["ausgehungert","übermäßig hungrig","starker Hunger","angenehmer Hunger","beginnender Hunger","neutral","erste Sättigung","angenehm satt","voll","zu voll","übervoll"];
+function fmt(v){return Number.isInteger(v)?String(v):`${Math.floor(v)}–${Math.ceil(v)}`;}
+function descFor(v){if(Number.isInteger(v))return SCALE[v].d;
+  const lo=Math.floor(v),hi=Math.ceil(v);
+  return `Genau dazwischen — »${SHORT[lo]}« und »${SHORT[hi]}«. Beides ist ok; nimm, was sich näher anfühlt.`;}
+function ticks(el){el.innerHTML='';for(let i=0;i<=10;i++)el.insertAdjacentHTML('beforeend',`<span>${i}</span>`);}
+function makeSlider(track,knob,numEl,descEl,beadEl,initial,cb){
+  let val=initial;
+  function paint(){knob.style.left=(val/10*100)+'%';const t=fmt(val);numEl.textContent=t;
+    numEl.style.fontSize=t.length>2?'30px':'46px';descEl.textContent=descFor(val);
+    beadEl.style.setProperty('--c',colFor(Math.round(val)));}
+  function setFromX(x){const r=track.getBoundingClientRect();let p=(x-r.left)/r.width;p=Math.max(0,Math.min(1,p));
+    val=Math.round(p*20)/2;paint();cb&&cb(val);}
+  let drag=false;
+  track.onpointerdown=e=>{drag=true;try{track.setPointerCapture(e.pointerId);}catch(_){}setFromX(e.clientX);};
+  track.onpointermove=e=>{if(drag)setFromX(e.clientX);};
+  track.onpointerup=track.onpointercancel=()=>{drag=false;};
+  paint();
+}
 
 /* BEFORE */
 let bState={val:3};
 function startBefore(){bState={val:3,apple:null};
   ['b-step0','b-step1','b-step2'].forEach((s,i)=>document.getElementById(s).style.display=i===0?'block':'none');setDots('b',0);
-  const el=document.getElementById('b-scale'),num=document.getElementById('b-num'),desc=document.getElementById('b-desc'),bead=document.getElementById('b-bead');
-  buildScale(el,3,(i)=>{bState.val=i;paintScale(el,i,num,desc,bead);});paintScale(el,3,num,desc,bead);
-  document.querySelectorAll('#b-cues .chip').forEach(c=>{c.classList.remove('active');c.onclick=()=>c.classList.toggle('active');});
+  const num=document.getElementById('b-num'),desc=document.getElementById('b-desc'),bead=document.getElementById('b-bead');
+  ticks(document.getElementById('b-ticks'));
+  makeSlider(document.getElementById('b-track'),document.getElementById('b-knob'),num,desc,bead,3,(v)=>bState.val=v);
+  document.querySelectorAll('#b-cues-body .chip, #b-cues-head .chip').forEach(c=>{c.classList.remove('active');c.onclick=()=>c.classList.toggle('active');});
   document.querySelectorAll('#b-apple .chip').forEach(c=>{c.classList.remove('active');
     c.onclick=()=>{document.querySelectorAll('#b-apple .chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');bState.apple=c.dataset.a;};});
+  const n=document.getElementById('b-note');if(n)n.value='';
   show('s-before');}
 function bStep(n){document.getElementById('b-step0').style.display=n===0?'block':'none';
   document.getElementById('b-step1').style.display=n===1?'block':'none';setDots('b',n);document.querySelector('.scroll').scrollTop=0;}
 function setDots(p,n){for(let i=0;i<3;i++)document.getElementById(p+'-d'+i).classList.toggle('on',i<=n);}
 function bResult(){let kopf=0,bauch=0;
-  document.querySelectorAll('#b-cues .chip.active').forEach(c=>{c.dataset.k==='kopf'?kopf++:bauch++;});
+  document.querySelectorAll('#b-cues-body .chip.active, #b-cues-head .chip.active').forEach(c=>{if(c.dataset.k==='kopf')kopf++;else if(c.dataset.k==='bauch')bauch++;});
   if(bState.apple==='nein')kopf++;if(bState.apple==='ja')bauch++;if(bState.val>=6)kopf++;
-  const isKopf=kopf>bauch,isEarly=bState.val<=1;
+  const isKopf=kopf>bauch,isEarly=bState.val<=1.5;
   document.getElementById('b-step1').style.display='none';document.getElementById('b-step2').style.display='block';setDots('b',2);document.querySelector('.scroll').scrollTop=0;
   const verdict=document.getElementById('b-verdict'),mk=document.getElementById('b-merksatz');
   if(isKopf){verdict.textContent='Klingt eher nach Kopf-Hunger.';
@@ -521,21 +571,26 @@ function bResult(){let kopf=0,bauch=0;
 let aState={val:7};
 function startAfter(){aState={val:7,taste:null,stop:null};
   ['a-step0','a-step1','a-step2'].forEach((s,i)=>document.getElementById(s).style.display=i===0?'block':'none');setDots('a',0);
-  const el=document.getElementById('a-scale'),num=document.getElementById('a-num'),desc=document.getElementById('a-desc'),bead=document.getElementById('a-bead');
-  buildScale(el,7,(i)=>{aState.val=i;paintScale(el,i,num,desc,bead);});paintScale(el,7,num,desc,bead);
+  const num=document.getElementById('a-num'),desc=document.getElementById('a-desc'),bead=document.getElementById('a-bead');
+  ticks(document.getElementById('a-ticks'));
+  makeSlider(document.getElementById('a-track'),document.getElementById('a-knob'),num,desc,bead,7,(v)=>aState.val=v);
   document.querySelectorAll('#a-taste .chip').forEach(c=>{c.classList.remove('active');
     c.onclick=()=>{document.querySelectorAll('#a-taste .chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');aState.taste=c.dataset.t;};});
   document.querySelectorAll('#a-stop .chip').forEach(c=>{c.classList.remove('active');
     c.onclick=()=>{document.querySelectorAll('#a-stop .chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');aState.stop=c.dataset.s;};});
+  const n=document.getElementById('a-note');if(n)n.value='';
   show('s-after');}
 function aStep(n){document.getElementById('a-step0').style.display=n===0?'block':'none';
   document.getElementById('a-step1').style.display=n===1?'block':'none';setDots('a',n);document.querySelector('.scroll').scrollTop=0;}
 function aResult(){document.getElementById('a-step1').style.display='none';document.getElementById('a-step2').style.display='block';setDots('a',2);document.querySelector('.scroll').scrollTop=0;
-  const verdict=document.getElementById('a-verdict'),rf=document.getElementById('a-reflect');const v=aState.val;
-  if(v>=6&&v<=7&&aState.stop==='ja'){verdict.textContent='Genau ins Fenster getroffen.';
+  const verdict=document.getElementById('a-verdict'),rf=document.getElementById('a-reflect');
+  const v=aState.val,s=aState.stop,t=aState.taste;const missed=(t==='nein'||t==='spät'||t==='gleich');
+  if(s==='früh'){verdict.textContent='Früher gestoppt.';
+    rf.textContent='Aufhören, obwohl noch Hunger da ist, kann sich unruhig anfühlen. Deinen Hunger zu ehren ist genauso wichtig wie das rechtzeitige Aufhören — beim nächsten Mal darfst du ruhig noch etwas weiteressen.';}
+  else if((v>=6&&v<=7.5)&&s==='ja'){verdict.textContent='Genau ins Fenster getroffen.';
     rf.textContent='Du hast beim angenehmen, leichten Punkt gestoppt. Genau dieses Gefühl lernst du gerade wiederzuerkennen.';}
-  else if(v>=8||aState.stop==='weit'){verdict.textContent='Diesmal etwas drüber.';
-    rf.textContent=(aState.taste==='nein'||aState.taste==='spät')
+  else if(v>=8||s==='weit'){verdict.textContent='Diesmal etwas drüber.';
+    rf.textContent=missed
       ?'Der Geschmacks-Kipppunkt kam wohl unbemerkt vorbei. Beim nächsten Mal: achte früh auf den Moment, wo der erste Genuss nachlässt.'
       :'Du hast den Kipppunkt gespürt — das Stoppen kommt mit der Übung. Das Bemerken ist schon der halbe Weg.';}
   else{verdict.textContent='Gut gespürt.';
