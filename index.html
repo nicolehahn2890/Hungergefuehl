@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="assets/app-icon-180.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/app-icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#eccdf0">
+<meta name="theme-color" content="#f6c9de">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Gespür">
@@ -26,12 +26,12 @@
   --font-body:'DM Sans',system-ui,sans-serif;
   /* Perla — Original-Tokens aus dem Calma Design System */
   --ink:#3d2c52; --ink-soft:#5a4775; --ink-mute:#7c6699;
-  --accent:#e28ac0; --accent-2:#8fd9d0;
+  --accent:#e878bd; --accent-2:#55cfd6;
   --bg-1:#a9e6de; --bg-2:#f6c9de;
   --glass:rgba(255,255,255,0.40);
   --glass-brd:rgba(255,255,255,0.95);
-  /* Pol-Farben für die Skala */
-  --p-hunger:#ff9ec4; --p-ideal:#8fe3c4; --p-neutral:#ffd49a; --p-full:#c4a9f0; --p-rose:#ffb3d9;
+  /* Pol-Farben für die Skala — abgestimmt aufs Wasserbild */
+  --p-hunger:#f491c7; --p-ideal:#5fd3cf; --p-neutral:#ffd49a; --p-full:#c1a1ec; --p-rose:#f7a8d3;
   --holo:linear-gradient(115deg,#ff9ec4 0%,#ffd49a 18%,#c4f0d0 36%,#8fcdf0 54%,#c4a9f0 72%,#ffb3d9 88%,#ff9ec4 100%);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
@@ -111,7 +111,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
 .btn{font-family:var(--font-body);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
   border:none;padding:16px 30px;border-radius:100px;color:#fff;width:100%;
   background:linear-gradient(135deg,var(--accent),var(--accent-2));
-  box-shadow:0 8px 22px rgba(255,130,190,0.4),inset 0 1px 0 rgba(255,255,255,0.7);
+  box-shadow:0 8px 22px rgba(232,120,189,0.45),inset 0 1px 0 rgba(255,255,255,0.7);
   transition:transform .25s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
 .btn::before{content:'';position:absolute;inset:0;
   background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,0.55) 50%,transparent 60%);
@@ -128,7 +128,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
   background:rgba(255,255,255,0.42);color:var(--ink-soft);border:1px solid rgba(255,255,255,0.7);
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:all .22s ease}
 .chip.active{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent;
-  box-shadow:0 6px 16px rgba(255,130,190,0.35)}
+  box-shadow:0 6px 16px rgba(232,120,189,0.4)}
 
 /* -------------------------------------------------------------- scale (ziehbarer Regler) */
 .slider{padding:8px 13px 0}
@@ -193,7 +193,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
     <!-- ============================================================ HOME -->
     <section class="screen active" id="s-home">
       <div style="display:flex;justify-content:center;margin-bottom:12px">
-        <div class="bead" style="--c:#e88bbf;width:54px;height:54px">
+        <div class="bead" style="--c:#e878bd;width:54px;height:54px">
           <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="rgba(255,255,255,0.97)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 1px 2px rgba(55,28,82,0.55))">
             <path d="M12 5v14.5"/><path d="M6.4 7.6h11.2"/><path d="M8.8 19.5h6.4"/>
             <path d="M6.4 7.6 3.9 12.6"/><path d="M6.4 7.6 8.9 12.6"/><path d="M3.9 12.6a2.5 2 0 0 0 5 0"/>
@@ -619,14 +619,14 @@ function aResult(){document.getElementById('a-step1').style.display='none';docum
     h.insertAdjacentHTML('beforeend',
     `<div style="display:flex;gap:12px;padding:9px 0;${i<HUNGER_STAGES.length-1?'border-bottom:1px solid rgba(120,90,160,0.12)':''}">
       <div class="bead" style="--c:${ideal?'var(--p-ideal)':'var(--p-hunger)'};width:10px;height:10px;margin-top:7px"></div>
-      <div><div class="serif" style="font-size:17px;font-weight:500;color:var(--ink)">${t}${ideal?' <span style="color:#4fb99a;font-size:14px">✦ ideal</span>':''}</div>
+      <div><div class="serif" style="font-size:17px;font-weight:500;color:var(--ink)">${t}${ideal?' <span style="color:#2fb5b0;font-size:14px">✦ ideal</span>':''}</div>
       <div class="sub" style="font-size:12px;line-height:1.55">${d}</div></div></div>`);});
   const f=document.getElementById('m-full');
   FULL_STAGES.forEach(([t,d,ideal],i)=>{
     f.insertAdjacentHTML('beforeend',
     `<div style="display:flex;gap:12px;padding:9px 0;align-items:flex-start;${i<FULL_STAGES.length-1?'border-bottom:1px solid rgba(120,90,160,0.12)':''}">
-      <div class="serif" style="font-size:20px;font-weight:500;width:38px;flex-shrink:0;${ideal?'color:#4fb99a':'color:var(--ink-mute)'}">${t}</div>
-      <div class="sub" style="font-size:12px;line-height:1.55;${ideal?'color:var(--ink)':''}">${d}${ideal?' <span style="color:#4fb99a">— idealer Stopp</span>':''}</div></div>`);});
+      <div class="serif" style="font-size:20px;font-weight:500;width:38px;flex-shrink:0;${ideal?'color:#2fb5b0':'color:var(--ink-mute)'}">${t}</div>
+      <div class="sub" style="font-size:12px;line-height:1.55;${ideal?'color:var(--ink)':''}">${d}${ideal?' <span style="color:#2fb5b0">— idealer Stopp</span>':''}</div></div>`);});
 })();
 
 /* markers table spacing */
