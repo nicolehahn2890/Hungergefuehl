@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================================
-   Gespür — Hunger- & Sättigungs-App
+   Intuition — Hunger- & Sättigungs-App
    Gebaut auf dem echten Calma-„Luminous / Perla"-Design (Perlmutt-Texturen,
    Glasperlen, Cormorant + DM Sans, tiefes Pflaumen-Ink). Deutsch, nur Hunger
    & Sättigung. Vorher-/Nachher-Rhythmus pro Mahlzeit.
@@ -247,7 +247,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
 
     <!-- ==================================================== BEFORE -->
     <section class="screen" id="s-before">
-      <button class="back" onclick="goHome()" style="margin-bottom:20px">&larr; Abbrechen</button>
+      <button class="back" id="b-back" onclick="goHome()" style="margin-bottom:20px">&larr; Abbrechen</button>
       <div class="step-dots" style="margin-bottom:22px"><i id="b-d0" class="on"></i><i id="b-d1"></i><i id="b-d2"></i></div>
 
       <div id="b-step0">
@@ -322,7 +322,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
 
     <!-- ==================================================== AFTER -->
     <section class="screen" id="s-after">
-      <button class="back" onclick="goHome()" style="margin-bottom:20px">&larr; Abbrechen</button>
+      <button class="back" id="a-back" onclick="goHome()" style="margin-bottom:20px">&larr; Abbrechen</button>
       <div class="step-dots" style="margin-bottom:22px"><i id="a-d0" class="on"></i><i id="a-d1"></i><i id="a-d2"></i></div>
 
       <div id="a-step0">
@@ -418,7 +418,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
         <div class="row" style="justify-content:center;gap:14px;margin-top:14px;flex-wrap:wrap">
           <div class="row" style="gap:6px"><span style="width:9px;height:9px;border-radius:50%;background:#fff;border:1.5px solid var(--ink-mute)"></span><span class="sub" style="font-size:11px">Start (Hunger)</span></div>
           <div class="row" style="gap:6px"><span style="width:11px;height:11px;border-radius:50%;background:var(--p-ideal);border:2px solid #fff"></span><span class="sub" style="font-size:11px">Stopp im Fenster</span></div>
-          <div class="row" style="gap:6px"><span style="width:11px;height:11px;border-radius:50%;background:var(--p-full);border:2px solid #fff"></span><span class="sub" style="font-size:11px">Stopp drüber</span></div>
+          <div class="row" style="gap:6px"><span style="width:11px;height:11px;border-radius:50%;background:var(--p-full);border:2px solid #fff"></span><span class="sub" style="font-size:11px">Stopp außerhalb (drüber/drunter)</span></div>
         </div>
       </div>
 
@@ -711,7 +711,7 @@ function ticks(el){el.innerHTML='';for(let i=0;i<=10;i++)el.insertAdjacentHTML('
 function makeSlider(track,knob,numEl,descEl,beadEl,initial,cb){
   let val=initial;
   function paint(){knob.style.left=(val/10*100)+'%';const t=fmt(val);numEl.textContent=t;
-    numEl.style.fontSize=t.length>2?'30px':'46px';descEl.textContent=descFor(val);
+    numEl.style.fontSize=t.length>2?'30px':(t.length===2?'38px':'46px');descEl.textContent=descFor(val);
     beadEl.style.setProperty('--c',colFor(Math.round(val)));}
   function setFromX(x){const r=track.getBoundingClientRect();let p=(x-r.left)/r.width;p=Math.max(0,Math.min(1,p));
     val=Math.round(p*20)/2;paint();cb&&cb(val);}
@@ -725,6 +725,7 @@ function makeSlider(track,knob,numEl,descEl,beadEl,initial,cb){
 /* BEFORE */
 let bState={val:3};
 function startBefore(){bState={val:3,apple:null};
+  document.getElementById('b-back').innerHTML='&larr; Abbrechen';
   ['b-step0','b-step1','b-step2'].forEach((s,i)=>document.getElementById(s).style.display=i===0?'block':'none');setDots('b',0);
   const num=document.getElementById('b-num'),desc=document.getElementById('b-desc'),bead=document.getElementById('b-bead');
   ticks(document.getElementById('b-ticks'));
@@ -737,7 +738,9 @@ function startBefore(){bState={val:3,apple:null};
 function bStep(n){document.getElementById('b-step0').style.display=n===0?'block':'none';
   document.getElementById('b-step1').style.display=n===1?'block':'none';setDots('b',n);document.querySelector('.scroll').scrollTop=0;}
 function setDots(p,n){for(let i=0;i<3;i++)document.getElementById(p+'-d'+i).classList.toggle('on',i<=n);}
-function bResult(){let kopf=0,bauch=0;
+function bResult(){
+  if(document.getElementById('b-step2').style.display==='block')return; /* Doppel-Tipp-Schutz */
+  let kopf=0,bauch=0;
   document.querySelectorAll('#b-cues-body .chip.active, #b-cues-head .chip.active').forEach(c=>{if(c.dataset.k==='kopf')kopf++;else if(c.dataset.k==='bauch')bauch++;});
   if(bState.apple==='nein')kopf++;if(bState.apple==='ja')bauch++;if(bState.val>=6)kopf++;
   const isKopf=kopf>bauch,isEarly=bState.val<=1.5;
@@ -747,6 +750,7 @@ function bResult(){let kopf=0,bauch=0;
     hunger:bState.val,kind:kopf>bauch?'kopf':(bauch>kopf?'bauch':'unklar'),
     apple:bState.apple||null,note:(document.getElementById('b-note')||{value:''}).value.trim()||null});
   saveEntries(entries);renderToday();
+  document.getElementById('b-back').innerHTML='&larr; Schließen';
   document.getElementById('b-step1').style.display='none';document.getElementById('b-step2').style.display='block';setDots('b',2);document.querySelector('.scroll').scrollTop=0;
   const verdict=document.getElementById('b-verdict'),mk=document.getElementById('b-merksatz');
   if(isKopf){verdict.textContent='Klingt eher nach Kopf-Hunger.';
@@ -759,6 +763,7 @@ function bResult(){let kopf=0,bauch=0;
 /* AFTER */
 let aState={val:7};
 function startAfter(){aState={val:7,taste:null,stop:null};
+  document.getElementById('a-back').innerHTML='&larr; Abbrechen';
   ['a-step0','a-step1','a-step2'].forEach((s,i)=>document.getElementById(s).style.display=i===0?'block':'none');setDots('a',0);
   const num=document.getElementById('a-num'),desc=document.getElementById('a-desc'),bead=document.getElementById('a-bead');
   ticks(document.getElementById('a-ticks'));
@@ -773,6 +778,7 @@ function startAfter(){aState={val:7,taste:null,stop:null};
 function aStep(n){document.getElementById('a-step0').style.display=n===0?'block':'none';
   document.getElementById('a-step1').style.display=n===1?'block':'none';setDots('a',n);document.querySelector('.scroll').scrollTop=0;}
 function aResult(){
+  if(document.getElementById('a-step2').style.display==='block')return; /* Doppel-Tipp-Schutz */
   /* Check-in speichern — an letzte offene Mahlzeit von heute anhängen */
   const entries=loadEntries();
   const feel=[...document.querySelectorAll('#a-feel .chip.active')].map(c=>c.textContent);
@@ -784,6 +790,7 @@ function aResult(){
   else{entries.push({id:Date.now()+'-'+Math.floor(Math.random()*1e4),date:todayKey(),time:nowTime(),
     fullness:aState.val,feel:feel,taste:aState.taste||null,stop:aState.stop||null,noteAfter:noteAfter});}
   saveEntries(entries);renderToday();
+  document.getElementById('a-back').innerHTML='&larr; Schließen';
   document.getElementById('a-step1').style.display='none';document.getElementById('a-step2').style.display='block';setDots('a',2);document.querySelector('.scroll').scrollTop=0;
   const verdict=document.getElementById('a-verdict'),rf=document.getElementById('a-reflect');
   const v=aState.val,s=aState.stop,t=aState.taste;const missed=(t==='nein'||t==='spät'||t==='gleich');
@@ -894,7 +901,7 @@ function renderPatterns(){
     sub.textContent='Noch zu wenige Einträge für echte Muster — einfach weitermachen, mit jedem Check-in wird das Bild klarer.';}
   else{
     const kopf=week.filter(e=>e.kind==='kopf');
-    if(kopf.length===0){
+    if(kopf.length<2){
       main.textContent='Diese Woche war dein Hunger fast immer körperlich.';
       sub.textContent='Du folgst deinen Signalen zuverlässig — genau darum geht es.';}
     else{
