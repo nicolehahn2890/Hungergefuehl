@@ -13,13 +13,22 @@ gar nicht mehr zu brauchen.
 
 ## Screens
 - **Heute** — Einstieg in den Vorher-/Nachher-Check-in, Tagesübersicht
-- **Vor der Mahlzeit** — Hungerskala 0–10, „Bauch oder Kopf?" + Apfel-Check, Merksatz
-  für den Tisch
-- **Nach der Mahlzeit** — Sättigungsskala 0–10, Geschmacks-Kipppunkt, Stopp-Punkt
-  (aus der Erinnerung)
+- **Vor der Mahlzeit** — Hungerskala als ziehbarer Regler (0–10 in Halbschritten,
+  „dazwischen" erlaubt), „Bauch oder Kopf?" mit gruppierten, differenzierten
+  Merkmalen + Apfel-Check, optionales Freitextfeld, Merksatz für den Tisch
+- **Nach der Mahlzeit** — Sättigungsskala als Regler (Halbschritte, aus der
+  Erinnerung), Körpergefühl der Sättigung (Mehrfachauswahl), Geschmacks-Kipppunkt
+  (5 Stufen), Stopp-Punkt (inkl. „noch hungrig"), optionales Freitextfeld
 - **Muster** — wöchentliche Übersicht ohne Kalorien, nur Signaltreue
 - **Merkmale** — Nachschlagewerk: Hungerverlauf, Bauch- vs. Kopf-Hunger,
   Geschmacks-Trick, Sättigungsverlauf
+
+## Interaktion
+- Skalen sind **ziehbare Regler mit Halbschritten** — man darf bewusst zwischen zwei
+  Werten landen (z. B. „3–4"), die App bestätigt, dass „dazwischen" völlig ok ist.
+- Die Folgefragen bieten **differenzierte, gruppierte Auswahlmöglichkeiten**,
+  „bin mir nicht sicher"-Optionen und je ein **optionales Freitextfeld**, falls
+  nichts genau passt.
 
 ## Design
 Übernimmt das Calma-Design-System 1:1:

@@ -338,7 +338,23 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
 
       <div id="a-step1" style="display:none">
         <div class="overline" style="margin-bottom:6px">Nach der Mahlzeit</div>
-        <h2 class="title" style="margin-bottom:16px">Der Geschmack</h2>
+        <h2 class="title" style="margin-bottom:16px">Wie war es?</h2>
+        <div class="glass" style="padding:18px;margin-bottom:14px">
+          <p class="serif" style="font-style:italic;font-size:17px;margin-bottom:4px;color:var(--ink)">
+            Wie fühlt sich die Sättigung im Körper an?</p>
+          <p class="sub" style="font-size:12px;margin-bottom:14px">Alles antippen, was zutrifft — auch mehreres.</p>
+          <div class="chips" id="a-feel">
+            <div class="chip">Leicht &amp; zufrieden</div>
+            <div class="chip">Magen angenehm gefüllt</div>
+            <div class="chip">Noch etwas leer — könnte mehr</div>
+            <div class="chip">Immer noch hungrig</div>
+            <div class="chip">Leichter Druck im Bauch</div>
+            <div class="chip">Deutliches Völlegefühl</div>
+            <div class="chip">Kleidung spannt</div>
+            <div class="chip">Träge / müde</div>
+            <div class="chip">Aufgebläht / schwer</div>
+          </div>
+        </div>
         <div class="glass" style="padding:18px;margin-bottom:14px">
           <p class="serif" style="font-style:italic;font-size:17px;margin-bottom:14px;color:var(--ink)">
             Wann wurde der Geschmack neutraler — weniger intensiv als beim ersten Bissen?</p>
@@ -574,6 +590,7 @@ function startAfter(){aState={val:7,taste:null,stop:null};
   const num=document.getElementById('a-num'),desc=document.getElementById('a-desc'),bead=document.getElementById('a-bead');
   ticks(document.getElementById('a-ticks'));
   makeSlider(document.getElementById('a-track'),document.getElementById('a-knob'),num,desc,bead,7,(v)=>aState.val=v);
+  document.querySelectorAll('#a-feel .chip').forEach(c=>{c.classList.remove('active');c.onclick=()=>c.classList.toggle('active');});
   document.querySelectorAll('#a-taste .chip').forEach(c=>{c.classList.remove('active');
     c.onclick=()=>{document.querySelectorAll('#a-taste .chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');aState.taste=c.dataset.t;};});
   document.querySelectorAll('#a-stop .chip').forEach(c=>{c.classList.remove('active');
