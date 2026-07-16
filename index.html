@@ -466,7 +466,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
       <div class="m-panel" id="m-p-hunger">
         <div class="glass" style="padding:20px 18px;margin-bottom:14px">
           <div class="row" style="gap:10px;margin-bottom:6px"><div class="bead" style="--c:var(--p-hunger);width:26px;height:26px"></div><div class="eyebrow">Der Hungerverlauf</div></div>
-          <p class="sub" style="font-size:12px;margin-bottom:12px">Von oben (satt) nach unten (ausgehungert) — mit dem Skalenwert, den du beim Check-in einstellst.</p>
+          <p class="sub" style="font-size:12px;margin-bottom:12px">Die untere Hälfte deiner Check-in-Skala: vom Neutralpunkt (5) hinunter bis ausgehungert (0) — exakt die Werte und Texte, die du beim Regler siehst.</p>
           <div id="m-hunger"></div>
         </div>
         <div class="glass" style="padding:18px;margin-bottom:14px">
@@ -492,7 +492,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
       <div class="m-panel" id="m-p-full" style="display:none">
         <div class="glass" style="padding:20px 18px;margin-bottom:14px">
           <div class="row" style="gap:10px;margin-bottom:6px"><div class="bead" style="--c:var(--p-ideal);width:26px;height:26px"></div><div class="eyebrow">Der Sättigungsverlauf</div></div>
-          <p class="sub" style="font-size:12px;margin-bottom:12px">Die Skalenwerte von „noch hungrig" bis „übervoll" — und wo der ideale Stopp liegt.</p>
+          <p class="sub" style="font-size:12px;margin-bottom:12px">Die obere Hälfte deiner Check-in-Skala: vom Neutralpunkt (5) hinauf bis übervoll (10) — exakt die Werte und Texte, die du beim Regler siehst.</p>
           <div id="m-full"></div>
         </div>
         <div class="glass" style="padding:18px;margin-bottom:14px">
@@ -665,34 +665,19 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
 (function(){const g=document.getElementById('glitter');const P=[[12,18,3],[80,10,3.6],[42,7,2.4],[88,34,4],[22,44,2.8],[68,58,3.4],[16,72,3],[90,80,3.8],[46,88,2.6],[74,92,3.2],[34,26,2.2],[58,20,3]];
 P.forEach(([x,y,s],i)=>{const d=document.createElement('div');d.className='spark';d.style.cssText=`left:${x}%;top:${y}%;width:${s}px;height:${s}px;--tw:${2.4+i*0.35}s;animation-delay:${i*0.3}s`;g.appendChild(d);});})();
 
-/* data */
+/* data — EINE Quelle für Check-in-Regler UND Merkmale-Listen */
 const SCALE=[
- {n:0,d:"Ausgehungert — schwach, zittrig, gereizt. Viel zu lange gewartet."},
- {n:1,d:"Übermäßig hungrig — Kopf wird leer, nur noch „schnell & viel“ zählt."},
- {n:2,d:"Starker Hunger — Magen knurrt wiederkehrend, erstes Energieloch, Ungeduld."},
- {n:3,d:"Klarer, angenehmer Hunger — du freust dich aufs Essen, bist aber ruhig. Guter Start."},
- {n:4,d:"Beginnender Hunger — der Magen meldet sich leise, ein breites Spektrum klingt gut."},
- {n:5,d:"Neutral — weder hungrig noch satt."},
- {n:6,d:"Erste Sättigung — der Hunger verschwindet leise, Essen schmeckt noch gut."},
- {n:7,d:"Angenehm satt & leicht — der Geschmack wird neutral, kein Drang weiterzuessen. Der letzte Bissen."},
- {n:8,d:"Voll — erstes Druckgefühl, leichte Trägheit beginnt."},
- {n:9,d:"Zu voll — Schwere und Müdigkeit."},
- {n:10,d:"Übervoll — unangenehm, oft mit Reue."}
-];
-const HUNGER_STAGES=[
- ["5+","Satt / kein Hunger","Kein Gedanke ans Essen — der Gedanke fühlt sich eher unangenehm an.",false],
- ["≈5","Erstes Flüstern","Kein Körpergefühl, nur ein Gedanke: „Wann esse ich eigentlich?“ Leicht wegzuschieben.",false],
- ["≈4","Wachsend","Leichtes Leere-/Ziehgefühl im Oberbauch, leises Knurren. Essen wird interessant.",false],
- ["3–4","Angenehmer Hunger","Deutliches, ruhiges Magengefühl, Speichelfluss. Du freust dich, kannst aber warten. Idealer Startpunkt.",true],
- ["≈2","Starker Hunger","Knurren wird deutlich, erstes Energieloch, Ungeduld, Gedanken kreisen ums Essen.",false],
- ["0–1","Übermäßiger Hunger","Zittrig, Kopfschmerz, Konzentration weg, „hangry“. Hier entsteht Überessen.",false]
-];
-const FULL_STAGES=[
- ["3–4","Ankommen","Der Hunger verschwindet leise, der Magen füllt sich, Essen schmeckt noch sehr gut.",false],
- ["5–6","Neutral bis angenehm","Nicht mehr leer, der Geschmack wird ruhiger.",false],
- ["7","Der letzte Bissen","Zufrieden & leicht. Geschmack neutral, kein Drang weiter — idealer Stopp.",true],
- ["8","Voll","Erstes Druckgefühl, Kleidung enger, leichte Trägheit.",false],
- ["9–10","Übervoll","Schwere, Völlegefühl, Müdigkeit, evtl. Unwohlsein oder Reue.",false]
+ {n:0, t:"Ausgehungert",       d:"Schwach, zittrig, gereizt — viel zu lange gewartet."},
+ {n:1, t:"Übermäßig hungrig",  d:"Der Kopf wird leer, nur noch „schnell & viel“ zählt. Konzentration weg, „hangry“. Hier entsteht Überessen."},
+ {n:2, t:"Starker Hunger",     d:"Magen knurrt deutlich und wiederkehrend, erstes Energieloch, Ungeduld — Gedanken kreisen ums Essen."},
+ {n:3, t:"Angenehmer Hunger",  d:"Deutliches, ruhiges Magengefühl, Speichelfluss. Du freust dich aufs Essen, kannst aber noch warten.", ideal:"idealer Start"},
+ {n:4, t:"Beginnender Hunger", d:"Der Magen meldet sich leise — leichtes Leere-/Ziehgefühl, leises Knurren. Ein breites Spektrum klingt gut."},
+ {n:5, t:"Neutral",            d:"Weder hungrig noch satt. Höchstens ein Gedanke: „Wann esse ich eigentlich?“ — leicht wegzuschieben."},
+ {n:6, t:"Erste Sättigung",    d:"Der Hunger verschwindet leise, der Magen füllt sich. Essen schmeckt noch gut, der Geschmack wird ruhiger."},
+ {n:7, t:"Angenehm satt",      d:"Leicht & zufrieden — der Geschmack wird neutral, kein Drang weiterzuessen. Der letzte Bissen.", ideal:"idealer Stopp"},
+ {n:8, t:"Voll",               d:"Erstes Druckgefühl, Kleidung wird enger, leichte Trägheit beginnt."},
+ {n:9, t:"Zu voll",            d:"Schwere, Völlegefühl und Müdigkeit."},
+ {n:10,t:"Übervoll",           d:"Unangenehm, evtl. Unwohlsein — oft mit Reue."}
 ];
 
 /* ---------------------------------------------------------------- Speicherung (localStorage, nur auf diesem Gerät) */
@@ -718,11 +703,10 @@ function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.re
 function goHome(){show('s-home');}
 
 /* scale — ziehbarer Regler mit Halbschritten */
-const SHORT=["ausgehungert","übermäßig hungrig","starker Hunger","angenehmer Hunger","beginnender Hunger","neutral","erste Sättigung","angenehm satt","voll","zu voll","übervoll"];
 function fmt(v){return Number.isInteger(v)?String(v):`${Math.floor(v)}–${Math.ceil(v)}`;}
-function descFor(v){if(Number.isInteger(v))return SCALE[v].d;
+function descFor(v){if(Number.isInteger(v))return SCALE[v].t+' — '+SCALE[v].d;
   const lo=Math.floor(v),hi=Math.ceil(v);
-  return `Genau dazwischen — »${SHORT[lo]}« und »${SHORT[hi]}«. Beides ist ok; nimm, was sich näher anfühlt.`;}
+  return `Genau dazwischen — »${SCALE[lo].t}« und »${SCALE[hi].t}«. Beides ist ok; nimm, was sich näher anfühlt.`;}
 function ticks(el){el.innerHTML='';for(let i=0;i<=10;i++)el.insertAdjacentHTML('beforeend',`<span>${i}</span>`);}
 function makeSlider(track,knob,numEl,descEl,beadEl,initial,cb){
   let val=initial;
@@ -814,17 +798,19 @@ function aResult(){
   else{verdict.textContent='Gut gespürt.';
     rf.textContent='Du bist bei einer angenehmen Sättigung gelandet. Kein Zwang zur Perfektion — es geht ums Wiedererkennen, nicht ums Kontrollieren.';}}
 
-/* markers — Stufenlisten mit Skalenwerten */
+/* markers — Stufenlisten direkt aus der Check-in-Skala (immer identisch) */
 (function(){
-  const row=(range,t,d,ideal,last)=>
+  const row=(s,last)=>
     `<div style="display:flex;gap:12px;padding:9px 0;align-items:flex-start;${last?'':'border-bottom:1px solid rgba(120,90,160,0.12)'}">
-      <div class="serif" style="font-size:18px;font-weight:500;width:38px;flex-shrink:0;text-align:right;${ideal?'color:#2fb5b0':'color:var(--ink-mute)'}">${range}</div>
-      <div><div class="serif" style="font-size:17px;font-weight:500;color:var(--ink)">${t}${ideal?' <span style="color:#2fb5b0;font-size:13px">✦ ideal</span>':''}</div>
-      <div class="sub" style="font-size:12px;line-height:1.55">${d}</div></div></div>`;
-  const h=document.getElementById('m-hunger');
-  HUNGER_STAGES.forEach(([r,t,d,ideal],i)=>h.insertAdjacentHTML('beforeend',row(r,t,d,ideal,i===HUNGER_STAGES.length-1)));
-  const f=document.getElementById('m-full');
-  FULL_STAGES.forEach(([r,t,d,ideal],i)=>f.insertAdjacentHTML('beforeend',row(r,t,d,ideal,i===FULL_STAGES.length-1)));
+      <div class="serif" style="font-size:18px;font-weight:500;width:30px;flex-shrink:0;text-align:right;${s.ideal?'color:#2fb5b0':'color:var(--ink-mute)'}">${s.n}</div>
+      <div><div class="serif" style="font-size:17px;font-weight:500;color:var(--ink)">${s.t}${s.ideal?' <span style="color:#2fb5b0;font-size:13px">✦ '+s.ideal+'</span>':''}</div>
+      <div class="sub" style="font-size:12px;line-height:1.55">${s.d}</div></div></div>`;
+  /* Hunger-Tab: die untere Skalenhälfte, vom Neutralpunkt abwärts (5 → 0) */
+  const hVals=[5,4,3,2,1,0], h=document.getElementById('m-hunger');
+  hVals.forEach((n,i)=>h.insertAdjacentHTML('beforeend',row(SCALE[n],i===hVals.length-1)));
+  /* Sättigungs-Tab: die obere Skalenhälfte, vom Neutralpunkt aufwärts (5 → 10) */
+  const fVals=[5,6,7,8,9,10], f=document.getElementById('m-full');
+  fVals.forEach((n,i)=>f.insertAdjacentHTML('beforeend',row(SCALE[n],i===fVals.length-1)));
 })();
 
 /* markers table spacing */
