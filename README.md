@@ -19,9 +19,12 @@ gar nicht mehr zu brauchen.
 - **Nach der Mahlzeit** — Sättigungsskala als Regler (Halbschritte, aus der
   Erinnerung), Körpergefühl der Sättigung (Mehrfachauswahl), Geschmacks-Kipppunkt
   (5 Stufen), Stopp-Punkt (inkl. „noch hungrig"), optionales Freitextfeld
-- **Muster** — wöchentliche Übersicht ohne Kalorien, nur Signaltreue
-- **Merkmale** — Nachschlagewerk: Hungerverlauf, Bauch- vs. Kopf-Hunger,
-  Geschmacks-Trick, Sättigungsverlauf
+- **Muster** — wöchentliche Übersicht ohne Kalorien, nur Signaltreue: Wochengrafik
+  (Start-Hunger ○ und Stopp-Sättigung ● pro Mahlzeit), Prozente, „Was auffällt",
+  „Alle Einträge löschen"
+- **Merkmale** — Nachschlagewerk in fünf Themen-Tabs: Hungerverlauf, Sättigungs-
+  verlauf, Bauch- vs. Kopf-Hunger (inkl. Apfel-Check), Geschmacks-Trick und
+  Denkfallen (Stopfen, Verschwendung, „Was-soll's"-Effekt)
 
 ## Interaktion
 - Skalen sind **ziehbare Regler mit Halbschritten** — man darf bewusst zwischen zwei
@@ -63,7 +66,9 @@ Hintergrundbild abgestimmt:
 Hunger-Sättigungs-Skala &amp; Intuitive Eating (Tribole &amp; Resch), Interozeptions-Training,
 sensorspezifische Sättigung (Geschmack wird neutral = körperliches „genug"), das
 ~20-Minuten-Sättigungsfenster (CCK/PYY), Unterscheidung körperlicher vs. emotionaler
-Hunger (Ghrelin, Apfel-Test).
+Hunger (Ghrelin, Apfel-Test). Ess-Psychologie im Denkfallen-Tab: Knappheits-/
+Verbots-Effekt und bedingungslose Erlaubnis, versunkene Kosten („Teller leer"-
+Konditionierung) und der „What-the-hell"-Effekt (Alles-oder-nichts nach Regelbruch).
 
 ## Struktur
 ```
