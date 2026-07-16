@@ -29,9 +29,13 @@ gar nicht mehr zu brauchen.
 - Die Folgefragen bieten **differenzierte, gruppierte Auswahlmöglichkeiten**,
   „bin mir nicht sicher"-Optionen und je ein **optionales Freitextfeld**, falls
   nichts genau passt.
-- **Merkmale** ist in vier Themen-Tabs gegliedert (Hunger · Sättigung · Bauch oder
-  Kopf · Geschmack) — jedes Thema mit Stufenliste inkl. Skalenwerten, Praxis-Tipps
-  und einer kurzen Wissenschafts-Karte.
+- **Merkmale** ist in fünf Themen-Tabs gegliedert (Hunger · Sättigung · Bauch oder
+  Kopf · Geschmack · Denkfallen) — jedes Thema mit Stufenliste inkl. Skalenwerten,
+  Praxis-Tipps und einer kurzen Wissenschafts-Karte. „Denkfallen" behandelt die
+  psychologischen Muster: Stopfen aus Knappheits-Gefühl (du darfst jederzeit wieder
+  essen), „Teller leer"-Konditionierung (Übriglassen ist keine Verschwendung —
+  versunkene Kosten) und den „What-the-hell"-Effekt (eine Mahlzeit drüber ruiniert
+  nichts, nicht kompensieren).
 
 ## Speicherung
 Check-ins werden **lokal auf dem Gerät** gespeichert (localStorage, Schlüssel
