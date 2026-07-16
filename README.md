@@ -31,13 +31,18 @@ gar nicht mehr zu brauchen.
   nichts genau passt.
 
 ## Design
-Übernimmt das Calma-Design-System 1:1:
-- echte Perlmutt-Texturen (`pearl-marble.png`, `pearls.png`) als Hintergrund
+Basiert auf dem Calma-Design-System („Luminous / Perla"), farblich auf das eigene
+Hintergrundbild abgestimmt:
+- **Hintergrund:** rosa-türkises Glitzerwasser (`assets/bg-water.jpg`) als Vollbild,
+  mit hellem Schleier im Kopfbereich für Lesbarkeit
+- **Farbpalette:** kräftiges Pink (#e878bd) → Wasser-Türkis (#55cfd6) für alle
+  Buttons, Chips, Regler und Akzente; Skala-Polfarben ans Bild angeglichen
 - Cormorant Garamond (Display) + DM Sans (Text), tiefes Pflaumen-Ink
 - die signature **Glasperlen** für die Skalen-Werte (weiße Ziffer auf farbiger Perle)
 - Waage-Symbol als Wortmarken-Perle — steht für die Balance zwischen Hunger und
   Sättigung
-- Glas-Karten, Pill-Buttons und Chips nach den Original-Tokens
+- **Homescreen-Icon:** pinke Waage-Perle auf dem echten Wasserbild
+- Glas-Karten, Pill-Buttons und Chips nach den Original-Calma-Tokens
 
 ## Wissenschaftliche Grundlage
 Hunger-Sättigungs-Skala &amp; Intuitive Eating (Tribole &amp; Resch), Interozeptions-Training,
@@ -51,10 +56,12 @@ index.html                     komplette App (ein eigenständiges File)
 manifest.webmanifest           Web-App-Manifest (Homescreen-Installation)
 assets/
   bg-water.jpg                 Hintergrundbild (rosa-türkises Glitzerwasser)
-  app-icon-180/192/512.png     Homescreen-Icons (Waage-Glasperle, rosé)
-  textures/                    Calma-Perlmutt-Texturen (Reserve)
+  app-icon-180/192/512.png     Homescreen-Icons (pinke Waage-Perle auf Wasserbild)
+  textures/                    Calma-Perlmutt-Texturen (Reserve, aktuell ungenutzt)
 ```
 
 ## Öffnen
-`index.html` in jedem Browser öffnen — eigenständige Datei, keine Installation, kein
-Build-Schritt nötig.
+- **Live:** https://nicolehahn2890.github.io/Hungergefuehl/ (GitHub Pages, Branch
+  `main`) — am Handy über „Zum Home-Bildschirm hinzufügen" als App installierbar
+- **Lokal:** `index.html` in jedem Browser öffnen — keine Installation, kein
+  Build-Schritt nötig.
