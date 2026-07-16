@@ -22,9 +22,11 @@ gar nicht mehr zu brauchen.
 - **Muster** — wöchentliche Übersicht ohne Kalorien, nur Signaltreue: Wochengrafik
   (Start-Hunger ○ und Stopp-Sättigung ● pro Mahlzeit), Prozente, „Was auffällt",
   „Alle Einträge löschen"
-- **Merkmale** — Nachschlagewerk in fünf Themen-Tabs: Hungerverlauf, Sättigungs-
-  verlauf, Bauch- vs. Kopf-Hunger (inkl. Apfel-Check), Geschmacks-Trick und
-  Denkfallen (Stopfen, Verschwendung, „Was-soll's"-Effekt)
+- **Merkmale** — Nachschlagewerk in sechs Themen-Tabs: Hungerverlauf (inkl.
+  Hunger-Wellen & Gewohnheits-Hunger), Sättigungsverlauf (inkl. satt werden vs.
+  satt bleiben), Bauch- vs. Kopf-Hunger (inkl. Apfel-Check), Geschmacks-Trick,
+  Störfaktoren (Schlaf, Zyklus, Durst, Stress/Medikamente) und Denkfallen
+  (Stopfen, Verschwendung, „Was-soll's"-Effekt, Geduld/Diät-Vergangenheit)
 
 ## Interaktion
 - Skalen sind **ziehbare Regler mit Halbschritten** — man darf bewusst zwischen zwei
@@ -32,8 +34,8 @@ gar nicht mehr zu brauchen.
 - Die Folgefragen bieten **differenzierte, gruppierte Auswahlmöglichkeiten**,
   „bin mir nicht sicher"-Optionen und je ein **optionales Freitextfeld**, falls
   nichts genau passt.
-- **Merkmale** ist in fünf Themen-Tabs gegliedert (Hunger · Sättigung · Bauch oder
-  Kopf · Geschmack · Denkfallen) — jedes Thema mit Stufenliste inkl. Skalenwerten,
+- **Merkmale** ist in sechs Themen-Tabs gegliedert (Hunger · Sättigung · Bauch
+  oder Kopf · Geschmack · Störfaktoren · Denkfallen) — jedes Thema mit Stufenliste inkl. Skalenwerten,
   Praxis-Tipps und einer kurzen Wissenschafts-Karte. „Denkfallen" behandelt die
   psychologischen Muster: Stopfen aus Knappheits-Gefühl (du darfst jederzeit wieder
   essen), „Teller leer"-Konditionierung (Übriglassen ist keine Verschwendung —
@@ -66,9 +68,14 @@ Hintergrundbild abgestimmt:
 Hunger-Sättigungs-Skala &amp; Intuitive Eating (Tribole &amp; Resch), Interozeptions-Training,
 sensorspezifische Sättigung (Geschmack wird neutral = körperliches „genug"), das
 ~20-Minuten-Sättigungsfenster (CCK/PYY), Unterscheidung körperlicher vs. emotionaler
-Hunger (Ghrelin, Apfel-Test). Ess-Psychologie im Denkfallen-Tab: Knappheits-/
+Hunger (Ghrelin, Apfel-Test). Störfaktoren: Schlafmangel (Ghrelin ↑ / Leptin ↓),
+Zyklus (erhöhter Bedarf in der Lutealphase), Durst-Hunger-Verwechslung, Stress
+(Cortisol) und Medikamente. Sättigungsdauer: Eiweiß/Ballaststoffe/Volumen halten
+lange vor, Flüssigkalorien und stark Verarbeitetes kurz. Hunger-Wellen und
+Ghrelin-Gewöhnung an Essenszeiten. Ess-Psychologie im Denkfallen-Tab: Knappheits-/
 Verbots-Effekt und bedingungslose Erlaubnis, versunkene Kosten („Teller leer"-
-Konditionierung) und der „What-the-hell"-Effekt (Alles-oder-nichts nach Regelbruch).
+Konditionierung), „What-the-hell"-Effekt und die Normalisierung der Signale nach
+Diät-Vergangenheit.
 
 ## Struktur
 ```
