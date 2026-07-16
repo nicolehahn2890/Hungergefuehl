@@ -164,8 +164,20 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
 .week{display:flex;gap:6px;justify-content:space-between}
 .day{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}
 .day .dlabel{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
-.day .dbar{width:100%;height:64px;border-radius:100px;background:rgba(255,255,255,0.42);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.6)}
-.day .dbar span{position:absolute;left:0;right:0;bottom:0;border-radius:100px}
+.day .dbar{width:100%;height:96px;border-radius:14px;position:relative;
+  background:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.6)}
+/* Zielzone 3–7 als zarte Bande */
+.day .dbar::before{content:'';position:absolute;left:2px;right:2px;bottom:30%;top:30%;
+  background:rgba(255,255,255,0.55);border-radius:8px}
+.day .dline{position:absolute;left:50%;width:3px;transform:translateX(-50%);border-radius:3px;
+  background:linear-gradient(180deg,var(--sc,#5fd3cf),rgba(255,255,255,0.85))}
+.day .dot-start{position:absolute;left:50%;transform:translate(-50%,50%);width:9px;height:9px;border-radius:50%;
+  background:#fff;border:1.5px solid var(--ink-mute);box-shadow:0 1px 4px rgba(120,90,160,0.3)}
+.day .dot-stop{position:absolute;left:50%;transform:translate(-50%,50%);width:13px;height:13px;border-radius:50%;
+  background:var(--sc,#5fd3cf);border:2px solid #fff;box-shadow:0 2px 6px rgba(120,90,160,0.35)}
+.week-axis{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;
+  height:96px;padding-right:2px;flex:0 0 16px}
+.week-axis span{font-size:8.5px;color:var(--ink-mute);line-height:1}
 
 /* bottom nav */
 .nav{position:absolute;bottom:0;left:0;right:0;z-index:20;height:78px;display:flex;
@@ -401,11 +413,19 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
       <p class="sub" style="margin-bottom:22px">Keine Kalorien. Nur, wie gut du deinen Signalen gefolgt bist.</p>
 
       <div class="glass" style="padding:20px 18px;margin-bottom:14px">
-        <div class="eyebrow" style="margin-bottom:16px">Wo du gestartet &amp; gestoppt bist</div>
-        <div class="week" id="week"></div>
-        <div class="row" style="justify-content:center;gap:18px;margin-top:16px">
-          <div class="row" style="gap:6px"><span style="width:10px;height:10px;border-radius:50%;background:var(--p-ideal)"></span><span class="sub" style="font-size:11px">im Fenster</span></div>
-          <div class="row" style="gap:6px"><span style="width:10px;height:10px;border-radius:50%;background:var(--p-full)"></span><span class="sub" style="font-size:11px">drüber</span></div>
+        <div class="eyebrow" style="margin-bottom:6px">Wo du gestartet &amp; gestoppt bist</div>
+        <p class="sub" style="font-size:11.5px;margin-bottom:14px;line-height:1.5">
+          Pro Mahlzeit: <b style="font-weight:500">○&nbsp;unten</b> = Hunger beim Start,
+          <b style="font-weight:500">●&nbsp;oben</b> = Sättigung beim Stopp (Skala 0–10).
+          Die helle Bande ist das angenehme Fenster (3–7).</p>
+        <div style="display:flex;gap:6px">
+          <div class="week-axis"><span>10</span><span>5</span><span>0</span></div>
+          <div class="week" id="week" style="flex:1"></div>
+        </div>
+        <div class="row" style="justify-content:center;gap:14px;margin-top:14px;flex-wrap:wrap">
+          <div class="row" style="gap:6px"><span style="width:9px;height:9px;border-radius:50%;background:#fff;border:1.5px solid var(--ink-mute)"></span><span class="sub" style="font-size:11px">Start (Hunger)</span></div>
+          <div class="row" style="gap:6px"><span style="width:11px;height:11px;border-radius:50%;background:var(--p-ideal);border:2px solid #fff"></span><span class="sub" style="font-size:11px">Stopp im Fenster</span></div>
+          <div class="row" style="gap:6px"><span style="width:11px;height:11px;border-radius:50%;background:var(--p-full);border:2px solid #fff"></span><span class="sub" style="font-size:11px">Stopp drüber</span></div>
         </div>
       </div>
 
@@ -633,12 +653,20 @@ function aResult(){document.getElementById('a-step1').style.display='none';docum
 document.querySelectorAll('#s-markers table tr').forEach((r,i)=>{
   r.querySelectorAll('td').forEach(td=>{td.style.padding='7px 6px';if(i>0)td.style.borderTop='1px solid rgba(120,90,160,0.1)';td.style.color=td.style.color||'var(--ink-soft)';});});
 
-/* week strip */
+/* week strip — pro Tag: ○ Start (Hunger) unten, ● Stopp (Sättigung) oben */
 (function(){const days=[['Mo',3,7,1],['Di',2,8,0],['Mi',4,7,1],['Do',3,9,0],['Fr',3,7,1],['Sa',6,8,0],['So',3,6,1]];
   const w=document.getElementById('week');if(!w)return;
-  days.forEach(([lbl,start,stop,ok])=>{const h=Math.round(((stop-start)/10)*54)+10;const bottom=Math.round((start/10)*54);
-    const col=ok?'linear-gradient(180deg,var(--p-ideal),var(--accent-2))':'linear-gradient(180deg,var(--p-full),var(--accent))';
-    w.insertAdjacentHTML('beforeend',`<div class="day"><div class="dbar"><span style="height:${h}px;bottom:${bottom}px;background:${col}"></span></div><div class="dlabel">${lbl}</div></div>`);});})();
+  const H=96,PAD=8;                                  // Balkenhöhe, Innenabstand oben/unten
+  const y=v=>Math.round(PAD+(v/10)*(H-2*PAD));       // Wert 0–10 → Abstand von unten (Punktmitte)
+  days.forEach(([lbl,start,stop,ok])=>{
+    const col=ok?'var(--p-ideal)':'var(--p-full)';
+    const yS=y(start),yE=y(stop);
+    w.insertAdjacentHTML('beforeend',
+      `<div class="day"><div class="dbar" style="--sc:${col}">
+         <span class="dline" style="bottom:${yS}px;height:${yE-yS}px"></span>
+         <span class="dot-start" style="bottom:${yS}px"></span>
+         <span class="dot-stop" style="bottom:${yE}px"></span>
+       </div><div class="dlabel">${lbl}</div></div>`);});})();
 </script>
 </body>
 </html>
