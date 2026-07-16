@@ -1,4 +1,4 @@
-# Gespür — Hunger &amp; Sättigung
+# Intuition — Hunger & Sättigung
 
 Ein interaktiver Prototyp, der hilft, ein natürliches Hunger- und Sättigungs­gefühl
 wiederzuerlernen. Gebaut im echten **Calma-„Luminous / Perla"-Design**, komplett auf
