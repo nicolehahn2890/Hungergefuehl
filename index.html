@@ -45,8 +45,8 @@ body{font-family:var(--font-body);color:var(--ink);display:flex;align-items:cent
 /* echte Perlmutt-Texturen (wie Calma Luminous) */
 .lux-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
 .lux-bg::before{content:'';position:absolute;inset:-8%;background-image:url('assets/textures/pearl-marble.png');
-  background-size:cover;background-position:center;filter:saturate(1.4) contrast(1.05);mix-blend-mode:multiply;transform:scale(1.05)}
-.lux-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(90% 18% at 50% 3%,rgba(255,255,255,0.66),transparent 72%)}
+  background-size:cover;background-position:center;opacity:.7;filter:saturate(1.25) contrast(1.02);mix-blend-mode:multiply;transform:scale(1.05)}
+.lux-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(125% 30% at 50% 2%,rgba(255,255,255,0.82),transparent 78%)}
 .lux-bg-2{position:absolute;inset:0;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:.5;
   background-image:url('assets/textures/pearls.png');background-size:cover;background-position:center;
   -webkit-mask-image:radial-gradient(80% 60% at 80% 110%,#000 0%,transparent 70%);
@@ -175,13 +175,20 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
     <!-- ============================================================ HOME -->
     <section class="screen active" id="s-home">
       <div style="display:flex;justify-content:center;margin-bottom:12px">
-        <div class="bead" style="--c:#b9a0ef;width:52px;height:52px"><b style="font-size:26px;font-style:italic">g</b></div>
+        <div class="bead" style="--c:#b9a0ef;width:54px;height:54px">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="rgba(255,255,255,0.97)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 1px 2px rgba(55,28,82,0.55))">
+            <path d="M12 5v14.5"/><path d="M6.4 7.6h11.2"/><path d="M8.8 19.5h6.4"/>
+            <path d="M6.4 7.6 3.9 12.6"/><path d="M6.4 7.6 8.9 12.6"/><path d="M3.9 12.6a2.5 2 0 0 0 5 0"/>
+            <path d="M17.6 7.6 15.1 12.6"/><path d="M17.6 7.6 20.1 12.6"/><path d="M15.1 12.6a2.5 2 0 0 0 5 0"/>
+            <circle cx="12" cy="7.6" r="1.05" fill="rgba(255,255,255,0.97)" stroke="none"/>
+          </svg>
+        </div>
       </div>
       <div style="text-align:center;margin-bottom:6px">
         <div class="wordmark">Gespür</div>
-        <p class="overline" style="margin-top:10px">Ein Gespür für deinen Körper</p>
+        <p class="overline" style="margin-top:10px;color:var(--ink);text-shadow:0 1px 10px rgba(255,255,255,0.95),0 0 4px rgba(255,255,255,0.85)">Ein Gespür für deinen Körper</p>
       </div>
-      <p class="serif" style="text-align:center;font-style:italic;font-size:18px;color:var(--ink-soft);margin:14px 20px 26px;line-height:1.4">
+      <p class="serif" style="text-align:center;font-style:italic;font-size:18px;color:var(--ink);margin:14px 20px 26px;line-height:1.4;text-shadow:0 1px 12px rgba(255,255,255,0.95),0 1px 3px rgba(255,255,255,0.9)">
         Hunger und Sättigung wieder spüren&nbsp;lernen — Bissen für Bissen.
       </p>
 
