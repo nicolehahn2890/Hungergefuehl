@@ -26,8 +26,8 @@
   --font-body:'DM Sans',system-ui,sans-serif;
   /* Perla — Original-Tokens aus dem Calma Design System */
   --ink:#3d2c52; --ink-soft:#5a4775; --ink-mute:#7c6699;
-  --accent:#b78fe6; --accent-2:#7fd6b8;
-  --bg-1:#eccdf0; --bg-2:#c4ece2;
+  --accent:#e28ac0; --accent-2:#8fd9d0;
+  --bg-1:#a9e6de; --bg-2:#f6c9de;
   --glass:rgba(255,255,255,0.40);
   --glass-brd:rgba(255,255,255,0.95);
   /* Pol-Farben für die Skala */
@@ -38,14 +38,14 @@
 html,body{height:100%}
 body{font-family:var(--font-body);color:var(--ink);display:flex;align-items:center;justify-content:center;
   padding:24px;min-height:100vh;
-  background:radial-gradient(120% 90% at 20% 0%,var(--bg-1) 0%,transparent 60%),
-    radial-gradient(120% 90% at 100% 100%,var(--bg-2) 0%,transparent 55%),#f6ecff;}
+  background:radial-gradient(120% 60% at 50% 0%,#b7ebe4 0%,transparent 60%),
+    radial-gradient(120% 70% at 50% 100%,#f7cee1 0%,transparent 60%),#f3dcec;}
 
 /* -------------------------------------------------------------- phone frame */
 .phone{position:relative;width:392px;height:812px;max-height:96vh;border-radius:46px;overflow:hidden;isolation:isolate;
-  background:radial-gradient(120% 70% at 15% 0%,var(--bg-1) 0%,transparent 60%),
-    radial-gradient(120% 80% at 100% 100%,var(--bg-2) 0%,transparent 62%),
-    linear-gradient(165deg,var(--bg-1),var(--bg-2));
+  background:radial-gradient(125% 48% at 50% 0%,#a3e6df 0%,transparent 56%),
+    radial-gradient(135% 62% at 50% 104%,#f7c2db 0%,transparent 62%),
+    linear-gradient(180deg,#b0ebe3 0%,#e7d4ea 44%,#f6c6dc 100%);
   box-shadow:0 50px 130px rgba(150,110,190,0.45),0 8px 30px rgba(120,90,160,0.25),inset 0 0 0 1.5px rgba(255,255,255,0.9);
   display:flex;flex-direction:column}
 
@@ -194,7 +194,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
     <!-- ============================================================ HOME -->
     <section class="screen active" id="s-home">
       <div style="display:flex;justify-content:center;margin-bottom:12px">
-        <div class="bead" style="--c:#b9a0ef;width:54px;height:54px">
+        <div class="bead" style="--c:#e88bbf;width:54px;height:54px">
           <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="rgba(255,255,255,0.97)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 1px 2px rgba(55,28,82,0.55))">
             <path d="M12 5v14.5"/><path d="M6.4 7.6h11.2"/><path d="M8.8 19.5h6.4"/>
             <path d="M6.4 7.6 3.9 12.6"/><path d="M6.4 7.6 8.9 12.6"/><path d="M3.9 12.6a2.5 2 0 0 0 5 0"/>
