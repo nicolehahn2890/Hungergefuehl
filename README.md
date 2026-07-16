@@ -48,9 +48,11 @@ Hunger (Ghrelin, Apfel-Test).
 ## Struktur
 ```
 index.html                     komplette App (ein eigenständiges File)
-assets/textures/               Calma-Perlmutt-Texturen
-  pearl-marble.png
-  pearls.png
+manifest.webmanifest           Web-App-Manifest (Homescreen-Installation)
+assets/
+  bg-water.jpg                 Hintergrundbild (rosa-türkises Glitzerwasser)
+  app-icon-180/192/512.png     Homescreen-Icons (Waage-Glasperle, rosé)
+  textures/                    Calma-Perlmutt-Texturen (Reserve)
 ```
 
 ## Öffnen

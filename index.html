@@ -49,15 +49,14 @@ body{font-family:var(--font-body);color:var(--ink);display:flex;align-items:cent
   box-shadow:0 50px 130px rgba(150,110,190,0.45),0 8px 30px rgba(120,90,160,0.25),inset 0 0 0 1.5px rgba(255,255,255,0.9);
   display:flex;flex-direction:column}
 
-/* echte Perlmutt-Texturen (wie Calma Luminous) */
+/* Hintergrundbild — rosa-türkises Glitzerwasser */
 .lux-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
-.lux-bg::before{content:'';position:absolute;inset:-8%;background-image:url('assets/textures/pearl-marble.png');
-  background-size:cover;background-position:center;opacity:.7;filter:saturate(1.25) contrast(1.02);mix-blend-mode:multiply;transform:scale(1.05)}
-.lux-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(125% 30% at 50% 2%,rgba(255,255,255,0.82),transparent 78%)}
-.lux-bg-2{position:absolute;inset:0;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:.5;
-  background-image:url('assets/textures/pearls.png');background-size:cover;background-position:center;
-  -webkit-mask-image:radial-gradient(80% 60% at 80% 110%,#000 0%,transparent 70%);
-  mask-image:radial-gradient(80% 60% at 80% 110%,#000 0%,transparent 70%)}
+.lux-bg::before{content:'';position:absolute;inset:0;background-image:url('assets/bg-water.jpg');
+  background-size:cover;background-position:center top;filter:saturate(1.05)}
+.lux-bg::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(130% 32% at 50% 2%,rgba(255,255,255,0.85),transparent 76%),
+             linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.10) 42%,rgba(255,255,255,0.14))}
+.lux-bg-2{display:none}
 
 .sheen{position:absolute;inset:0;z-index:5;pointer-events:none;
   background:linear-gradient(125deg,transparent 30%,rgba(255,255,255,0.5) 47%,rgba(255,255,255,0) 60%);
