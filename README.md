@@ -29,6 +29,17 @@ gar nicht mehr zu brauchen.
 - Die Folgefragen bieten **differenzierte, gruppierte Auswahlmöglichkeiten**,
   „bin mir nicht sicher"-Optionen und je ein **optionales Freitextfeld**, falls
   nichts genau passt.
+- **Merkmale** ist in vier Themen-Tabs gegliedert (Hunger · Sättigung · Bauch oder
+  Kopf · Geschmack) — jedes Thema mit Stufenliste inkl. Skalenwerten, Praxis-Tipps
+  und einer kurzen Wissenschafts-Karte.
+
+## Speicherung
+Check-ins werden **lokal auf dem Gerät** gespeichert (localStorage, Schlüssel
+`intuition.entries.v1`) — keine Cloud, keine Anmeldung. „Vor der Mahlzeit" legt
+einen Eintrag an, „Nach der Mahlzeit" ergänzt den letzten offenen Eintrag des Tages.
+Die Heute-Liste, die Wochengrafik, die Prozente und „Was auffällt" berechnen sich
+aus den echten Einträgen. Unter Muster → „Alle Einträge löschen" lässt sich alles
+zurücksetzen.
 
 ## Design
 Basiert auf dem Calma-Design-System („Luminous / Perla"), farblich auf das eigene

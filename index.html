@@ -233,16 +233,9 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
 
       <div class="glass" style="padding:18px;margin-bottom:14px">
         <div class="row" style="justify-content:space-between;margin-bottom:12px">
-          <div class="eyebrow">Heute</div><div class="eyebrow" style="color:var(--accent)">2 Mahlzeiten</div>
+          <div class="eyebrow">Heute</div><div class="eyebrow" style="color:var(--accent)" id="today-count"></div>
         </div>
-        <div class="divider"></div>
-        <div class="mini-log"><div class="bead" style="--c:var(--p-ideal);width:38px;height:38px"><b style="font-size:19px">3</b></div>
-          <div style="flex:1"><div style="font-size:13px;font-weight:500">Frühstück · körperlicher Hunger</div>
-          <div class="sub" style="font-size:11.5px">gestartet bei 3 · gestoppt bei 7 · Geschmack wurde neutral</div></div></div>
-        <div class="divider"></div>
-        <div class="mini-log"><div class="bead" style="--c:var(--p-full);width:38px;height:38px"><b style="font-size:19px">6</b></div>
-          <div style="flex:1"><div style="font-size:13px;font-weight:500">Mittag · eher Kopf-Hunger</div>
-          <div class="sub" style="font-size:11.5px">gestartet bei 6 · gestoppt bei 8 · Moment verpasst</div></div></div>
+        <div id="today-list"></div>
       </div>
 
       <button class="glass" onclick="show('s-markers')" style="padding:16px 18px;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;font-family:inherit">
@@ -432,67 +425,135 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
       <div class="glass" style="padding:20px 18px;margin-bottom:14px">
         <div class="eyebrow" style="margin-bottom:16px">Diese Woche</div>
         <div style="margin-bottom:16px">
-          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Bei angenehmem Hunger (3–4) gestartet</span><span class="serif" style="font-size:18px;color:var(--ink)">71%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:71%;background:linear-gradient(90deg,var(--p-ideal),var(--accent-2))"></div></div>
+          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Bei angenehmem Hunger (3–4) gestartet</span><span class="serif" style="font-size:18px;color:var(--ink)" id="pct-start">–</span></div>
+          <div class="bar-track"><div class="bar-fill" id="bar-start" style="width:0%;background:linear-gradient(90deg,var(--p-ideal),var(--accent-2))"></div></div>
         </div>
         <div style="margin-bottom:16px">
-          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Beim letzten Bissen (~7) gestoppt</span><span class="serif" style="font-size:18px;color:var(--ink)">58%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:58%;background:linear-gradient(90deg,var(--p-neutral),var(--accent))"></div></div>
+          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Beim letzten Bissen (~7) gestoppt</span><span class="serif" style="font-size:18px;color:var(--ink)" id="pct-stop">–</span></div>
+          <div class="bar-track"><div class="bar-fill" id="bar-stop" style="width:0%;background:linear-gradient(90deg,var(--p-neutral),var(--accent))"></div></div>
         </div>
         <div>
-          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Geschmacks-Kipppunkt bemerkt</span><span class="serif" style="font-size:18px;color:var(--ink)">64%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:64%;background:linear-gradient(90deg,var(--p-rose),var(--accent))"></div></div>
+          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Geschmacks-Kipppunkt bemerkt</span><span class="serif" style="font-size:18px;color:var(--ink)" id="pct-taste">–</span></div>
+          <div class="bar-track"><div class="bar-fill" id="bar-taste" style="width:0%;background:linear-gradient(90deg,var(--p-rose),var(--accent))"></div></div>
         </div>
       </div>
 
-      <div class="glass" style="padding:20px 18px">
+      <div class="glass" style="padding:20px 18px;margin-bottom:14px">
         <div class="eyebrow" style="margin-bottom:10px">Was auffällt</div>
-        <p class="serif" style="font-size:18px;line-height:1.45;color:var(--ink);margin-bottom:8px">
-          Kopf-Hunger taucht bei dir am häufigsten <span style="font-style:italic">nachmittags</span> auf — meist gekoppelt an Stress.</p>
-        <p class="sub" style="font-size:12.5px">Morgens folgst du deinem körperlichen Hunger fast immer zuverlässig. Das ist schon ein echtes Gespür.</p>
+        <p class="serif" id="insight-main" style="font-size:18px;line-height:1.45;color:var(--ink);margin-bottom:8px"></p>
+        <p class="sub" id="insight-sub" style="font-size:12.5px"></p>
       </div>
+
+      <button class="btn ghost" onclick="resetEntries()" style="font-size:12px;padding:12px 20px;color:var(--ink-mute)">Alle Einträge löschen</button>
     </section>
 
     <!-- ============================================================ MERKMALE -->
     <section class="screen" id="s-markers">
       <div class="overline" style="margin-bottom:6px">Nachschlagen</div>
       <h2 class="title" style="margin-bottom:6px">Merkmale</h2>
-      <p class="sub" style="margin-bottom:22px">Hunger und Sättigung sind ein Verlauf, kein Schalter. Woran du die Stufen erkennst.</p>
+      <p class="sub" style="margin-bottom:16px">Hunger und Sättigung sind ein Verlauf, kein Schalter. Wähle ein Thema:</p>
 
-      <div class="glass" style="padding:20px 18px;margin-bottom:14px">
-        <div class="row" style="gap:10px;margin-bottom:14px"><div class="bead" style="--c:var(--p-hunger);width:26px;height:26px"></div><div class="eyebrow">Der Hungerverlauf</div></div>
-        <div id="m-hunger"></div>
+      <div class="chips" id="m-tabs" style="margin-bottom:18px">
+        <div class="chip active" data-p="m-p-hunger">Hunger</div>
+        <div class="chip" data-p="m-p-full">Sättigung</div>
+        <div class="chip" data-p="m-p-kopf">Bauch oder Kopf</div>
+        <div class="chip" data-p="m-p-taste">Geschmack</div>
       </div>
 
-      <div class="glass" style="padding:20px 18px;margin-bottom:14px">
-        <div class="row" style="gap:10px;margin-bottom:14px"><div class="bead" style="--c:var(--p-full);width:26px;height:26px"></div><div class="eyebrow">Bauch- oder Kopf-Hunger</div></div>
-        <table style="width:100%;border-collapse:collapse;font-size:12.5px">
-          <tr><td style="width:34%"></td><td style="font-weight:600;color:var(--ink)">Bauch</td><td style="font-weight:600;color:var(--ink)">Kopf</td></tr>
-          <tr><td>Zeitverlauf</td><td>allmählich</td><td>plötzlich</td></tr>
-          <tr><td>Wo</td><td>im Magen</td><td>im Kopf/Mund</td></tr>
-          <tr><td>Was hilft</td><td>vieles passt</td><td>nur ein Bestimmtes</td></tr>
-          <tr><td>Aufschiebbar</td><td>ja, 10–20 Min</td><td>nein, dringend</td></tr>
-          <tr><td>Endet bei Sättigung</td><td>ja</td><td>nein</td></tr>
-          <tr><td>Danach</td><td>zufrieden</td><td>oft Schuld</td></tr>
-        </table>
-        <p class="sub" style="font-size:11.5px;margin-top:12px;color:var(--ink-mute)">
-          „Nur Pizza“ heißt nicht verboten — der Apfel-Check hilft nur zu <em>unterscheiden</em>, worum es geht.</p>
+      <!-- ······················· Panel: Hunger ······················· -->
+      <div class="m-panel" id="m-p-hunger">
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="row" style="gap:10px;margin-bottom:6px"><div class="bead" style="--c:var(--p-hunger);width:26px;height:26px"></div><div class="eyebrow">Der Hungerverlauf</div></div>
+          <p class="sub" style="font-size:12px;margin-bottom:12px">Von oben (satt) nach unten (ausgehungert) — mit dem Skalenwert, den du beim Check-in einstellst.</p>
+          <div id="m-hunger"></div>
+        </div>
+        <div class="glass" style="padding:18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">So nutzt du den Verlauf</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            <b style="font-weight:500;color:var(--ink)">Bei ~3 starten:</b> Du bist hungrig genug, dass Essen gut schmeckt, aber ruhig genug, um langsam zu essen und die Sättigung zu spüren.<br>
+            <b style="font-weight:500;color:var(--ink)">Nicht unter 2 rutschen:</b> Ab hier isst fast jeder zu schnell und zu viel — die Sättigung hat keine Chance, rechtzeitig anzukommen.<br>
+            <b style="font-weight:500;color:var(--ink)">Der Test:</b> Echter, angenehmer Hunger kann 10–15 Minuten warten, ohne dass es dramatisch wird.</p>
+        </div>
+        <div class="glass" style="padding:18px">
+          <div class="eyebrow" style="margin-bottom:10px">Die Wissenschaft dahinter</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">Körperlicher Hunger wird vom Hormon <b style="font-weight:500;color:var(--ink)">Ghrelin</b> aus dem Magen gesteuert. Es steigt allmählich an, wenn die Energiespeicher sinken — deshalb baut sich echter Hunger <em>langsam</em> auf und meldet sich zuerst leise (ein Gedanke), dann körperlich (Magen), dann drängend (Energieloch, Gereiztheit).</p>
+        </div>
       </div>
 
-      <div class="glass" style="padding:20px 18px;margin-bottom:14px">
-        <div class="row" style="gap:10px;margin-bottom:12px"><div class="bead" style="--c:var(--p-rose);width:26px;height:26px"></div><div class="eyebrow">Der Geschmacks-Trick</div></div>
-        <p class="serif" style="font-size:19px;line-height:1.4;margin-bottom:12px;color:var(--ink)">
-          Sättigung erkennst du zuerst am <span style="font-style:italic">Geschmack</span> — nicht am vollen Magen.</p>
-        <p class="sub" style="font-size:12.5px;line-height:1.7">
-          <b style="font-weight:500;color:var(--ink)">Erste Bissen:</b> intensiv, richtig gut.<br>
-          <b style="font-weight:500;color:var(--ink)">Mitte:</b> immer noch fein, aber die Intensität lässt nach.<br>
-          <b style="font-weight:500;color:var(--ink)">Kipppunkt:</b> der Geschmack wird <em>neutraler</em>, fast beliebig — das ist dein körperliches „genug“, oft bevor der Magen sich meldet.<br>
-          <b style="font-weight:500;color:var(--ink)">Darüber:</b> weiteressen fühlt sich fad oder leicht unangenehm an.</p>
+      <!-- ······················· Panel: Sättigung ······················· -->
+      <div class="m-panel" id="m-p-full" style="display:none">
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="row" style="gap:10px;margin-bottom:6px"><div class="bead" style="--c:var(--p-ideal);width:26px;height:26px"></div><div class="eyebrow">Der Sättigungsverlauf</div></div>
+          <p class="sub" style="font-size:12px;margin-bottom:12px">Die Skalenwerte von „noch hungrig" bis „übervoll" — und wo der ideale Stopp liegt.</p>
+          <div id="m-full"></div>
+        </div>
+        <div class="glass" style="padding:18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">Den letzten Bissen finden (~7)</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            So fühlt sich der richtige Stopp an:<br>
+            <b style="font-weight:500;color:var(--ink)">Leicht &amp; zufrieden</b> — kein Leere-Gefühl mehr, aber auch keine Schwere.<br>
+            <b style="font-weight:500;color:var(--ink)">Der Drang ist weg</b> — du <em>könntest</em> weiteressen, aber du <em>musst</em> nicht.<br>
+            <b style="font-weight:500;color:var(--ink)">Die 20-Minuten-Frage:</b> „Werde ich in 20 Minuten froh sein, hier gestoppt zu haben?" Wenn ja — das war der letzte Bissen.</p>
+        </div>
+        <div class="glass" style="padding:18px">
+          <div class="eyebrow" style="margin-bottom:10px">Die Wissenschaft dahinter</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">Sättigung entsteht mehrstufig: Dehnungsrezeptoren im Magen plus die Darmhormone <b style="font-weight:500;color:var(--ink)">CCK und PYY</b> melden „genug" ans Gehirn — aber das dauert <b style="font-weight:500;color:var(--ink)">15–20 Minuten</b>. Wer schnell isst, überholt sein eigenes Sättigungssignal. Langsames Essen senkt die Aufnahme pro Mahlzeit um 10–15&nbsp;% — nicht durch Verzicht, sondern weil das Signal rechtzeitig ankommt.</p>
+        </div>
       </div>
 
-      <div class="glass" style="padding:20px 18px">
-        <div class="row" style="gap:10px;margin-bottom:14px"><div class="bead" style="--c:var(--p-ideal);width:26px;height:26px"></div><div class="eyebrow">Der Sättigungsverlauf</div></div>
-        <div id="m-full"></div>
+      <!-- ······················· Panel: Bauch oder Kopf ······················· -->
+      <div class="m-panel" id="m-p-kopf" style="display:none">
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="row" style="gap:10px;margin-bottom:14px"><div class="bead" style="--c:var(--p-full);width:26px;height:26px"></div><div class="eyebrow">Der Unterschied auf einen Blick</div></div>
+          <table style="width:100%;border-collapse:collapse;font-size:12.5px">
+            <tr><td style="width:34%"></td><td style="font-weight:600;color:var(--ink)">Bauch</td><td style="font-weight:600;color:var(--ink)">Kopf</td></tr>
+            <tr><td>Zeitverlauf</td><td>allmählich</td><td>plötzlich</td></tr>
+            <tr><td>Wo</td><td>im Magen</td><td>im Kopf/Mund</td></tr>
+            <tr><td>Was hilft</td><td>vieles passt</td><td>nur ein Bestimmtes</td></tr>
+            <tr><td>Aufschiebbar</td><td>ja, 10–20 Min</td><td>nein, dringend</td></tr>
+            <tr><td>Endet bei Sättigung</td><td>ja</td><td>nein</td></tr>
+            <tr><td>Danach</td><td>zufrieden</td><td>oft Schuld</td></tr>
+          </table>
+        </div>
+        <div class="glass" style="padding:18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">Der Apfel-Check</div>
+          <p class="serif" style="font-style:italic;font-size:17px;margin-bottom:10px;color:var(--ink)">„Hätte ich jetzt auch Lust auf einen Apfel — oder etwas ganz Einfaches?"</p>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            <b style="font-weight:500;color:var(--ink)">Ja</b> → sehr wahrscheinlich körperlicher Hunger. Der Körper will Energie, kein bestimmtes Erlebnis.<br>
+            <b style="font-weight:500;color:var(--ink)">Nein, es muss die Pizza sein</b> → eher Appetit oder Kopf-Hunger.<br><br>
+            Wichtig: Der Apfel-Check ist ein <em>Hinweisgeber, kein Richter</em>. „Nur Pizza" heißt nicht verboten — Genuss ist legitim. Es geht nur ums <em>Unterscheiden</em>. Auch Schlafmangel, Stress oder Medikamente können die Signale verschieben.</p>
+        </div>
+        <div class="glass" style="padding:18px">
+          <div class="eyebrow" style="margin-bottom:10px">Wenn es Kopf-Hunger ist</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            <b style="font-weight:500;color:var(--ink)">Typische Auslöser:</b> Stress, Langeweile, Traurigkeit, Gewohnheit („es ist halt 15 Uhr"), Anblick oder Geruch von Essen, andere essen gerade.<br><br>
+            <b style="font-weight:500;color:var(--ink)">Was hilft:</b> Kurz innehalten und das Gefühl benennen („Ich bin gerade gestresst"). Oft reicht das schon. Wenn du trotzdem isst — iss <em>bewusst und ohne Schuld</em>, und beobachte, wann der erste Genuss nachlässt. Kopf-Hunger hört bei Sättigung nicht von selbst auf; das Erkennen ist dein Stopp-Signal.</p>
+        </div>
+      </div>
+
+      <!-- ······················· Panel: Geschmack ······················· -->
+      <div class="m-panel" id="m-p-taste" style="display:none">
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="row" style="gap:10px;margin-bottom:12px"><div class="bead" style="--c:var(--p-rose);width:26px;height:26px"></div><div class="eyebrow">Der Geschmacks-Trick</div></div>
+          <p class="serif" style="font-size:19px;line-height:1.4;margin-bottom:12px;color:var(--ink)">
+            Sättigung erkennst du zuerst am <span style="font-style:italic">Geschmack</span> — nicht am vollen Magen.</p>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            <b style="font-weight:500;color:var(--ink)">Erste Bissen:</b> intensiv, richtig gut — der Genuss ist am höchsten.<br>
+            <b style="font-weight:500;color:var(--ink)">Mitte:</b> immer noch fein, aber die Intensität lässt spürbar nach.<br>
+            <b style="font-weight:500;color:var(--ink)">Kipppunkt:</b> der Geschmack wird <em>neutraler</em>, fast beliebig — das ist dein körperliches „genug", oft <em>bevor</em> der Magen sich meldet.<br>
+            <b style="font-weight:500;color:var(--ink)">Darüber:</b> weiteressen fühlt sich fad oder leicht unangenehm an.</p>
+        </div>
+        <div class="glass" style="padding:18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">So übst du es</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            <b style="font-weight:500;color:var(--ink)">1. Der erste Bissen:</b> Iss ihn ganz bewusst — er ist dein Referenzpunkt für „intensiv".<br>
+            <b style="font-weight:500;color:var(--ink)">2. Der Mitte-Check:</b> Frag dich nach der Hälfte einmal: „Schmeckt es noch so gut wie am Anfang?"<br>
+            <b style="font-weight:500;color:var(--ink)">3. Ohne Ablenkung:</b> Ohne Bildschirm schmeckst du den Kipppunkt deutlich früher — Ablenkung überdeckt genau dieses Signal.</p>
+        </div>
+        <div class="glass" style="padding:18px">
+          <div class="eyebrow" style="margin-bottom:10px">Die Wissenschaft dahinter</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">Das Phänomen heißt <b style="font-weight:500;color:var(--ink)">sensorspezifische Sättigung</b>: Die Lust auf genau das, was du gerade isst, sinkt messbar mit jedem Bissen — nachweisbar im orbitofrontalen Kortex, lange bevor der Magen „voll" meldet. In Studien war der häufigste Grund, einen Gang zu beenden, nicht „ich bin satt", sondern <em>„ich hatte genug von diesem Geschmack"</em> (40&nbsp;%).</p>
+        </div>
       </div>
     </section>
 
@@ -528,20 +589,30 @@ const SCALE=[
  {n:10,d:"Übervoll — unangenehm, oft mit Reue."}
 ];
 const HUNGER_STAGES=[
- ["Satt / kein Hunger","Kein Gedanke ans Essen — der Gedanke fühlt sich eher unangenehm an.",false],
- ["Erstes Flüstern","Kein Körpergefühl, nur ein Gedanke: „Wann esse ich eigentlich?“ Leicht wegzuschieben.",false],
- ["Wachsend","Leichtes Leere-/Ziehgefühl im Oberbauch, leises Knurren. Essen wird interessant.",false],
- ["Angenehmer Hunger","Deutliches, ruhiges Magengefühl, Speichelfluss. Du freust dich, kannst aber warten. Idealer Startpunkt.",true],
- ["Starker Hunger","Knurren wird deutlich, erstes Energieloch, Ungeduld, Gedanken kreisen ums Essen.",false],
- ["Übermäßiger Hunger","Zittrig, Kopfschmerz, Konzentration weg, „hangry“. Hier entsteht Überessen.",false]
+ ["5+","Satt / kein Hunger","Kein Gedanke ans Essen — der Gedanke fühlt sich eher unangenehm an.",false],
+ ["≈5","Erstes Flüstern","Kein Körpergefühl, nur ein Gedanke: „Wann esse ich eigentlich?“ Leicht wegzuschieben.",false],
+ ["≈4","Wachsend","Leichtes Leere-/Ziehgefühl im Oberbauch, leises Knurren. Essen wird interessant.",false],
+ ["3–4","Angenehmer Hunger","Deutliches, ruhiges Magengefühl, Speichelfluss. Du freust dich, kannst aber warten. Idealer Startpunkt.",true],
+ ["≈2","Starker Hunger","Knurren wird deutlich, erstes Energieloch, Ungeduld, Gedanken kreisen ums Essen.",false],
+ ["0–1","Übermäßiger Hunger","Zittrig, Kopfschmerz, Konzentration weg, „hangry“. Hier entsteht Überessen.",false]
 ];
 const FULL_STAGES=[
- ["3–4","Der Hunger verschwindet leise, der Magen füllt sich, Essen schmeckt noch sehr gut.",false],
- ["5–6","Neutral bis angenehm — nicht mehr leer, der Geschmack wird ruhiger.",false],
- ["7","Zufrieden & leicht. Geschmack neutral, kein Drang weiter. Der letzte Bissen — idealer Stopp.",true],
- ["8","Erstes Druckgefühl, Kleidung enger, leichte Trägheit.",false],
- ["9–10","Schwere, Völlegefühl, Müdigkeit, evtl. Unwohlsein oder Reue.",false]
+ ["3–4","Ankommen","Der Hunger verschwindet leise, der Magen füllt sich, Essen schmeckt noch sehr gut.",false],
+ ["5–6","Neutral bis angenehm","Nicht mehr leer, der Geschmack wird ruhiger.",false],
+ ["7","Der letzte Bissen","Zufrieden & leicht. Geschmack neutral, kein Drang weiter — idealer Stopp.",true],
+ ["8","Voll","Erstes Druckgefühl, Kleidung enger, leichte Trägheit.",false],
+ ["9–10","Übervoll","Schwere, Völlegefühl, Müdigkeit, evtl. Unwohlsein oder Reue.",false]
 ];
+
+/* ---------------------------------------------------------------- Speicherung (localStorage, nur auf diesem Gerät) */
+const STORE='intuition.entries.v1';
+function loadEntries(){try{return JSON.parse(localStorage.getItem(STORE))||[]}catch(e){return[]}}
+function saveEntries(a){try{localStorage.setItem(STORE,JSON.stringify(a))}catch(e){}}
+function todayKey(d){d=d||new Date();const p=n=>String(n).padStart(2,'0');
+  return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());}
+function nowTime(){const d=new Date(),p=n=>String(n).padStart(2,'0');return p(d.getHours())+':'+p(d.getMinutes());}
+function resetEntries(){if(confirm('Wirklich alle gespeicherten Einträge löschen?')){
+  localStorage.removeItem(STORE);renderToday();renderPatterns();}}
 function colFor(n){if(n<=2)return'var(--p-hunger)';if(n===3||n===4)return'var(--p-ideal)';if(n===5)return'var(--p-neutral)';if(n===6||n===7)return'var(--p-ideal)';return'var(--p-full)';}
 
 /* nav */
@@ -550,7 +621,9 @@ function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.re
   const map={'s-home':'n-home','s-patterns':'n-patterns','s-markers':'n-markers'};
   document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('on'));
   if(map[id])document.getElementById(map[id]).classList.add('on');
-  document.getElementById('nav').classList.toggle('hidden',id==='s-before'||id==='s-after');}
+  document.getElementById('nav').classList.toggle('hidden',id==='s-before'||id==='s-after');
+  if(id==='s-home'&&typeof renderToday==='function')renderToday();
+  if(id==='s-patterns'&&typeof renderPatterns==='function')renderPatterns();}
 function goHome(){show('s-home');}
 
 /* scale — ziehbarer Regler mit Halbschritten */
@@ -593,6 +666,12 @@ function bResult(){let kopf=0,bauch=0;
   document.querySelectorAll('#b-cues-body .chip.active, #b-cues-head .chip.active').forEach(c=>{if(c.dataset.k==='kopf')kopf++;else if(c.dataset.k==='bauch')bauch++;});
   if(bState.apple==='nein')kopf++;if(bState.apple==='ja')bauch++;if(bState.val>=6)kopf++;
   const isKopf=kopf>bauch,isEarly=bState.val<=1.5;
+  /* Check-in speichern */
+  const entries=loadEntries();
+  entries.push({id:Date.now()+'-'+Math.floor(Math.random()*1e4),date:todayKey(),time:nowTime(),
+    hunger:bState.val,kind:kopf>bauch?'kopf':(bauch>kopf?'bauch':'unklar'),
+    apple:bState.apple||null,note:(document.getElementById('b-note')||{value:''}).value.trim()||null});
+  saveEntries(entries);renderToday();
   document.getElementById('b-step1').style.display='none';document.getElementById('b-step2').style.display='block';setDots('b',2);document.querySelector('.scroll').scrollTop=0;
   const verdict=document.getElementById('b-verdict'),mk=document.getElementById('b-merksatz');
   if(isKopf){verdict.textContent='Klingt eher nach Kopf-Hunger.';
@@ -618,7 +697,19 @@ function startAfter(){aState={val:7,taste:null,stop:null};
   show('s-after');}
 function aStep(n){document.getElementById('a-step0').style.display=n===0?'block':'none';
   document.getElementById('a-step1').style.display=n===1?'block':'none';setDots('a',n);document.querySelector('.scroll').scrollTop=0;}
-function aResult(){document.getElementById('a-step1').style.display='none';document.getElementById('a-step2').style.display='block';setDots('a',2);document.querySelector('.scroll').scrollTop=0;
+function aResult(){
+  /* Check-in speichern — an letzte offene Mahlzeit von heute anhängen */
+  const entries=loadEntries();
+  const feel=[...document.querySelectorAll('#a-feel .chip.active')].map(c=>c.textContent);
+  const noteAfter=(document.getElementById('a-note')||{value:''}).value.trim()||null;
+  let open=null;
+  for(let i=entries.length-1;i>=0;i--){const e=entries[i];
+    if(e.date===todayKey()&&e.hunger!=null&&e.fullness==null){open=e;break;}}
+  if(open){open.fullness=aState.val;open.feel=feel;open.taste=aState.taste||null;open.stop=aState.stop||null;open.noteAfter=noteAfter;open.timeAfter=nowTime();}
+  else{entries.push({id:Date.now()+'-'+Math.floor(Math.random()*1e4),date:todayKey(),time:nowTime(),
+    fullness:aState.val,feel:feel,taste:aState.taste||null,stop:aState.stop||null,noteAfter:noteAfter});}
+  saveEntries(entries);renderToday();
+  document.getElementById('a-step1').style.display='none';document.getElementById('a-step2').style.display='block';setDots('a',2);document.querySelector('.scroll').scrollTop=0;
   const verdict=document.getElementById('a-verdict'),rf=document.getElementById('a-reflect');
   const v=aState.val,s=aState.stop,t=aState.taste;const missed=(t==='nein'||t==='spät'||t==='gleich');
   if(s==='früh'){verdict.textContent='Früher gestoppt.';
@@ -632,41 +723,113 @@ function aResult(){document.getElementById('a-step1').style.display='none';docum
   else{verdict.textContent='Gut gespürt.';
     rf.textContent='Du bist bei einer angenehmen Sättigung gelandet. Kein Zwang zur Perfektion — es geht ums Wiedererkennen, nicht ums Kontrollieren.';}}
 
-/* markers */
+/* markers — Stufenlisten mit Skalenwerten */
 (function(){
+  const row=(range,t,d,ideal,last)=>
+    `<div style="display:flex;gap:12px;padding:9px 0;align-items:flex-start;${last?'':'border-bottom:1px solid rgba(120,90,160,0.12)'}">
+      <div class="serif" style="font-size:18px;font-weight:500;width:38px;flex-shrink:0;text-align:right;${ideal?'color:#2fb5b0':'color:var(--ink-mute)'}">${range}</div>
+      <div><div class="serif" style="font-size:17px;font-weight:500;color:var(--ink)">${t}${ideal?' <span style="color:#2fb5b0;font-size:13px">✦ ideal</span>':''}</div>
+      <div class="sub" style="font-size:12px;line-height:1.55">${d}</div></div></div>`;
   const h=document.getElementById('m-hunger');
-  HUNGER_STAGES.forEach(([t,d,ideal],i)=>{
-    h.insertAdjacentHTML('beforeend',
-    `<div style="display:flex;gap:12px;padding:9px 0;${i<HUNGER_STAGES.length-1?'border-bottom:1px solid rgba(120,90,160,0.12)':''}">
-      <div class="bead" style="--c:${ideal?'var(--p-ideal)':'var(--p-hunger)'};width:10px;height:10px;margin-top:7px"></div>
-      <div><div class="serif" style="font-size:17px;font-weight:500;color:var(--ink)">${t}${ideal?' <span style="color:#2fb5b0;font-size:14px">✦ ideal</span>':''}</div>
-      <div class="sub" style="font-size:12px;line-height:1.55">${d}</div></div></div>`);});
+  HUNGER_STAGES.forEach(([r,t,d,ideal],i)=>h.insertAdjacentHTML('beforeend',row(r,t,d,ideal,i===HUNGER_STAGES.length-1)));
   const f=document.getElementById('m-full');
-  FULL_STAGES.forEach(([t,d,ideal],i)=>{
-    f.insertAdjacentHTML('beforeend',
-    `<div style="display:flex;gap:12px;padding:9px 0;align-items:flex-start;${i<FULL_STAGES.length-1?'border-bottom:1px solid rgba(120,90,160,0.12)':''}">
-      <div class="serif" style="font-size:20px;font-weight:500;width:38px;flex-shrink:0;${ideal?'color:#2fb5b0':'color:var(--ink-mute)'}">${t}</div>
-      <div class="sub" style="font-size:12px;line-height:1.55;${ideal?'color:var(--ink)':''}">${d}${ideal?' <span style="color:#2fb5b0">— idealer Stopp</span>':''}</div></div>`);});
+  FULL_STAGES.forEach(([r,t,d,ideal],i)=>f.insertAdjacentHTML('beforeend',row(r,t,d,ideal,i===FULL_STAGES.length-1)));
 })();
 
 /* markers table spacing */
 document.querySelectorAll('#s-markers table tr').forEach((r,i)=>{
   r.querySelectorAll('td').forEach(td=>{td.style.padding='7px 6px';if(i>0)td.style.borderTop='1px solid rgba(120,90,160,0.1)';td.style.color=td.style.color||'var(--ink-soft)';});});
 
-/* week strip — pro Tag: ○ Start (Hunger) unten, ● Stopp (Sättigung) oben */
-(function(){const days=[['Mo',3,7,1],['Di',2,8,0],['Mi',4,7,1],['Do',3,9,0],['Fr',3,7,1],['Sa',6,8,0],['So',3,6,1]];
+/* Merkmale-Tabs */
+document.querySelectorAll('#m-tabs .chip').forEach(c=>{c.onclick=()=>{
+  document.querySelectorAll('#m-tabs .chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');
+  document.querySelectorAll('.m-panel').forEach(p=>p.style.display='none');
+  document.getElementById(c.dataset.p).style.display='block';
+  document.querySelector('.scroll').scrollTop=0;};});
+
+/* ---------------------------------------------------------------- Heute-Liste (echte Einträge) */
+const KIND_TXT={bauch:'körperlicher Hunger',kopf:'eher Kopf-Hunger',unklar:'Bauch/Kopf unklar'};
+const TASTE_TXT={früh:'Kipppunkt früh bemerkt',mitte:'Kipppunkt in der Mitte bemerkt',spät:'Kipppunkt erst spät',gleich:'Geschmack blieb intensiv',nein:'nicht auf den Geschmack geachtet'};
+function renderToday(){
+  const list=document.getElementById('today-list'),count=document.getElementById('today-count');
+  if(!list)return;
+  const today=loadEntries().filter(e=>e.date===todayKey());
+  count.textContent=today.length===0?'':(today.length===1?'1 Mahlzeit':today.length+' Mahlzeiten');
+  if(today.length===0){
+    list.innerHTML='<p class="sub" style="font-size:12.5px;text-align:center;padding:10px 0 4px">Noch kein Check-in heute.<br>Starte mit <b style="font-weight:500">Vor der Mahlzeit</b>, wenn es so weit ist.</p>';
+    return;}
+  list.innerHTML='';
+  today.forEach((e,i)=>{
+    const v=e.hunger!=null?e.hunger:e.fullness;
+    const parts=[];
+    if(e.hunger!=null)parts.push('gestartet bei '+fmt(e.hunger));
+    if(e.fullness!=null)parts.push('gestoppt bei '+fmt(e.fullness));else parts.push('Nachher-Check offen');
+    if(e.taste&&TASTE_TXT[e.taste])parts.push(TASTE_TXT[e.taste]);
+    const title='Mahlzeit '+(i+1)+' · '+(e.time||'')+(e.kind?' · '+KIND_TXT[e.kind]:'');
+    list.insertAdjacentHTML('beforeend',
+      (i>0?'<div class="divider"></div>':'')+
+      `<div class="mini-log"><div class="bead" style="--c:${colFor(Math.round(v))};width:38px;height:38px"><b style="font-size:${String(fmt(v)).length>2?'13px':'19px'}">${fmt(v)}</b></div>
+       <div style="flex:1"><div style="font-size:13px;font-weight:500">${title}</div>
+       <div class="sub" style="font-size:11.5px">${parts.join(' · ')}</div></div></div>`);});}
+
+/* ---------------------------------------------------------------- Muster (echte Einträge) */
+function weekDates(){const d=new Date();const off=(d.getDay()+6)%7;const mon=new Date(d);mon.setDate(d.getDate()-off);
+  return Array.from({length:7},(_,i)=>{const x=new Date(mon);x.setDate(mon.getDate()+i);return todayKey(x);});}
+function renderPatterns(){
   const w=document.getElementById('week');if(!w)return;
-  const H=96,PAD=8;                                  // Balkenhöhe, Innenabstand oben/unten
-  const y=v=>Math.round(PAD+(v/10)*(H-2*PAD));       // Wert 0–10 → Abstand von unten (Punktmitte)
-  days.forEach(([lbl,start,stop,ok])=>{
-    const col=ok?'var(--p-ideal)':'var(--p-full)';
-    const yS=y(start),yE=y(stop);
-    w.insertAdjacentHTML('beforeend',
-      `<div class="day"><div class="dbar" style="--sc:${col}">
-         <span class="dline" style="bottom:${yS}px;height:${yE-yS}px"></span>
-         <span class="dot-start" style="bottom:${yS}px"></span>
-         <span class="dot-stop" style="bottom:${yE}px"></span>
-       </div><div class="dlabel">${lbl}</div></div>`);});})();
+  const entries=loadEntries();
+  const dates=weekDates(),labels=['Mo','Di','Mi','Do','Fr','Sa','So'];
+  const week=entries.filter(e=>dates.includes(e.date));
+  const done=week.filter(e=>e.hunger!=null&&e.fullness!=null);
+  /* Wochengrafik */
+  const H=96,PAD=8,y=v=>Math.round(PAD+(v/10)*(H-2*PAD));
+  w.innerHTML='';
+  dates.forEach((dk,di)=>{
+    const meals=done.filter(e=>e.date===dk);
+    let inner='';
+    meals.slice(0,3).forEach((m,mi,arr)=>{
+      const x=Math.round(((mi+1)/(arr.length+1))*100);
+      const ok=(m.stop==='ja')||(m.fullness>=6&&m.fullness<=7.5);
+      const col=ok?'var(--p-ideal)':'var(--p-full)';
+      const yS=y(m.hunger),yE=y(m.fullness);
+      const lo=Math.min(yS,yE),hi=Math.max(yS,yE);
+      inner+=`<span class="dline" style="left:${x}%;bottom:${lo}px;height:${Math.max(hi-lo,2)}px;--sc:${col}"></span>
+              <span class="dot-start" style="left:${x}%;bottom:${yS}px"></span>
+              <span class="dot-stop" style="left:${x}%;bottom:${yE}px;--sc:${col}"></span>`;});
+    w.insertAdjacentHTML('beforeend',`<div class="day"><div class="dbar">${inner}</div><div class="dlabel">${labels[di]}</div></div>`);});
+  /* Prozente */
+  const pct=(n,d)=>d===0?null:Math.round(n/d*100);
+  const setBar=(id,p)=>{document.getElementById('pct-'+id).textContent=p==null?'–':p+'%';
+    document.getElementById('bar-'+id).style.width=(p||0)+'%';};
+  const withH=week.filter(e=>e.hunger!=null);
+  setBar('start',pct(withH.filter(e=>e.hunger>=2.5&&e.hunger<=4.5).length,withH.length));
+  const withF=week.filter(e=>e.fullness!=null);
+  setBar('stop',pct(withF.filter(e=>(e.stop==='ja')||(e.fullness>=6&&e.fullness<=7.5)).length,withF.length));
+  const withT=week.filter(e=>e.taste);
+  setBar('taste',pct(withT.filter(e=>e.taste==='früh'||e.taste==='mitte').length,withT.length));
+  /* Was auffällt */
+  const main=document.getElementById('insight-main'),sub=document.getElementById('insight-sub');
+  if(week.length===0){
+    main.textContent='Noch keine Einträge diese Woche.';
+    sub.textContent='Nach deinen ersten Check-ins entstehen hier deine persönlichen Muster.';}
+  else if(week.length<3){
+    main.textContent='Ein guter Anfang.';
+    sub.textContent='Noch zu wenige Einträge für echte Muster — einfach weitermachen, mit jedem Check-in wird das Bild klarer.';}
+  else{
+    const kopf=week.filter(e=>e.kind==='kopf');
+    if(kopf.length===0){
+      main.textContent='Diese Woche war dein Hunger fast immer körperlich.';
+      sub.textContent='Du folgst deinen Signalen zuverlässig — genau darum geht es.';}
+    else{
+      const bucket=t=>{const h=parseInt((t||'12').slice(0,2),10);return h<11?'morgens':h<15?'mittags':h<18?'nachmittags':'abends';};
+      const counts={};kopf.forEach(e=>{const b=bucket(e.time);counts[b]=(counts[b]||0)+1;});
+      const top=Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0];
+      main.innerHTML='Kopf-Hunger taucht bei dir am häufigsten <span style="font-style:italic">'+top+'</span> auf.';
+      sub.textContent='Das Erkennen ist schon der wichtigste Schritt — dort lohnt sich der kurze Innehalte-Moment am meisten.';}}
+}
+
+/* Initial */
+renderToday();renderPatterns();
 </script>
 </body>
 </html>
