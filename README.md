@@ -19,9 +19,13 @@ gar nicht mehr zu brauchen.
 - **Nach der Mahlzeit** — Sättigungsskala als Regler (Halbschritte, aus der
   Erinnerung), Körpergefühl der Sättigung (Mehrfachauswahl), Geschmacks-Kipppunkt
   (5 Stufen), Stopp-Punkt (inkl. „noch hungrig"), optionales Freitextfeld
-- **Muster** — wöchentliche Übersicht ohne Kalorien, nur Signaltreue: Wochengrafik
-  (Start-Hunger ○ und Stopp-Sättigung ● pro Mahlzeit), Prozente, „Was auffällt",
-  „Alle Einträge löschen"
+- **Muster** — wöchentliche Übersicht ohne Kalorien, nur Signaltreue: eine
+  waagerechte 0–10-Zeile pro Mahlzeit (○ Start-Hunger → ● Stopp-Sättigung, mit
+  Wohlfühl-Fenster und Klartext-Werten wie „5 → 7"), Zahlen-Kacheln (Anzahl,
+  im Fenster gestoppt, Ø Start, Ø Stopp), Prozentbalken und ein mehrteiliges
+  „Was auffällt" mit konkreten, aus den eigenen Angaben berechneten
+  Beobachtungen (Start-Timing, Stopp-Verhalten, Geschmacks-Kipppunkt,
+  Kopf-Hunger-Zeiten, häufigstes Körpergefühl), „Alle Einträge löschen"
 - **Merkmale** — Nachschlagewerk in sechs Themen-Tabs: Hungerverlauf (inkl.
   Hunger-Wellen & Gewohnheits-Hunger), Sättigungsverlauf (inkl. satt werden vs.
   satt bleiben), Bauch- vs. Kopf-Hunger (inkl. Apfel-Check), Geschmacks-Trick,

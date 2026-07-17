@@ -161,23 +161,32 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
 .mini-log{display:flex;align-items:center;gap:12px;padding:12px 2px}
 .bar-track{height:9px;border-radius:100px;background:rgba(255,255,255,0.42);overflow:hidden;border:1px solid rgba(255,255,255,0.7)}
 .bar-fill{height:100%;border-radius:100px}
-.week{display:flex;gap:6px;justify-content:space-between}
-.day{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}
-.day .dlabel{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
-.day .dbar{width:100%;height:96px;border-radius:14px;position:relative;
-  background:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.6)}
-/* Zielzone 3–7 als zarte Bande */
-.day .dbar::before{content:'';position:absolute;left:2px;right:2px;bottom:30%;top:30%;
-  background:rgba(255,255,255,0.55);border-radius:8px}
-.day .dline{position:absolute;left:50%;width:3px;transform:translateX(-50%);border-radius:3px;
-  background:linear-gradient(180deg,var(--sc,#5fd3cf),rgba(255,255,255,0.85))}
-.day .dot-start{position:absolute;left:50%;transform:translate(-50%,50%);width:9px;height:9px;border-radius:50%;
+/* Mahlzeiten-Zeilen (Muster): waagerechte 0–10-Skala pro Mahlzeit */
+.mrow{display:flex;align-items:center;gap:10px;padding:8px 0}
+.mrow+.mrow{border-top:1px solid rgba(120,90,160,0.10)}
+.mday{width:42px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--ink-soft);line-height:1.25}
+.mday span{display:block;font-size:9.5px;font-weight:400;color:var(--ink-mute)}
+.mtrack{position:relative;flex:1;height:26px;border-radius:100px;background:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.65)}
+.mtrack::before{content:'';position:absolute;top:3px;bottom:3px;left:32%;width:36%;/* Fenster 3–7 */
+  background:rgba(255,255,255,0.6);border-radius:100px}
+.mtrack::after{content:'';position:absolute;top:4px;bottom:4px;left:50%;width:1px;background:rgba(120,90,160,0.18)}
+.mline{position:absolute;top:50%;height:3px;transform:translateY(-50%);border-radius:3px;background:var(--sc,#5fd3cf)}
+.mring{position:absolute;top:50%;width:10px;height:10px;border-radius:50%;transform:translate(-50%,-50%);
   background:#fff;border:1.5px solid var(--ink-mute);box-shadow:0 1px 4px rgba(120,90,160,0.3)}
-.day .dot-stop{position:absolute;left:50%;transform:translate(-50%,50%);width:13px;height:13px;border-radius:50%;
+.mdot{position:absolute;top:50%;width:14px;height:14px;border-radius:50%;transform:translate(-50%,-50%);
   background:var(--sc,#5fd3cf);border:2px solid #fff;box-shadow:0 2px 6px rgba(120,90,160,0.35)}
-.week-axis{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;
-  height:96px;padding-right:2px;flex:0 0 16px}
-.week-axis span{font-size:8.5px;color:var(--ink-mute);line-height:1}
+.mvals{width:56px;flex-shrink:0;text-align:right;font-family:var(--font-display);font-size:14px;color:var(--ink);white-space:nowrap}
+.maxis{display:flex;justify-content:space-between;font-size:9px;color:var(--ink-mute);padding:2px 2px 0}
+/* Zahlen-Kacheln */
+.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.6);border-radius:16px;padding:12px 8px;text-align:center}
+.stat .sv{font-family:var(--font-display);font-size:24px;color:var(--ink);line-height:1.1}
+.stat .sl{font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mute);margin-top:4px;font-weight:600}
+/* Auffälligkeiten-Liste */
+.irow{display:flex;gap:10px;align-items:flex-start;padding:9px 0}
+.irow+.irow{border-top:1px solid rgba(120,90,160,0.10)}
+.irow p{font-size:12.5px;line-height:1.6;color:var(--ink-soft);font-weight:300}
+.irow b{font-weight:500;color:var(--ink)}
 
 /* bottom nav */
 .nav{position:absolute;bottom:0;left:0;right:0;z-index:20;height:78px;display:flex;
@@ -406,20 +415,26 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
       <p class="sub" style="margin-bottom:22px">Keine Kalorien. Nur, wie gut du deinen Signalen gefolgt bist.</p>
 
       <div class="glass" style="padding:20px 18px;margin-bottom:14px">
-        <div class="eyebrow" style="margin-bottom:6px">Wo du gestartet &amp; gestoppt bist</div>
-        <p class="sub" style="font-size:11.5px;margin-bottom:14px;line-height:1.5">
-          Pro Mahlzeit: <b style="font-weight:500">○&nbsp;unten</b> = Hunger beim Start,
-          <b style="font-weight:500">●&nbsp;oben</b> = Sättigung beim Stopp (Skala 0–10).
-          Die helle Bande ist das angenehme Fenster (3–7).</p>
-        <div style="display:flex;gap:6px">
-          <div class="week-axis"><span>10</span><span>5</span><span>0</span></div>
-          <div class="week" id="week" style="flex:1"></div>
-        </div>
-        <div class="row" style="justify-content:center;gap:14px;margin-top:14px;flex-wrap:wrap">
-          <div class="row" style="gap:6px"><span style="width:9px;height:9px;border-radius:50%;background:#fff;border:1.5px solid var(--ink-mute)"></span><span class="sub" style="font-size:11px">Start (Hunger)</span></div>
+        <div class="eyebrow" style="margin-bottom:6px">Deine Mahlzeiten diese Woche</div>
+        <p class="sub" style="font-size:11.5px;margin-bottom:12px;line-height:1.5">
+          Jede Zeile ist eine Mahlzeit auf der Skala von 0 (ausgehungert, links) bis 10 (übervoll, rechts):
+          <b style="font-weight:500">○ wo dein Hunger beim Start stand</b>,
+          <b style="font-weight:500">● wo du aufgehört hast</b>.
+          Die helle Zone ist das Wohlfühl-Fenster (3–7).</p>
+        <div class="mrow" style="padding:0;border:none"><div class="mday"></div>
+          <div style="flex:1"><div class="maxis"><span>0</span><span>5</span><span>10</span></div></div>
+          <div class="mvals"></div></div>
+        <div id="meal-rows"></div>
+        <div class="row" style="justify-content:center;gap:14px;margin-top:12px;flex-wrap:wrap">
+          <div class="row" style="gap:6px"><span style="width:9px;height:9px;border-radius:50%;background:#fff;border:1.5px solid var(--ink-mute)"></span><span class="sub" style="font-size:11px">Start</span></div>
           <div class="row" style="gap:6px"><span style="width:11px;height:11px;border-radius:50%;background:var(--p-ideal);border:2px solid #fff"></span><span class="sub" style="font-size:11px">Stopp im Fenster</span></div>
-          <div class="row" style="gap:6px"><span style="width:11px;height:11px;border-radius:50%;background:var(--p-full);border:2px solid #fff"></span><span class="sub" style="font-size:11px">Stopp außerhalb (drüber/drunter)</span></div>
+          <div class="row" style="gap:6px"><span style="width:11px;height:11px;border-radius:50%;background:var(--p-full);border:2px solid #fff"></span><span class="sub" style="font-size:11px">Stopp außerhalb</span></div>
         </div>
+      </div>
+
+      <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+        <div class="eyebrow" style="margin-bottom:14px">In Zahlen</div>
+        <div class="statgrid" id="statgrid"></div>
       </div>
 
       <div class="glass" style="padding:20px 18px;margin-bottom:14px">
@@ -439,9 +454,8 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
       </div>
 
       <div class="glass" style="padding:20px 18px;margin-bottom:14px">
-        <div class="eyebrow" style="margin-bottom:10px">Was auffällt</div>
-        <p class="serif" id="insight-main" style="font-size:18px;line-height:1.45;color:var(--ink);margin-bottom:8px"></p>
-        <p class="sub" id="insight-sub" style="font-size:12.5px"></p>
+        <div class="eyebrow" style="margin-bottom:6px">Was auffällt</div>
+        <div id="insights"></div>
       </div>
 
       <button class="btn ghost" onclick="resetEntries()" style="font-size:12px;padding:12px 20px;color:var(--ink-mute)">Alle Einträge löschen</button>
@@ -860,56 +874,99 @@ function renderToday(){
 function weekDates(){const d=new Date();const off=(d.getDay()+6)%7;const mon=new Date(d);mon.setDate(d.getDate()-off);
   return Array.from({length:7},(_,i)=>{const x=new Date(mon);x.setDate(mon.getDate()+i);return todayKey(x);});}
 function renderPatterns(){
-  const w=document.getElementById('week');if(!w)return;
+  const rowsEl=document.getElementById('meal-rows');if(!rowsEl)return;
   const entries=loadEntries();
   const dates=weekDates(),labels=['Mo','Di','Mi','Do','Fr','Sa','So'];
-  const week=entries.filter(e=>dates.includes(e.date));
-  const done=week.filter(e=>e.hunger!=null&&e.fullness!=null);
-  /* Wochengrafik */
-  const H=96,PAD=8,y=v=>Math.round(PAD+(v/10)*(H-2*PAD));
-  w.innerHTML='';
-  dates.forEach((dk,di)=>{
-    const meals=done.filter(e=>e.date===dk);
-    let inner='';
-    meals.slice(0,3).forEach((m,mi,arr)=>{
-      const x=Math.round(((mi+1)/(arr.length+1))*100);
-      const ok=(m.stop==='ja')||(m.fullness>=6&&m.fullness<=7.5);
-      const col=ok?'var(--p-ideal)':'var(--p-full)';
-      const yS=y(m.hunger),yE=y(m.fullness);
-      const lo=Math.min(yS,yE),hi=Math.max(yS,yE);
-      inner+=`<span class="dline" style="left:${x}%;bottom:${lo}px;height:${Math.max(hi-lo,2)}px;--sc:${col}"></span>
-              <span class="dot-start" style="left:${x}%;bottom:${yS}px"></span>
-              <span class="dot-stop" style="left:${x}%;bottom:${yE}px;--sc:${col}"></span>`;});
-    w.insertAdjacentHTML('beforeend',`<div class="day"><div class="dbar">${inner}</div><div class="dlabel">${labels[di]}</div></div>`);});
-  /* Prozente */
+  const week=entries.filter(e=>dates.includes(e.date))
+    .slice().sort((a,b)=>((a.date+(a.time||''))<(b.date+(b.time||'')))?-1:1);
+  const withH=week.filter(e=>e.hunger!=null);
+  const withF=week.filter(e=>e.fullness!=null);
+  const withT=week.filter(e=>e.taste);
+  const inWin=e=>(e.stop==='ja')||(e.fullness>=6&&e.fullness<=7.5);
+  const stopOkN=withF.filter(inWin).length;
+
+  /* ---- Mahlzeiten-Zeilen ---- */
+  const pos=v=>5+(v/10)*90; /* Wert 0–10 → 5%..95% */
+  rowsEl.innerHTML='';
+  if(week.length===0){
+    rowsEl.innerHTML='<p class="sub" style="font-size:12px;text-align:center;padding:14px 0 8px">Noch keine Mahlzeiten diese Woche — nach deinem ersten Check-in erscheint hier jede Mahlzeit als eigene Zeile.</p>';}
+  else{
+    const showRows=week.slice(-12);
+    if(week.length>12)rowsEl.insertAdjacentHTML('beforeend',
+      `<p class="sub" style="font-size:10.5px;text-align:center;padding:2px 0">… ${week.length-12} frühere ausgeblendet</p>`);
+    showRows.forEach(e=>{
+      const h=e.hunger,f=e.fullness;
+      const ok=f!=null&&inWin(e);
+      const col=f==null?'var(--p-neutral)':(ok?'var(--p-ideal)':'var(--p-full)');
+      let track='';
+      if(h!=null&&f!=null){const a=Math.min(pos(h),pos(f)),b2=Math.max(pos(h),pos(f));
+        track+=`<span class="mline" style="left:${a}%;width:${Math.max(b2-a,0.8)}%;--sc:${col}"></span>`;}
+      if(h!=null)track+=`<span class="mring" style="left:${pos(h)}%"></span>`;
+      if(f!=null)track+=`<span class="mdot" style="left:${pos(f)}%;--sc:${col}"></span>`;
+      const vals=(h!=null&&f!=null)?`${fmt(h)} → ${fmt(f)}`:(h!=null?`${fmt(h)} → …`:`→ ${fmt(f)}`);
+      rowsEl.insertAdjacentHTML('beforeend',
+        `<div class="mrow"><div class="mday">${labels[dates.indexOf(e.date)]||''}<span>${e.time||''}</span></div>
+         <div class="mtrack">${track}</div><div class="mvals">${vals}</div></div>`);});}
+
+  /* ---- Zahlen-Kacheln ---- */
+  const avg=a=>a.length?a.reduce((s,x)=>s+x,0)/a.length:null;
+  const de=x=>x==null?'–':(Math.round(x*10)/10).toLocaleString('de-DE');
+  const aH=avg(withH.map(e=>e.hunger)),aF=avg(withF.map(e=>e.fullness));
+  const tile=(v,l,c)=>`<div class="stat"><div class="sv" ${c?`style="color:${c}"`:''}>${v}</div><div class="sl">${l}</div></div>`;
+  document.getElementById('statgrid').innerHTML=
+    tile(week.length,'Mahlzeiten erfasst')+
+    tile(withF.length?`${stopOkN} / ${withF.length}`:'–','im Fenster gestoppt',withF.length&&stopOkN/withF.length>=0.5?'#2fb5b0':null)+
+    tile(de(aH),'Ø Hunger beim Start',aH!=null&&aH>=2.5&&aH<=4.5?'#2fb5b0':null)+
+    tile(de(aF),'Ø Sättigung beim Stopp',aF!=null&&aF>=6&&aF<=7.5?'#2fb5b0':null);
+
+  /* ---- Prozentbalken ---- */
   const pct=(n,d)=>d===0?null:Math.round(n/d*100);
   const setBar=(id,p)=>{document.getElementById('pct-'+id).textContent=p==null?'–':p+'%';
     document.getElementById('bar-'+id).style.width=(p||0)+'%';};
-  const withH=week.filter(e=>e.hunger!=null);
   setBar('start',pct(withH.filter(e=>e.hunger>=2.5&&e.hunger<=4.5).length,withH.length));
-  const withF=week.filter(e=>e.fullness!=null);
-  setBar('stop',pct(withF.filter(e=>(e.stop==='ja')||(e.fullness>=6&&e.fullness<=7.5)).length,withF.length));
-  const withT=week.filter(e=>e.taste);
+  setBar('stop',pct(stopOkN,withF.length));
   setBar('taste',pct(withT.filter(e=>e.taste==='früh'||e.taste==='mitte').length,withT.length));
-  /* Was auffällt */
-  const main=document.getElementById('insight-main'),sub=document.getElementById('insight-sub');
-  if(week.length===0){
-    main.textContent='Noch keine Einträge diese Woche.';
-    sub.textContent='Nach deinen ersten Check-ins entstehen hier deine persönlichen Muster.';}
-  else if(week.length<3){
-    main.textContent='Ein guter Anfang.';
-    sub.textContent='Noch zu wenige Einträge für echte Muster — einfach weitermachen, mit jedem Check-in wird das Bild klarer.';}
-  else{
-    const kopf=week.filter(e=>e.kind==='kopf');
-    if(kopf.length<2){
-      main.textContent='Diese Woche war dein Hunger fast immer körperlich.';
-      sub.textContent='Du folgst deinen Signalen zuverlässig — genau darum geht es.';}
-    else{
-      const bucket=t=>{const h=parseInt((t||'12').slice(0,2),10);return h<11?'morgens':h<15?'mittags':h<18?'nachmittags':'abends';};
-      const counts={};kopf.forEach(e=>{const b=bucket(e.time);counts[b]=(counts[b]||0)+1;});
-      const top=Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0];
-      main.innerHTML='Kopf-Hunger taucht bei dir am häufigsten <span style="font-style:italic">'+top+'</span> auf.';
-      sub.textContent='Das Erkennen ist schon der wichtigste Schritt — dort lohnt sich der kurze Innehalte-Moment am meisten.';}}
+
+  /* ---- Was auffällt: mehrere konkrete Beobachtungen aus deinen Angaben ---- */
+  const I=[];
+  const startsHigh=withH.filter(e=>e.hunger>=5).length,startsLow=withH.filter(e=>e.hunger<=2).length,
+        startsOk=withH.filter(e=>e.hunger>=2.5&&e.hunger<=4.5).length;
+  if(withH.length>=2&&startsHigh/withH.length>=0.6)
+    I.push(['var(--p-neutral)',`Du startest meist <b>ohne deutlichen Hunger</b> (Ø ${de(aH)}). Lass den Hunger ruhig bis 3–4 kommen — dann schmeckt das Essen intensiver und der Stopp-Punkt ist viel leichter zu spüren.`]);
+  else if(withH.length>=2&&startsLow/withH.length>=0.5)
+    I.push(['var(--p-hunger)',`Du startest oft <b>sehr hungrig</b> (Ø ${de(aH)}). Versuch etwas früher zu essen — unter 2 isst fast jeder zu schnell und überholt die eigene Sättigung.`]);
+  else if(withH.length>=2&&startsOk/withH.length>=0.6)
+    I.push(['var(--p-ideal)',`Dein <b>Start-Timing sitzt</b>: ${startsOk} von ${withH.length} Mahlzeiten im angenehmen Hunger (3–4) begonnen.`]);
+  if(withF.length>=2){
+    if(stopOkN/withF.length>=0.7)
+      I.push(['var(--p-ideal)',`Beim <b>Aufhören</b> triffst du das Wohlfühl-Fenster zuverlässig: ${stopOkN} von ${withF.length} Mahlzeiten. Genau dieses Gefühl bei ~7 prägt sich gerade ein.`]);
+    else if(aF>=8)
+      I.push(['var(--p-full)',`Du landest öfter <b>über dem Wohlfühl-Punkt</b> (Ø ${de(aF)}). Der beste Hebel ist der Geschmacks-Kipppunkt — er kommt vor dem Völlegefühl.`]);
+    else if(withF.filter(e=>e.stop==='früh').length>=2)
+      I.push(['var(--p-hunger)',`Du hast mehrmals <b>aufgehört, obwohl noch Hunger da war</b>. Deinen Hunger zu ehren gehört genauso dazu wie das Stoppen — du darfst zu Ende essen.`]);}
+  if(withT.length>=2){
+    const tOk=withT.filter(e=>e.taste==='früh'||e.taste==='mitte').length;
+    if(tOk/withT.length>=0.6)
+      I.push(['var(--p-rose)',`Den <b>Geschmacks-Kipppunkt</b> hast du in ${tOk} von ${withT.length} Mahlzeiten bemerkt — das ist dein direktester Draht zur Sättigung.`]);
+    else
+      I.push(['var(--p-rose)',`Der <b>Geschmacks-Kipppunkt</b> entgeht dir noch oft (${tOk} von ${withT.length} bemerkt). Nimm dir beim nächsten Essen nur diesen einen Moment vor: Wann wird der Geschmack neutraler?`]);}
+  const kopf=week.filter(e=>e.kind==='kopf');
+  if(kopf.length>=2){
+    const bucket=t=>{const h2=parseInt((t||'12').slice(0,2),10);return h2<11?'morgens':h2<15?'mittags':h2<18?'nachmittags':'abends';};
+    const counts={};kopf.forEach(e=>{const b2=bucket(e.time);counts[b2]=(counts[b2]||0)+1;});
+    const top=Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0];
+    I.push(['var(--p-full)',`<b>Kopf-Hunger</b> taucht bei dir am häufigsten <b>${top}</b> auf — dort lohnt der kurze Innehalte-Moment am meisten.`]);}
+  else if(week.filter(e=>e.kind==='bauch').length>=3&&kopf.length===0)
+    I.push(['var(--p-ideal)',`Dein Hunger war diese Woche <b>durchweg körperlich</b> — du isst, wenn dein Körper fragt. Genau darum geht es.`]);
+  const feels={};withF.forEach(e=>(e.feel||[]).forEach(x=>feels[x]=(feels[x]||0)+1));
+  const topFeel=Object.entries(feels).sort((a,b)=>b[1]-a[1])[0];
+  if(topFeel&&topFeel[1]>=2)
+    I.push(['var(--accent-2)',`Nach dem Essen fühlst du dich am häufigsten <b>„${topFeel[0]}“</b> (${topFeel[1]}×).`]);
+  if(I.length===0){
+    if(week.length===0)I.push(['var(--p-neutral)','Noch keine Einträge diese Woche — nach deinen ersten Check-ins entstehen hier konkrete Beobachtungen zu deinen Angaben.']);
+    else I.push(['var(--p-neutral)','Ein guter Anfang! Ab zwei, drei Mahlzeiten werden die Beobachtungen hier konkreter — einfach weitermachen.']);}
+  document.getElementById('insights').innerHTML=I.slice(0,4).map(([c,t])=>
+    `<div class="irow"><div class="bead" style="--c:${c};width:14px;height:14px;margin-top:3px"></div><p>${t}</p></div>`).join('');
 }
 
 /* Initial */
