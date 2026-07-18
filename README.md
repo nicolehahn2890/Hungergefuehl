@@ -18,9 +18,11 @@ gar nicht mehr zu brauchen.
   Merkmalen + Apfel-Check, optionales Freitextfeld, Merksatz für den Tisch
 - **Nach der Mahlzeit** — Sättigungsskala als Regler (Halbschritte, aus der
   Erinnerung), Körpergefühl der Sättigung (Mehrfachauswahl), zwei klar getrennte
-  Blöcke „Spüren" (Kam ein Genug-Signal? · Geschmacks-Kipppunkt — nur das
-  Bemerken zählt) und „Handeln" (Stopp-Grund: Teller leer · Sättigung · Geschmack ·
-  sozial · unterbrochen · weiß nicht), optionales Freitextfeld. Die Auswertung
+  Blöcke „Spüren" (Kam ein Genug-Signal? · Wann hat das Essen aufgehört, so gut
+  zu schmecken wie am Anfang? — hier zählt nur das Bemerken) und „Handeln"
+  (Was hat das Ende bestimmt?: Teller war leer · war satt und habe aufgehört ·
+  Geschmack · die anderen waren fertig · unterbrochen · weiß nicht), optionales
+  Freitextfeld. Die Auswertung
   trennt Wahrnehmung, Handlung und Ergebnis — „Signal gespürt, aber Teller leer
   gegessen" wird als normaler Zwischenschritt gewürdigt, nicht als Scheitern.
 - **Muster** — wöchentliche Übersicht ohne Kalorien, nur Signaltreue: eine
@@ -29,9 +31,8 @@ gar nicht mehr zu brauchen.
   vom Körper gestoppt, Ø Start, Ø Stopp), fünf Prozentbalken in drei
   Gruppen — 1·Spüren (Genug-Signal gespürt, Kipppunkt bemerkt), 2·Handeln
   (Start-Timing, „Dein Körper hat den Stopp bestimmt"), 3·Ergebnis (im Fenster
-  gelandet)
-  und ein mehrteiliges
-  „Was auffällt" mit konkreten, aus den eigenen Angaben berechneten
+  gelandet) und ein mehrteiliges „Was auffällt" mit konkreten, aus den eigenen
+  Angaben berechneten
   Beobachtungen (Start-Timing, Stopp-Verhalten, Geschmacks-Kipppunkt,
   Kopf-Hunger-Zeiten, häufigstes Körpergefühl), „Alle Einträge löschen"
 - **Merkmale** — Nachschlagewerk in sechs Themen-Tabs: Hungerverlauf (inkl.
@@ -47,8 +48,9 @@ gar nicht mehr zu brauchen.
   „bin mir nicht sicher"-Optionen und je ein **optionales Freitextfeld**, falls
   nichts genau passt.
 - **Merkmale** ist in sechs Themen-Tabs gegliedert (Hunger · Sättigung · Bauch
-  oder Kopf · Geschmack · Störfaktoren · Denkfallen) — jedes Thema mit Stufenliste inkl. Skalenwerten,
-  Praxis-Tipps und einer kurzen Wissenschafts-Karte. „Denkfallen" behandelt die
+  oder Kopf · Geschmack · Störfaktoren · Denkfallen) — jedes Thema mit
+  Stufenliste inkl. Skalenwerten, Praxis-Tipps und einer kurzen
+  Wissenschafts-Karte. „Denkfallen" behandelt die
   psychologischen Muster: Stopfen aus Knappheits-Gefühl (du darfst jederzeit wieder
   essen), „Teller leer"-Konditionierung (Übriglassen ist keine Verschwendung —
   versunkene Kosten) und den „What-the-hell"-Effekt (eine Mahlzeit drüber ruiniert
@@ -70,6 +72,12 @@ Messregeln der Auswertung:
   Stopp-Grund, „Genug-Signal gespürt" nur mit beantworteter Signal-Frage.
   Einträge aus früheren Frage-Versionen verfälschen diese Quoten nicht (sie
   fallen aus dem Nenner).
+
+## Sprache
+Alle Texte sind auf einen natürlichen, nicht wertenden Ton hin überarbeitet:
+Spüren und Handeln werden sprachlich getrennt behandelt, „Teller leer" wird als
+normale Antwort behandelt statt als Fehler, und die Auswertungen sprechen konkret
+über die eigenen Angaben statt in Floskeln.
 
 ## Design
 Basiert auf dem Calma-Design-System („Luminous / Perla"), farblich auf das eigene
