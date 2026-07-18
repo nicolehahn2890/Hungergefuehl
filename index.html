@@ -898,7 +898,7 @@ document.querySelectorAll('#m-tabs .chip').forEach(c=>{c.onclick=()=>{
 /* ---------------------------------------------------------------- Heute-Liste (echte Einträge) */
 const KIND_TXT={bauch:'körperlicher Hunger',kopf:'eher Kopf-Hunger',unklar:'Bauch/Kopf unklar'};
 const TASTE_TXT={früh:'Kipppunkt früh bemerkt',mitte:'Kipppunkt in der Mitte bemerkt',spät:'Kipppunkt erst spät',gleich:'Geschmack blieb intensiv',nein:'nicht auf den Geschmack geachtet'};
-const STOP_TXT={teller:'Teller war leer',signal:'bewusst gestoppt',geschmack:'Geschmack-Stopp',sozial:'mit den anderen beendet',unterbrochen:'unterbrochen',ja:'bewusst gestoppt'};
+const STOP_TXT={teller:'Teller war leer',signal:'bewusst gestoppt',geschmack:'Geschmack-Stopp',sozial:'mit den anderen beendet',unterbrochen:'unterbrochen'};
 function renderToday(){
   const list=document.getElementById('today-list'),count=document.getElementById('today-count');
   if(!list)return;
@@ -937,8 +937,10 @@ function renderPatterns(){
   const withT=week.filter(e=>e.taste);
   const inWin=e=>(e.fullness>=6&&e.fullness<=7.5);
   const stopOkN=withF.filter(inWin).length;
-  const withS=week.filter(e=>e.stop&&e.stop!=='unsicher');
-  const bodyN=withS.filter(e=>['signal','geschmack','ja'].includes(e.stop)).length;
+  /* nur Einträge, bei denen die neue Frage "Was hat das Ende bestimmt?" beantwortet wurde —
+     Alt-Einträge (vor dieser Frage) enthalten keine Entscheidungs-Info und werden hier nicht gezählt */
+  const withS=week.filter(e=>['teller','signal','geschmack','sozial','unterbrochen'].includes(e.stop));
+  const bodyN=withS.filter(e=>e.stop==='signal'||e.stop==='geschmack').length;
   const tellerN=withS.filter(e=>e.stop==='teller').length;
 
   /* ---- Mahlzeiten-Zeilen ---- */
