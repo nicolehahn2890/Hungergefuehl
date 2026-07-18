@@ -238,6 +238,12 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
         <p class="sub" style="font-size:12px;margin-top:14px;text-align:center;color:var(--ink-mute)">
           Während dem Essen bleibt das Handy liegen.
         </p>
+        <div class="divider" style="margin:14px 0"></div>
+        <div class="eyebrow" style="margin-bottom:10px">Zwischendurch</div>
+        <button class="btn ghost" onclick="startBetween()">Etwas gespürt? Kurz notieren</button>
+        <p class="sub" style="font-size:12px;margin-top:12px;text-align:center;color:var(--ink-mute)">
+          Magen knurrt, Energieloch, Lust auf etwas? Festhalten — ohne zu essen.
+        </p>
       </div>
 
       <div class="glass" style="padding:18px;margin-bottom:14px">
@@ -418,6 +424,69 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
         <div class="glass" style="padding:16px 18px;margin-bottom:22px">
           <p class="sub" style="font-size:12.5px">Jede Rückschau schärft dein Gespür. Irgendwann merkst du den
             Kipppunkt schon <span class="serif" style="font-style:italic;font-size:14px">während</span> dem Essen — von selbst.</p>
+        </div>
+        <button class="btn" onclick="goHome()">Fertig</button>
+      </div>
+    </section>
+
+    <!-- ==================================================== ZWISCHENDURCH -->
+    <section class="screen" id="s-between">
+      <button class="back" id="z-back" onclick="goHome()" style="margin-bottom:20px">&larr; Abbrechen</button>
+      <div class="step-dots" style="margin-bottom:22px"><i id="z-d0" class="on"></i><i id="z-d1"></i><i id="z-d2"></i></div>
+
+      <div id="z-step0">
+        <div class="overline" style="margin-bottom:6px">Zwischendurch</div>
+        <h2 class="title" style="margin-bottom:4px">Was spürst du<br>gerade?</h2>
+        <p class="sub" style="margin-bottom:22px">Kein Check-in zur Mahlzeit — nur kurz festhalten, was dein Körper zwischendurch meldet. Essen musst du deswegen nicht.</p>
+        <div class="glass" style="padding:24px 18px;text-align:center;margin-bottom:16px">
+          <div style="display:flex;justify-content:center"><div class="bead" id="z-bead" style="--c:var(--p-ideal);width:92px;height:92px"><b id="z-num" style="font-size:46px">4</b></div></div>
+          <div class="valdesc" id="z-desc" style="margin:16px 6px 4px"></div>
+        </div>
+        <div class="slider"><div class="track" id="z-track"><span class="knob" id="z-knob"></span></div>
+          <div class="ticks" id="z-ticks"></div></div>
+        <div class="scale-ends"><span>0 · ausgehungert</span><span>satt · 10</span></div>
+        <p class="scale-hint">Zieh den Punkt dorthin, wo es passt. Zwischen zwei Zahlen geht auch.</p>
+        <button class="btn" onclick="zStep(1)" style="margin-top:22px">Weiter</button>
+      </div>
+
+      <div id="z-step1" style="display:none">
+        <div class="overline" style="margin-bottom:6px">Zwischendurch</div>
+        <h2 class="title" style="margin-bottom:4px">Was genau<br>merkst du?</h2>
+        <p class="sub" style="margin-bottom:18px">Tippe an, was zutrifft. Mehreres ist möglich.</p>
+        <div class="chips" style="margin-bottom:18px" id="z-cues">
+          <div class="chip">Magen knurrt</div>
+          <div class="chip">Leeres / flaues Gefühl im Magen</div>
+          <div class="chip">Gedanken kreisen ums Essen</div>
+          <div class="chip">Energieloch / unkonzentriert</div>
+          <div class="chip">Leicht gereizt</div>
+          <div class="chip">Lust auf etwas Bestimmtes</div>
+          <div class="chip">Eher Durst?</div>
+          <div class="chip">Diffus, schwer zu sagen</div>
+        </div>
+        <div class="glass" style="padding:16px 18px;margin-bottom:8px">
+          <div class="eyebrow" style="margin-bottom:10px">Und jetzt?</div>
+          <p class="serif" style="font-style:italic;font-size:17px;margin-bottom:4px;color:var(--ink)">
+            Wie gehst du mit dem Signal um?</p>
+          <p class="sub" style="font-size:12px;margin-bottom:14px">Es gibt kein richtig oder falsch — hier zählt nur, was du vorhast.</p>
+          <div class="chips" id="z-action">
+            <div class="chip" data-w="warten">Ich warte bis zur Essenszeit</div>
+            <div class="chip" data-w="essen">Ich esse jetzt etwas</div>
+            <div class="chip" data-w="trinken">Ich trinke erst ein Glas Wasser</div>
+            <div class="chip" data-w="offen">Weiß noch nicht</div>
+          </div>
+        </div>
+        <textarea class="note" id="z-note" placeholder="Etwas ergänzen? Z. B. Situation oder Uhrzeit-Gefühl (optional)"></textarea>
+        <button class="btn" onclick="zResult()" style="margin-top:18px">Festhalten</button>
+      </div>
+
+      <div id="z-step2" style="display:none">
+        <div class="overline" style="margin-bottom:12px">Notiert</div>
+        <h2 class="title serif" style="font-style:italic;margin-bottom:18px" id="z-verdict"></h2>
+        <div class="glass" style="padding:20px 18px;margin-bottom:16px">
+          <p class="serif" id="z-reflect" style="font-size:18px;line-height:1.45;color:var(--ink)"></p>
+        </div>
+        <div class="glass" style="padding:16px 18px;margin-bottom:22px">
+          <p class="sub" style="font-size:12.5px">Allein das Bemerken zwischen den Mahlzeiten trainiert dein Gespür — ganz gleich, wie es danach weitergeht.</p>
         </div>
         <button class="btn" onclick="goHome()">Fertig</button>
       </div>
@@ -741,7 +810,7 @@ function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.re
   const map={'s-home':'n-home','s-patterns':'n-patterns','s-markers':'n-markers'};
   document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('on'));
   if(map[id])document.getElementById(map[id]).classList.add('on');
-  document.getElementById('nav').classList.toggle('hidden',id==='s-before'||id==='s-after');
+  document.getElementById('nav').classList.toggle('hidden',id==='s-before'||id==='s-after'||id==='s-between');
   if(id==='s-home'&&typeof renderToday==='function')renderToday();
   if(id==='s-patterns'&&typeof renderPatterns==='function')renderPatterns();}
 function goHome(){show('s-home');}
@@ -832,7 +901,7 @@ function aResult(){
   const yd=new Date();yd.setDate(yd.getDate()-1);const yKey=todayKey(yd);
   let open=null;
   for(let i=entries.length-1;i>=0;i--){const e=entries[i];   /* heute zuerst, sonst gestern (Mitternachts-Fall) */
-    if((e.date===todayKey()||e.date===yKey)&&e.hunger!=null&&e.fullness==null){open=e;break;}}
+    if((e.date===todayKey()||e.date===yKey)&&e.type!=='zwischen'&&e.hunger!=null&&e.fullness==null){open=e;break;}}
   if(open){open.fullness=aState.val;open.feel=feel;open.taste=aState.taste||null;open.stop=aState.stop||null;open.signal=aState.signal||null;open.noteAfter=noteAfter;open.timeAfter=nowTime();}
   else{entries.push({id:Date.now()+'-'+Math.floor(Math.random()*1e4),date:todayKey(),time:nowTime(),
     fullness:aState.val,feel:feel,taste:aState.taste||null,stop:aState.stop||null,signal:aState.signal||null,noteAfter:noteAfter});}
@@ -870,6 +939,44 @@ function aResult(){
   else{verdict.textContent='Gut gelandet.';
     rf.textContent='Du bist bei einer angenehmen Sättigung angekommen. Mit jedem Check-in wird klarer, wie sich dieser Punkt anfühlt.';}}
 
+/* ZWISCHENDURCH — Signale zwischen den Mahlzeiten notieren, ohne zu essen */
+let zState={val:4};
+function startBetween(){zState={val:4,action:null};
+  document.getElementById('z-back').innerHTML='&larr; Abbrechen';
+  ['z-step0','z-step1','z-step2'].forEach((s,i)=>document.getElementById(s).style.display=i===0?'block':'none');setDots('z',0);
+  const num=document.getElementById('z-num'),desc=document.getElementById('z-desc'),bead=document.getElementById('z-bead');
+  ticks(document.getElementById('z-ticks'));
+  makeSlider(document.getElementById('z-track'),document.getElementById('z-knob'),num,desc,bead,4,(v)=>zState.val=v);
+  document.querySelectorAll('#z-cues .chip').forEach(c=>{c.classList.remove('active');c.onclick=()=>c.classList.toggle('active');});
+  document.querySelectorAll('#z-action .chip').forEach(c=>{c.classList.remove('active');
+    c.onclick=()=>{document.querySelectorAll('#z-action .chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');zState.action=c.dataset.w;};});
+  const n=document.getElementById('z-note');if(n)n.value='';
+  show('s-between');}
+function zStep(n){document.getElementById('z-step0').style.display=n===0?'block':'none';
+  document.getElementById('z-step1').style.display=n===1?'block':'none';setDots('z',n);document.querySelector('.scroll').scrollTop=0;}
+function zResult(){
+  if(document.getElementById('z-step2').style.display==='block')return; /* Doppel-Tipp-Schutz */
+  const cues=[...document.querySelectorAll('#z-cues .chip.active')].map(c=>c.textContent);
+  const entries=loadEntries();
+  entries.push({id:Date.now()+'-'+Math.floor(Math.random()*1e4),date:todayKey(),time:nowTime(),
+    type:'zwischen',hunger:zState.val,cues:cues,action:zState.action||null,
+    note:(document.getElementById('z-note')||{value:''}).value.trim()||null});
+  saveEntries(entries);renderToday();
+  document.getElementById('z-back').innerHTML='&larr; Schließen';
+  document.getElementById('z-step1').style.display='none';document.getElementById('z-step2').style.display='block';setDots('z',2);document.querySelector('.scroll').scrollTop=0;
+  const verdict=document.getElementById('z-verdict'),rf=document.getElementById('z-reflect');
+  const v=zState.val,a=zState.action;
+  if(a==='essen'){verdict.textContent='Du hörst hin — und antwortest.';
+    rf.textContent='Du hast ein Signal gespürt und gibst deinem Körper, was er braucht. Dein Körper ist der Zeitplan, nicht die Uhr. Wenn du gleich isst, mach gern noch den kurzen Vor-der-Mahlzeit-Check — dann zählt die Mahlzeit in deinen Mustern mit.';}
+  else if(v<=2){verdict.textContent='Das ist schon deutlicher Hunger.';
+    rf.textContent='Unter 2 isst fast jeder später zu schnell und zu viel — die Sättigung kommt dann nicht rechtzeitig an. Wenn es sich einrichten lässt, zieh die Mahlzeit etwas vor oder iss eine Kleinigkeit. Das ist kein Abweichen vom Plan, sondern Hinhören.';}
+  else if(a==='trinken'){verdict.textContent='Guter erster Schritt.';
+    rf.textContent='Durst tarnt sich gern als diffuser Hunger — beide melden sich ähnlich vage. Trink in Ruhe und spür in etwa 10 Minuten noch einmal nach: Echter Hunger bleibt, Durst verschwindet.';}
+  else if(a==='warten'){verdict.textContent='Notiert. Die Welle darf ziehen.';
+    rf.textContent='Hunger kommt in Wellen: Er baut sich auf, erreicht einen Gipfel und ebbt nach 20–30 Minuten auch ohne Essen wieder ab. Du verpasst nichts — er meldet sich wieder, und deine Essenszeit kommt. Dass du das Signal bemerkt hast, ist schon das Training.';}
+  else{verdict.textContent='Gut, dass du es bemerkt hast.';
+    rf.textContent='Du musst gerade nichts entscheiden. Jedes notierte Signal schärft dein Gespür dafür, wie sich dein Hunger aufbaut — genau darum geht es. Wenn er bleibt und stärker wird, ist er echt; dann darfst du ihm auch folgen.';}}
+
 /* markers — Stufenlisten direkt aus der Check-in-Skala (immer identisch) */
 (function(){
   const row=(s,last)=>
@@ -900,16 +1007,33 @@ document.querySelectorAll('#m-tabs .chip').forEach(c=>{c.onclick=()=>{
 const KIND_TXT={bauch:'körperlicher Hunger',kopf:'eher Kopf-Hunger',unklar:'Bauch/Kopf unklar'};
 const TASTE_TXT={früh:'Kipppunkt früh bemerkt',mitte:'Kipppunkt in der Mitte bemerkt',spät:'Kipppunkt erst spät',gleich:'Geschmack blieb intensiv',nein:'nicht auf den Geschmack geachtet'};
 const STOP_TXT={teller:'Teller war leer',signal:'bewusst gestoppt',geschmack:'Geschmack-Stopp',sozial:'mit den anderen beendet',unterbrochen:'unterbrochen'};
+const ACT_TXT={warten:'Welle ziehen lassen',essen:'etwas gegessen',trinken:'erst etwas getrunken',offen:'noch offen gelassen'};
 function renderToday(){
   const list=document.getElementById('today-list'),count=document.getElementById('today-count');
   if(!list)return;
   const today=loadEntries().filter(e=>e.date===todayKey());
-  count.textContent=today.length===0?'':(today.length===1?'1 Mahlzeit':today.length+' Mahlzeiten');
+  const meals=today.filter(e=>e.type!=='zwischen'),moments=today.filter(e=>e.type==='zwischen');
+  const cparts=[];
+  if(meals.length)cparts.push(meals.length===1?'1 Mahlzeit':meals.length+' Mahlzeiten');
+  if(moments.length)cparts.push(moments.length===1?'1 Moment':moments.length+' Momente');
+  count.textContent=cparts.join(' · ');
   if(today.length===0){
     list.innerHTML='<p class="sub" style="font-size:12.5px;text-align:center;padding:10px 0 4px">Noch kein Check-in heute.<br>Starte mit <b style="font-weight:500">Vor der Mahlzeit</b>, wenn es so weit ist.</p>';
     return;}
   list.innerHTML='';
+  let mi=0;
   today.forEach((e,i)=>{
+    if(e.type==='zwischen'){
+      const parts=[];
+      if(e.cues&&e.cues.length)parts.push(e.cues.slice(0,3).join(', '));
+      if(e.action&&ACT_TXT[e.action])parts.push(ACT_TXT[e.action]);
+      list.insertAdjacentHTML('beforeend',
+        (i>0?'<div class="divider"></div>':'')+
+        `<div class="mini-log" style="opacity:.92"><div class="bead" style="--c:${colFor(Math.round(e.hunger))};width:30px;height:30px;margin:0 4px"><b style="font-size:${String(fmt(e.hunger)).length>2?'11px':'15px'}">${fmt(e.hunger)}</b></div>
+         <div style="flex:1"><div style="font-size:12.5px;font-weight:500">Zwischendurch · ${e.time||''}</div>
+         <div class="sub" style="font-size:11.5px">${parts.join(' · ')||'Signal notiert'}</div></div></div>`);
+      return;}
+    mi++;
     const v=e.hunger!=null?e.hunger:e.fullness;
     const parts=[];
     if(e.hunger!=null)parts.push('gestartet bei '+fmt(e.hunger));
@@ -917,7 +1041,7 @@ function renderToday(){
     if(e.signal==='deutlich'||e.signal==='leicht')parts.push('Genug-Signal gespürt');
     if(e.stop&&STOP_TXT[e.stop])parts.push(STOP_TXT[e.stop]);
     if(e.taste&&TASTE_TXT[e.taste])parts.push(TASTE_TXT[e.taste]);
-    const title='Mahlzeit '+(i+1)+' · '+(e.time||'')+(e.kind?' · '+KIND_TXT[e.kind]:'');
+    const title='Mahlzeit '+mi+' · '+(e.time||'')+(e.kind?' · '+KIND_TXT[e.kind]:'');
     list.insertAdjacentHTML('beforeend',
       (i>0?'<div class="divider"></div>':'')+
       `<div class="mini-log"><div class="bead" style="--c:${colFor(Math.round(v))};width:38px;height:38px"><b style="font-size:${String(fmt(v)).length>2?'13px':'19px'}">${fmt(v)}</b></div>
@@ -931,8 +1055,11 @@ function renderPatterns(){
   const rowsEl=document.getElementById('meal-rows');if(!rowsEl)return;
   const entries=loadEntries();
   const dates=weekDates(),labels=['Mo','Di','Mi','Do','Fr','Sa','So'];
-  const week=entries.filter(e=>dates.includes(e.date))
+  const weekAll=entries.filter(e=>dates.includes(e.date))
     .slice().sort((a,b)=>((a.date+(a.time||''))<(b.date+(b.time||'')))?-1:1);
+  /* Zwischendurch-Momente zählen nicht als Mahlzeit — eigene Auswertung weiter unten */
+  const moments=weekAll.filter(e=>e.type==='zwischen');
+  const week=weekAll.filter(e=>e.type!=='zwischen');
   const withH=week.filter(e=>e.hunger!=null);
   const withF=week.filter(e=>e.fullness!=null);
   const withT=week.filter(e=>e.taste);
@@ -1021,6 +1148,14 @@ function renderPatterns(){
       I.push(['var(--p-rose)',`Den <b>Geschmacks-Kipppunkt</b> hast du in ${tOk} von ${withT.length} Mahlzeiten bemerkt. Er ist dein direktester Draht zur Sättigung.`]);
     else
       I.push(['var(--p-rose)',`Der <b>Geschmacks-Kipppunkt</b> ist dir noch oft entgangen (${tOk} von ${withT.length} bemerkt). Nimm dir beim nächsten Essen nur diesen einen Moment vor: Wann schmeckt es nicht mehr so gut wie am Anfang?`]);}
+  if(moments.length>=1){
+    const waited=moments.filter(e=>e.action==='warten').length;
+    const cueCount={};moments.forEach(e=>(e.cues||[]).forEach(x=>cueCount[x]=(cueCount[x]||0)+1));
+    const topCue=Object.entries(cueCount).sort((a,b)=>b[1]-a[1])[0];
+    I.push(['var(--accent-2)',`Du hast <b>${moments.length} Zwischendurch-Signal${moments.length>1?'e':''}</b> notiert`+
+      (waited?` — ${waited}× hast du die Welle erst einmal ziehen lassen`:'')+
+      (topCue&&topCue[1]>=2?`. Am häufigsten meldet sich: <b>„${topCue[0]}“</b>`:'')+
+      `. Dieses Bemerken zwischen den Mahlzeiten ist genau das Training.`]);}
   const kopf=week.filter(e=>e.kind==='kopf');
   if(kopf.length>=2){
     const bucket=t=>{const h2=parseInt((t||'12').slice(0,2),10);return h2<11?'morgens':h2<15?'mittags':h2<18?'nachmittags':'abends';};
