@@ -17,17 +17,19 @@ gar nicht mehr zu brauchen.
   „dazwischen" erlaubt), „Bauch oder Kopf?" mit gruppierten, differenzierten
   Merkmalen + Apfel-Check, optionales Freitextfeld, Merksatz für den Tisch
 - **Nach der Mahlzeit** — Sättigungsskala als Regler (Halbschritte, aus der
-  Erinnerung), Körpergefühl der Sättigung (Mehrfachauswahl), Geschmacks-Kipppunkt
-  (5 Stufen), Stopp-Grund („Was hat das Ende bestimmt?": Teller leer · Sättigung
-  gespürt · Geschmack · sozial · unterbrochen · weiß nicht — ehrlich wählbar auch
-  für Teller-leer-Esser:innen), optionales Freitextfeld. Die Auswertung trennt
-  sauber zwischen „wo gelandet" (Skalenwert) und „wer hat entschieden"
-  (Körper vs. Teller) und reagiert auf beides ohne Wertung.
+  Erinnerung), Körpergefühl der Sättigung (Mehrfachauswahl), zwei klar getrennte
+  Blöcke „Spüren" (Kam ein Genug-Signal? · Geschmacks-Kipppunkt — nur das
+  Bemerken zählt) und „Handeln" (Stopp-Grund: Teller leer · Sättigung · Geschmack ·
+  sozial · unterbrochen · weiß nicht), optionales Freitextfeld. Die Auswertung
+  trennt Wahrnehmung, Handlung und Ergebnis — „Signal gespürt, aber Teller leer
+  gegessen" wird als normaler Zwischenschritt gewürdigt, nicht als Scheitern.
 - **Muster** — wöchentliche Übersicht ohne Kalorien, nur Signaltreue: eine
   waagerechte 0–10-Zeile pro Mahlzeit (○ Start-Hunger → ● Stopp-Sättigung, mit
   Wohlfühl-Fenster und Klartext-Werten wie „5 → 7"), Zahlen-Kacheln (Anzahl,
-  vom Körper gestoppt, Ø Start, Ø Stopp), vier Prozentbalken (Start-Timing, im
-  Fenster gelandet, „Dein Körper hat den Stopp bestimmt", Kipppunkt bemerkt)
+  vom Körper gestoppt, Ø Start, Ø Stopp), fünf Prozentbalken in drei
+  Gruppen — 1·Spüren (Genug-Signal gespürt, Kipppunkt bemerkt), 2·Handeln
+  (Start-Timing, „Dein Körper hat den Stopp bestimmt"), 3·Ergebnis (im Fenster
+  gelandet)
   und ein mehrteiliges
   „Was auffällt" mit konkreten, aus den eigenen Angaben berechneten
   Beobachtungen (Start-Timing, Stopp-Verhalten, Geschmacks-Kipppunkt,

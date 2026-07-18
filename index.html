@@ -368,6 +368,18 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
             <div class="chip">Aufgebläht / schwer</div>
           </div>
         </div>
+        <div class="qlabel" style="margin:6px 2px 10px">Spüren — was du <b style="font-weight:600">bemerkt</b> hast, egal wie es weiterging</div>
+        <div class="glass" style="padding:18px;margin-bottom:14px">
+          <p class="serif" style="font-style:italic;font-size:17px;margin-bottom:4px;color:var(--ink)">
+            Kam während dem Essen ein „genug"-Signal?</p>
+          <p class="sub" style="font-size:12px;margin-bottom:14px">Nur ob du es gespürt hast — nicht, ob du danach aufgehört hast.</p>
+          <div class="chips" id="a-signal">
+            <div class="chip" data-g="deutlich">Ja, deutlich</div>
+            <div class="chip" data-g="leicht">Ja, leicht / kurz</div>
+            <div class="chip" data-g="nein">Nein, keins bemerkt</div>
+            <div class="chip" data-g="unbeachtet">Nicht darauf geachtet</div>
+          </div>
+        </div>
         <div class="glass" style="padding:18px;margin-bottom:14px">
           <p class="serif" style="font-style:italic;font-size:17px;margin-bottom:14px;color:var(--ink)">
             Wann wurde der Geschmack neutraler — weniger intensiv als beim ersten Bissen?</p>
@@ -379,6 +391,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
             <div class="chip" data-t="nein">Nicht darauf geachtet</div>
           </div>
         </div>
+        <div class="qlabel" style="margin:6px 2px 10px">Handeln — was dann tatsächlich das Ende war</div>
         <div class="glass" style="padding:18px;margin-bottom:8px">
           <p class="serif" style="font-style:italic;font-size:17px;margin-bottom:4px;color:var(--ink)">
             Was hat das Ende der Mahlzeit bestimmt?</p>
@@ -440,22 +453,33 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
       </div>
 
       <div class="glass" style="padding:20px 18px;margin-bottom:14px">
-        <div class="eyebrow" style="margin-bottom:16px">Diese Woche</div>
-        <div style="margin-bottom:16px">
+        <div class="eyebrow" style="margin-bottom:6px">Diese Woche</div>
+        <p class="sub" style="font-size:11.5px;margin-bottom:14px;line-height:1.5">Spüren und Handeln sind zwei verschiedene Fähigkeiten — deshalb getrennt. Erst wächst das Bemerken, dann folgt das Stoppen.</p>
+
+        <div class="qlabel" style="margin-bottom:10px">1 · Spüren — Signale bemerkt</div>
+        <div style="margin-bottom:14px">
+          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">„Genug“-Signal gespürt</span><span class="serif" style="font-size:18px;color:var(--ink)" id="pct-sig">–</span></div>
+          <div class="bar-track"><div class="bar-fill" id="bar-sig" style="width:0%;background:linear-gradient(90deg,var(--p-rose),var(--accent))"></div></div>
+        </div>
+        <div style="margin-bottom:18px">
+          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Geschmacks-Kipppunkt bemerkt</span><span class="serif" style="font-size:18px;color:var(--ink)" id="pct-taste">–</span></div>
+          <div class="bar-track"><div class="bar-fill" id="bar-taste" style="width:0%;background:linear-gradient(90deg,var(--p-rose),var(--accent))"></div></div>
+        </div>
+
+        <div class="qlabel" style="margin-bottom:10px">2 · Handeln — danach gerichtet</div>
+        <div style="margin-bottom:14px">
           <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Bei angenehmem Hunger (3–4) gestartet</span><span class="serif" style="font-size:18px;color:var(--ink)" id="pct-start">–</span></div>
           <div class="bar-track"><div class="bar-fill" id="bar-start" style="width:0%;background:linear-gradient(90deg,var(--p-ideal),var(--accent-2))"></div></div>
         </div>
-        <div style="margin-bottom:16px">
-          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Im Wohlfühl-Fenster (6–7) gelandet</span><span class="serif" style="font-size:18px;color:var(--ink)" id="pct-stop">–</span></div>
-          <div class="bar-track"><div class="bar-fill" id="bar-stop" style="width:0%;background:linear-gradient(90deg,var(--p-neutral),var(--accent))"></div></div>
-        </div>
-        <div style="margin-bottom:16px">
+        <div style="margin-bottom:18px">
           <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Dein Körper hat den Stopp bestimmt</span><span class="serif" style="font-size:18px;color:var(--ink)" id="pct-body">–</span></div>
           <div class="bar-track"><div class="bar-fill" id="bar-body" style="width:0%;background:linear-gradient(90deg,var(--accent-2),var(--p-ideal))"></div></div>
         </div>
+
+        <div class="qlabel" style="margin-bottom:10px">3 · Ergebnis</div>
         <div>
-          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Geschmacks-Kipppunkt bemerkt</span><span class="serif" style="font-size:18px;color:var(--ink)" id="pct-taste">–</span></div>
-          <div class="bar-track"><div class="bar-fill" id="bar-taste" style="width:0%;background:linear-gradient(90deg,var(--p-rose),var(--accent))"></div></div>
+          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Im Wohlfühl-Fenster (6–7) gelandet</span><span class="serif" style="font-size:18px;color:var(--ink)" id="pct-stop">–</span></div>
+          <div class="bar-track"><div class="bar-fill" id="bar-stop" style="width:0%;background:linear-gradient(90deg,var(--p-neutral),var(--accent))"></div></div>
         </div>
       </div>
 
@@ -778,17 +802,19 @@ function bResult(){
   else if(isEarly){verdict.textContent='Du hast lange gewartet.';
     mk.textContent='Fang bewusst langsam an — deine Sättigung braucht etwa 20 Minuten, bis sie ankommt. Iss den ersten Teller in Ruhe, bevor du nachlegst.';}
   else{verdict.textContent='Schön — ein guter Zeitpunkt.';
-    mk.textContent='Achte beim Essen auf einen einzigen Moment: wann der Geschmack neutraler wird. Genau da liegt dein Stopp — der letzte Bissen.';}}
+    mk.textContent='Achte beim Essen auf einen einzigen Moment: wann der Geschmack neutraler wird. Nur bemerken — aufhören musst du dort noch nicht. Das Bemerken kommt zuerst, das Stoppen folgt von selbst.';}}
 
 /* AFTER */
 let aState={val:7};
-function startAfter(){aState={val:7,taste:null,stop:null};
+function startAfter(){aState={val:7,taste:null,stop:null,signal:null};
   document.getElementById('a-back').innerHTML='&larr; Abbrechen';
   ['a-step0','a-step1','a-step2'].forEach((s,i)=>document.getElementById(s).style.display=i===0?'block':'none');setDots('a',0);
   const num=document.getElementById('a-num'),desc=document.getElementById('a-desc'),bead=document.getElementById('a-bead');
   ticks(document.getElementById('a-ticks'));
   makeSlider(document.getElementById('a-track'),document.getElementById('a-knob'),num,desc,bead,7,(v)=>aState.val=v);
   document.querySelectorAll('#a-feel .chip').forEach(c=>{c.classList.remove('active');c.onclick=()=>c.classList.toggle('active');});
+  document.querySelectorAll('#a-signal .chip').forEach(c=>{c.classList.remove('active');
+    c.onclick=()=>{document.querySelectorAll('#a-signal .chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');aState.signal=c.dataset.g;};});
   document.querySelectorAll('#a-taste .chip').forEach(c=>{c.classList.remove('active');
     c.onclick=()=>{document.querySelectorAll('#a-taste .chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');aState.taste=c.dataset.t;};});
   document.querySelectorAll('#a-stop .chip').forEach(c=>{c.classList.remove('active');
@@ -806,9 +832,9 @@ function aResult(){
   let open=null;
   for(let i=entries.length-1;i>=0;i--){const e=entries[i];
     if(e.date===todayKey()&&e.hunger!=null&&e.fullness==null){open=e;break;}}
-  if(open){open.fullness=aState.val;open.feel=feel;open.taste=aState.taste||null;open.stop=aState.stop||null;open.noteAfter=noteAfter;open.timeAfter=nowTime();}
+  if(open){open.fullness=aState.val;open.feel=feel;open.taste=aState.taste||null;open.stop=aState.stop||null;open.signal=aState.signal||null;open.noteAfter=noteAfter;open.timeAfter=nowTime();}
   else{entries.push({id:Date.now()+'-'+Math.floor(Math.random()*1e4),date:todayKey(),time:nowTime(),
-    fullness:aState.val,feel:feel,taste:aState.taste||null,stop:aState.stop||null,noteAfter:noteAfter});}
+    fullness:aState.val,feel:feel,taste:aState.taste||null,stop:aState.stop||null,signal:aState.signal||null,noteAfter:noteAfter});}
   saveEntries(entries);renderToday();
   document.getElementById('a-back').innerHTML='&larr; Schließen';
   document.getElementById('a-step1').style.display='none';document.getElementById('a-step2').style.display='block';setDots('a',2);document.querySelector('.scroll').scrollTop=0;
@@ -820,7 +846,10 @@ function aResult(){
       ?'Die Portion war kleiner als dein Hunger — nachnehmen ist ausdrücklich erlaubt. Dein Körper bestimmt die Menge, nicht der Teller.'
       :'Aufhören, obwohl noch Hunger da ist, kann sich unruhig anfühlen. Deinen Hunger zu ehren ist genauso wichtig wie das rechtzeitige Aufhören — du darfst weiteressen, wenn er sich wieder meldet.';}
   else if(s==='teller'){
-    if(v>=6&&v<=7.5){verdict.textContent='Die Portion hat gepasst — diesmal.';
+    const felt=(aState.signal==='deutlich'||aState.signal==='leicht');
+    if(felt){verdict.textContent='Das Signal war da — du hast es bemerkt.';
+      rf.textContent='Gespürt hast du das Genug, gegessen hast du trotzdem zu Ende — und genau so sieht der Zwischenschritt aus, kein Rückschritt. Spüren und Stoppen sind zwei verschiedene Fähigkeiten: Die erste kannst du schon. Wenn du magst, probier beim nächsten deutlichen Signal nur eins: Besteck einmal kurz ablegen, ein Schluck trinken — weiteressen ist danach ausdrücklich erlaubt.';}
+    else if(v>=6&&v<=7.5){verdict.textContent='Die Portion hat gepasst — diesmal.';
       rf.textContent='Du bist im Wohlfühl-Fenster gelandet, aber entschieden hat der Teller, nicht dein Körper. Das Ziel ist, dass du den Punkt selbst bemerkst: Halte beim nächsten Essen einmal in der Mitte kurz inne und spür nach — noch bevor der Teller leer ist.';}
     else{verdict.textContent='Der Teller hat entschieden.';
       rf.textContent='Kein Vorwurf — „Teller leer essen“ ist antrainiert, kein Körpersignal (mehr dazu unter Merkmale → Denkfallen). Du bist bei '+fmt(v)+' gelandet. Zwei Mini-Schritte, die den Automatismus lösen: kleiner auffüllen und dir das Nachnehmen erlauben — und einmal in der Mitte der Mahlzeit kurz innehalten. Übrig lassen ist erlaubt.';}}
@@ -884,6 +913,7 @@ function renderToday(){
     const parts=[];
     if(e.hunger!=null)parts.push('gestartet bei '+fmt(e.hunger));
     if(e.fullness!=null)parts.push('gestoppt bei '+fmt(e.fullness));else parts.push('Nachher-Check offen');
+    if(e.signal==='deutlich'||e.signal==='leicht')parts.push('Genug-Signal gespürt');
     if(e.stop&&STOP_TXT[e.stop])parts.push(STOP_TXT[e.stop]);
     if(e.taste&&TASTE_TXT[e.taste])parts.push(TASTE_TXT[e.taste]);
     const title='Mahlzeit '+(i+1)+' · '+(e.time||'')+(e.kind?' · '+KIND_TXT[e.kind]:'');
@@ -952,12 +982,21 @@ function renderPatterns(){
   setBar('start',pct(withH.filter(e=>e.hunger>=2.5&&e.hunger<=4.5).length,withH.length));
   setBar('stop',pct(stopOkN,withF.length));
   setBar('body',pct(bodyN,withS.length));
+  const withSig=week.filter(e=>e.signal&&e.signal!=='unbeachtet');
+  const sigOkN=withSig.filter(e=>e.signal==='deutlich'||e.signal==='leicht').length;
+  setBar('sig',pct(sigOkN,withSig.length));
   setBar('taste',pct(withT.filter(e=>e.taste==='früh'||e.taste==='mitte').length,withT.length));
 
   /* ---- Was auffällt: mehrere konkrete Beobachtungen aus deinen Angaben ---- */
   const I=[];
-  if(withS.length>=2&&tellerN/withS.length>=0.5)
-    I.push(['var(--p-neutral)',`Bei <b>${tellerN} von ${withS.length}</b> Mahlzeiten hat der <b>leere Teller</b> das Ende bestimmt, nicht dein Körper. Kein Vorwurf — genau diese Gewohnheit lernst du hier um. Mini-Schritt: einmal am Tag in der <b>Mitte der Mahlzeit</b> kurz innehalten und nachspüren.`]);
+  const withSig2=week.filter(e=>e.signal&&e.signal!=='unbeachtet');
+  const sigOk2=withSig2.filter(e=>e.signal==='deutlich'||e.signal==='leicht').length;
+  if(withS.length>=2&&tellerN/withS.length>=0.5&&withSig2.length>=2&&sigOk2/withSig2.length>=0.5)
+    I.push(['var(--p-ideal)',`<b>Dein Spüren ist schon da:</b> In ${sigOk2} von ${withSig2.length} Mahlzeiten hast du das „genug“-Signal bemerkt — auch wenn noch der Teller das Ende bestimmt (${tellerN} von ${withS.length}). Das ist die richtige Reihenfolge: Erst wächst das Bemerken, dann folgt das Stoppen. Mini-Schritt: beim nächsten deutlichen Signal einmal kurz das Besteck ablegen.`]);
+  else if(withS.length>=2&&tellerN/withS.length>=0.5)
+    I.push(['var(--p-neutral)',`Bei <b>${tellerN} von ${withS.length}</b> Mahlzeiten hat der <b>leere Teller</b> das Ende bestimmt, nicht dein Körper. Kein Vorwurf — genau diese Gewohnheit lernst du hier um. Erster Schritt ist nur das <b>Bemerken</b>: einmal in der Mitte der Mahlzeit kurz innehalten und nachspüren — aufhören musst du dabei nicht.`]);
+  else if(withSig2.length>=2&&sigOk2/withSig2.length>=0.6)
+    I.push(['var(--p-rose)',`Du <b>bemerkst dein „genug“-Signal</b> in ${sigOk2} von ${withSig2.length} Mahlzeiten — die Wahrnehmung steht. Das Stoppen darf in seinem eigenen Tempo folgen.`]);
   else if(withS.length>=2&&bodyN/withS.length>=0.5)
     I.push(['var(--p-ideal)',`Immer öfter beendet <b>dein Körper</b> die Mahlzeit (${bodyN} von ${withS.length}) statt der leere Teller — das ist der Kern des Trainings.`]);
   const startsHigh=withH.filter(e=>e.hunger>=5).length,startsLow=withH.filter(e=>e.hunger<=2).length,
