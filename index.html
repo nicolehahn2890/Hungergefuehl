@@ -478,7 +478,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
 
         <div class="qlabel" style="margin-bottom:10px">3 · Ergebnis</div>
         <div>
-          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Im Wohlfühl-Fenster (6–7) gelandet</span><span class="serif" style="font-size:18px;color:var(--ink)" id="pct-stop">–</span></div>
+          <div class="row" style="justify-content:space-between;margin-bottom:7px"><span class="sub" style="font-size:12.5px">Im Wohlfühl-Fenster (um 7) gelandet</span><span class="serif" style="font-size:18px;color:var(--ink)" id="pct-stop">–</span></div>
           <div class="bar-track"><div class="bar-fill" id="bar-stop" style="width:0%;background:linear-gradient(90deg,var(--p-neutral),var(--accent))"></div></div>
         </div>
       </div>
@@ -829,9 +829,10 @@ function aResult(){
   const entries=loadEntries();
   const feel=[...document.querySelectorAll('#a-feel .chip.active')].map(c=>c.textContent);
   const noteAfter=(document.getElementById('a-note')||{value:''}).value.trim()||null;
+  const yd=new Date();yd.setDate(yd.getDate()-1);const yKey=todayKey(yd);
   let open=null;
-  for(let i=entries.length-1;i>=0;i--){const e=entries[i];
-    if(e.date===todayKey()&&e.hunger!=null&&e.fullness==null){open=e;break;}}
+  for(let i=entries.length-1;i>=0;i--){const e=entries[i];   /* heute zuerst, sonst gestern (Mitternachts-Fall) */
+    if((e.date===todayKey()||e.date===yKey)&&e.hunger!=null&&e.fullness==null){open=e;break;}}
   if(open){open.fullness=aState.val;open.feel=feel;open.taste=aState.taste||null;open.stop=aState.stop||null;open.signal=aState.signal||null;open.noteAfter=noteAfter;open.timeAfter=nowTime();}
   else{entries.push({id:Date.now()+'-'+Math.floor(Math.random()*1e4),date:todayKey(),time:nowTime(),
     fullness:aState.val,feel:feel,taste:aState.taste||null,stop:aState.stop||null,signal:aState.signal||null,noteAfter:noteAfter});}
@@ -942,6 +943,8 @@ function renderPatterns(){
   const withS=week.filter(e=>['teller','signal','geschmack','sozial','unterbrochen'].includes(e.stop));
   const bodyN=withS.filter(e=>e.stop==='signal'||e.stop==='geschmack').length;
   const tellerN=withS.filter(e=>e.stop==='teller').length;
+  const withSig=week.filter(e=>e.signal&&e.signal!=='unbeachtet');
+  const sigOkN=withSig.filter(e=>e.signal==='deutlich'||e.signal==='leicht').length;
 
   /* ---- Mahlzeiten-Zeilen ---- */
   const pos=v=>5+(v/10)*90; /* Wert 0–10 → 5%..95% */
@@ -984,21 +987,17 @@ function renderPatterns(){
   setBar('start',pct(withH.filter(e=>e.hunger>=2.5&&e.hunger<=4.5).length,withH.length));
   setBar('stop',pct(stopOkN,withF.length));
   setBar('body',pct(bodyN,withS.length));
-  const withSig=week.filter(e=>e.signal&&e.signal!=='unbeachtet');
-  const sigOkN=withSig.filter(e=>e.signal==='deutlich'||e.signal==='leicht').length;
   setBar('sig',pct(sigOkN,withSig.length));
   setBar('taste',pct(withT.filter(e=>e.taste==='früh'||e.taste==='mitte').length,withT.length));
 
   /* ---- Was auffällt: mehrere konkrete Beobachtungen aus deinen Angaben ---- */
   const I=[];
-  const withSig2=week.filter(e=>e.signal&&e.signal!=='unbeachtet');
-  const sigOk2=withSig2.filter(e=>e.signal==='deutlich'||e.signal==='leicht').length;
-  if(withS.length>=2&&tellerN/withS.length>=0.5&&withSig2.length>=2&&sigOk2/withSig2.length>=0.5)
-    I.push(['var(--p-ideal)',`<b>Dein Spüren ist schon da:</b> In ${sigOk2} von ${withSig2.length} Mahlzeiten hast du das „genug“-Signal bemerkt — auch wenn noch der Teller das Ende bestimmt (${tellerN} von ${withS.length}). Das ist die richtige Reihenfolge: Erst wächst das Bemerken, dann folgt das Stoppen. Mini-Schritt: beim nächsten deutlichen Signal einmal kurz das Besteck ablegen.`]);
+  if(withS.length>=2&&tellerN/withS.length>=0.5&&withSig.length>=2&&sigOkN/withSig.length>=0.5)
+    I.push(['var(--p-ideal)',`<b>Dein Spüren ist schon da:</b> In ${sigOkN} von ${withSig.length} Mahlzeiten hast du das „genug“-Signal bemerkt — auch wenn noch der Teller das Ende bestimmt (${tellerN} von ${withS.length}). Das ist die richtige Reihenfolge: Erst wächst das Bemerken, dann folgt das Stoppen. Mini-Schritt: beim nächsten deutlichen Signal einmal kurz das Besteck ablegen.`]);
   else if(withS.length>=2&&tellerN/withS.length>=0.5)
     I.push(['var(--p-neutral)',`Bei <b>${tellerN} von ${withS.length}</b> Mahlzeiten hat der <b>leere Teller</b> das Ende bestimmt, nicht dein Körper. Kein Vorwurf — genau diese Gewohnheit lernst du hier um. Erster Schritt ist nur das <b>Bemerken</b>: einmal in der Mitte der Mahlzeit kurz innehalten und nachspüren — aufhören musst du dabei nicht.`]);
-  else if(withSig2.length>=2&&sigOk2/withSig2.length>=0.6)
-    I.push(['var(--p-rose)',`Du <b>bemerkst dein „genug“-Signal</b> in ${sigOk2} von ${withSig2.length} Mahlzeiten — die Wahrnehmung steht. Das Stoppen darf in seinem eigenen Tempo folgen.`]);
+  else if(withSig.length>=2&&sigOkN/withSig.length>=0.6)
+    I.push(['var(--p-rose)',`Du <b>bemerkst dein „genug“-Signal</b> in ${sigOkN} von ${withSig.length} Mahlzeiten — die Wahrnehmung steht. Das Stoppen darf in seinem eigenen Tempo folgen.`]);
   else if(withS.length>=2&&bodyN/withS.length>=0.5)
     I.push(['var(--p-ideal)',`Immer öfter beendet <b>dein Körper</b> die Mahlzeit (${bodyN} von ${withS.length}) statt der leere Teller — das ist der Kern des Trainings.`]);
   const startsHigh=withH.filter(e=>e.hunger>=5).length,startsLow=withH.filter(e=>e.hunger<=2).length,

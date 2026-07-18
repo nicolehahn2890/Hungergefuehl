@@ -54,13 +54,22 @@ gar nicht mehr zu brauchen.
   versunkene Kosten) und den „What-the-hell"-Effekt (eine Mahlzeit drüber ruiniert
   nichts, nicht kompensieren).
 
-## Speicherung
+## Speicherung & Messlogik
 Check-ins werden **lokal auf dem Gerät** gespeichert (localStorage, Schlüssel
 `intuition.entries.v1`) — keine Cloud, keine Anmeldung. „Vor der Mahlzeit" legt
-einen Eintrag an, „Nach der Mahlzeit" ergänzt den letzten offenen Eintrag des Tages.
-Die Heute-Liste, die Wochengrafik, die Prozente und „Was auffällt" berechnen sich
-aus den echten Einträgen. Unter Muster → „Alle Einträge löschen" lässt sich alles
+einen Eintrag an, „Nach der Mahlzeit" ergänzt den letzten offenen Eintrag von
+heute (oder von gestern spätabends — Mitternachts-Fall). Doppel-Tipp-Schutz
+verhindert Duplikate. Unter Muster → „Alle Einträge löschen" lässt sich alles
 zurücksetzen.
+
+Messregeln der Auswertung:
+- **Wertbasierte Kennzahlen** (Ø Start, Ø Stopp, „im Wohlfühl-Fenster gelandet"
+  = Sättigung 6–7,5, Start-Timing, Mahlzeiten-Zeilen) zählen alle Einträge.
+- **Fragebasierte Kennzahlen** zählen nur Einträge, in denen die jeweilige Frage
+  beantwortet wurde: „vom Körper gestoppt"/Teller-Quote nur mit beantwortetem
+  Stopp-Grund, „Genug-Signal gespürt" nur mit beantworteter Signal-Frage.
+  Einträge aus früheren Frage-Versionen verfälschen diese Quoten nicht (sie
+  fallen aus dem Nenner).
 
 ## Design
 Basiert auf dem Calma-Design-System („Luminous / Perla"), farblich auf das eigene
