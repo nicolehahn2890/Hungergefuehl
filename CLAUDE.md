@@ -22,3 +22,7 @@
 - Eintragstypen: Mahlzeiten (Vorher/Nachher) und Zwischendurch-Momente
   (`type:'zwischen'`). Zwischendurch-Einträge zählen nie als Mahlzeit und
   dürfen nie vom Nachher-Check als „offene Mahlzeit" aufgegriffen werden.
+- Übergang Zwischendurch → Mahlzeit: Bei Antwort „Ich esse jetzt etwas" führt
+  ein Button in den kompletten Vor-der-Mahlzeit-Check; `startBefore(initVal)`
+  übernimmt dabei den Hungerwert als Startwert (Regler bleibt anpassbar).
+  Der Zwischendurch-Eintrag bleibt zusätzlich bestehen.
