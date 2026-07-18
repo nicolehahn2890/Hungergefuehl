@@ -488,7 +488,8 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
         <div class="glass" style="padding:16px 18px;margin-bottom:22px">
           <p class="sub" style="font-size:12.5px">Allein das Bemerken zwischen den Mahlzeiten trainiert dein Gespür — ganz gleich, wie es danach weitergeht.</p>
         </div>
-        <button class="btn" onclick="goHome()">Fertig</button>
+        <button class="btn" id="z-to-meal" onclick="startBefore(zState.val)" style="display:none;margin-bottom:10px">Weiter zum Mahlzeit-Check</button>
+        <button class="btn" id="z-done" onclick="goHome()">Fertig</button>
       </div>
     </section>
 
@@ -837,12 +838,15 @@ function makeSlider(track,knob,numEl,descEl,beadEl,initial,cb){
 
 /* BEFORE */
 let bState={val:3};
-function startBefore(){bState={val:3,apple:null};
+function startBefore(initVal){
+  /* initVal: optional übernommener Wert aus dem Zwischendurch-Check (Regler bleibt anpassbar) */
+  const v0=(typeof initVal==='number'&&initVal>=0&&initVal<=10)?initVal:3;
+  bState={val:v0,apple:null};
   document.getElementById('b-back').innerHTML='&larr; Abbrechen';
   ['b-step0','b-step1','b-step2'].forEach((s,i)=>document.getElementById(s).style.display=i===0?'block':'none');setDots('b',0);
   const num=document.getElementById('b-num'),desc=document.getElementById('b-desc'),bead=document.getElementById('b-bead');
   ticks(document.getElementById('b-ticks'));
-  makeSlider(document.getElementById('b-track'),document.getElementById('b-knob'),num,desc,bead,3,(v)=>bState.val=v);
+  makeSlider(document.getElementById('b-track'),document.getElementById('b-knob'),num,desc,bead,v0,(v)=>bState.val=v);
   document.querySelectorAll('#b-cues-body .chip, #b-cues-head .chip').forEach(c=>{c.classList.remove('active');c.onclick=()=>c.classList.toggle('active');});
   document.querySelectorAll('#b-apple .chip').forEach(c=>{c.classList.remove('active');
     c.onclick=()=>{document.querySelectorAll('#b-apple .chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');bState.apple=c.dataset.a;};});
@@ -966,8 +970,11 @@ function zResult(){
   document.getElementById('z-step1').style.display='none';document.getElementById('z-step2').style.display='block';setDots('z',2);document.querySelector('.scroll').scrollTop=0;
   const verdict=document.getElementById('z-verdict'),rf=document.getElementById('z-reflect');
   const v=zState.val,a=zState.action;
+  /* Brücke zum Mahlzeit-Check: nur zeigen, wenn jetzt gegessen wird */
+  document.getElementById('z-to-meal').style.display=a==='essen'?'block':'none';
+  document.getElementById('z-done').className=a==='essen'?'btn ghost':'btn';
   if(a==='essen'){verdict.textContent='Du hörst hin — und antwortest.';
-    rf.textContent='Du hast ein Signal gespürt und gibst deinem Körper, was er braucht. Dein Körper ist der Zeitplan, nicht die Uhr. Wenn du gleich isst, mach gern noch den kurzen Vor-der-Mahlzeit-Check — dann zählt die Mahlzeit in deinen Mustern mit.';}
+    rf.textContent='Du hast ein Signal gespürt und gibst deinem Körper, was er braucht. Dein Körper ist der Zeitplan, nicht die Uhr. Unten geht es direkt weiter zum Vor-der-Mahlzeit-Check — dein Hungerwert ist schon eingestellt, alle anderen Fragen kannst du wie gewohnt beantworten. So zählt die Mahlzeit in deinen Mustern mit.';}
   else if(v<=2){verdict.textContent='Das ist schon deutlicher Hunger.';
     rf.textContent='Unter 2 isst fast jeder später zu schnell und zu viel — die Sättigung kommt dann nicht rechtzeitig an. Wenn es sich einrichten lässt, zieh die Mahlzeit etwas vor oder iss eine Kleinigkeit. Das ist kein Abweichen vom Plan, sondern Hinhören.';}
   else if(a==='trinken'){verdict.textContent='Guter erster Schritt.';
