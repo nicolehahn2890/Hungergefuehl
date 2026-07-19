@@ -71,13 +71,12 @@ gar nicht mehr zu brauchen.
   oder Kopf · Geschmack · Störfaktoren · Denkfallen · Food Noise ·
   Hormone). Jedes Thema folgt derselben Dramaturgie: Kernaussage →
   Mechanismus/Biologie (teils als kompakte Signal-Kette dargestellt) →
-  Praxis → eine abgesetzte „Studienlage"-Karte mit Quellenhinweis. Jedes
-  Thema mit
-  Stufenliste inkl. Skalenwerten, Praxis-Tipps und einer kurzen
-  Wissenschafts-Karte. „Denkfallen" behandelt die
-  psychologischen Muster: Stopfen aus Knappheits-Gefühl (du darfst jederzeit wieder
-  essen), „Teller leer"-Konditionierung (Übriglassen ist keine Verschwendung —
-  versunkene Kosten) und den „What-the-hell"-Effekt (eine Mahlzeit drüber ruiniert
+  Praxis → eine abgesetzte „Studienlage"-Karte mit Quellenhinweis. Die
+  Hunger- und Sättigungs-Tabs enthalten zusätzlich die Stufenliste mit den
+  echten Skalenwerten. „Denkfallen" behandelt die psychologischen Muster:
+  Stopfen aus Knappheits-Gefühl (du darfst jederzeit wieder essen), „Teller
+  leer"-Konditionierung (Übriglassen ist keine Verschwendung — versunkene
+  Kosten) und den „What-the-hell"-Effekt (eine Mahlzeit drüber ruiniert
   nichts, nicht kompensieren).
 
 ## Speicherung & Messlogik
@@ -125,23 +124,43 @@ Hintergrundbild abgestimmt:
 - Glas-Karten, Pill-Buttons und Chips nach den Original-Calma-Tokens
 
 ## Wissenschaftliche Grundlage
-Hunger-Sättigungs-Skala &amp; Intuitive Eating (Tribole &amp; Resch), Interozeptions-Training,
-sensorspezifische Sättigung (Geschmack wird neutral = körperliches „genug"), das
-~20-Minuten-Sättigungsfenster (CCK/PYY), Unterscheidung körperlicher vs. emotionaler
-Hunger (Ghrelin, Apfel-Test). Störfaktoren: Schlafmangel (Ghrelin ↑ / Leptin ↓),
-Zyklus (erhöhter Bedarf in der Lutealphase), Durst-Hunger-Verwechslung, Stress
-(Cortisol) und Medikamente. Sättigungsdauer: Eiweiß/Ballaststoffe/Volumen halten
-lange vor, Flüssigkalorien und stark Verarbeitetes kurz. Hunger-Wellen und
-Ghrelin-Gewöhnung an Essenszeiten. Ess-Psychologie im Denkfallen-Tab: Knappheits-/
-Verbots-Effekt und bedingungslose Erlaubnis, versunkene Kosten („Teller leer"-
-Konditionierung), „What-the-hell"-Effekt und die Normalisierung der Signale nach
-Diät-Vergangenheit. Food Noise & Hormone: GLP-1/CCK/PYY als Sättigungs-Boten
-und ihre natürliche Förderung (Eiweiß, Ballaststoffe/kurzkettige Fettsäuren,
-langsames Essen, Volumen; GLP-1-Analoga als Beleg für die hormonelle Natur des
-Food Noise), reaktive Unterzuckerung nach schnellen Kohlenhydraten (Kombination,
-Reihenfolge Gemüse/Eiweiß zuerst, Bewegung nach dem Essen), chronisch erhöhtes
-Cortisol und Appetit (verlängertes Ausatmen, Tageslicht/Bewegung, Koffein-Timing)
-sowie das Minnesota-Hunger-Experiment (Essensgedanken als Versorgungs-Signal).
+Der Wissensbereich stützt sich durchgehend auf etablierte, gut belegte
+Physiologie und Ess-Psychologie; die Quellen sind pro Tab als „basiert
+auf"-Hinweise in den Studienlage-Karten genannt (keine erfundenen
+Einzelzahlen).
+
+- **Appetit-Regelkreis:** Ghrelin (Magen) als Hunger-Bote, integriert im
+  Hypothalamus über die gegenläufigen Nervenzell-Gruppen AgRP/NPY („iss")
+  und POMC („genug"); Leptin (Fettgewebe) als Langzeit-Speicherstand.
+  Pulsartige Ghrelin-Ausschüttung → Hunger-Wellen; cephalische
+  Konditionierung an Essenszeiten (u. a. Cummings et al., 2001).
+- **Sättigungskaskade:** gestaffelte Signale (Geschmack/Vagus →
+  Magendehnung → Darmhormone CCK, GLP-1, PYY) mit ~15–20-Minuten-Fenster,
+  integriert im Hirnstamm; langsames Essen senkt die Aufnahme;
+  Protein-Hebel-Hypothese (Simpson & Raubenheimer); satt werden vs. satt
+  bleiben (Eiweiß/Ballaststoffe/Volumen vs. Flüssigkalorien/Verarbeitetes).
+- **Homöostatisch vs. hedonisch:** Energie-Hunger vs. Belohnungs-Hunger
+  über das mesolimbische Dopaminsystem (Berridge & Kringelbach);
+  cephalische Reizantwort auf Anblick/Geruch; Apfel-Check als Heuristik;
+  „affect labeling" (Benennen beruhigt).
+- **Sensorspezifische Sättigung** (Rolls et al.): sinkender Belohnungswert
+  im orbitofrontalen Kortex, Geschmacks-Kipppunkt als frühes „genug".
+- **Störfaktoren:** Schlafmangel (Ghrelin ↑ / Leptin ↓, Spiegel et al.
+  2004, Taheri et al. 2004), Lutealphase (~100–300 kcal Mehrbedarf durch
+  Progesteron), Durst-Hunger-Überlappung im Hypothalamus, akuter vs.
+  chronischer Stress (Cortisol), Medikamente.
+- **Ess-Psychologie (Denkfallen):** Knappheits-/Verbots-Effekt und
+  bedingungslose Erlaubnis, versunkene Kosten, „What-the-hell"-Effekt aus
+  der Restraint-Theorie (Herman & Polivy), trainierbare Interozeption.
+- **Food Noise & Hormone:** GLP-1-Analoga (Semaglutid) als Beleg der
+  hormonellen Natur des Food Noise und Vorbild für natürliche Förderung
+  (Eiweiß, Ballaststoffe/kurzkettige Fettsäuren, langsames Essen, Volumen);
+  reaktive Unterzuckerung nach schnellen Kohlenhydraten (Kombination,
+  Reihenfolge Gemüse/Eiweiß zuerst, Bewegung nach dem Essen); Cortisol
+  senken (verlängertes Ausatmen, Tageslicht/Bewegung, Koffein-Timing);
+  Minnesota-Hunger-Experiment (Keys, 1944/45: Essensgedanken als
+  Versorgungs-Signal). Mit Einordnungshinweis, dass echte Störungen
+  (Diabetes, Schilddrüse, PCOS) ärztlich abzuklären sind.
 
 ## Struktur
 ```
