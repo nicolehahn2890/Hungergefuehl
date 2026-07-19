@@ -187,6 +187,18 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
 .irow+.irow{border-top:1px solid rgba(120,90,160,0.10)}
 .irow p{font-size:12.5px;line-height:1.6;color:var(--ink-soft);font-weight:300}
 .irow b{font-weight:500;color:var(--ink)}
+/* Wissen: Studien-/Wissenschaftskarte + Mechanismus-Kette */
+.sci{background:linear-gradient(180deg,rgba(85,207,214,0.10),rgba(232,120,189,0.06)),rgba(255,255,255,0.30);
+  border:1px solid rgba(255,255,255,0.6);border-left:2px solid var(--accent-2);border-radius:16px;padding:15px 16px}
+.sci .eyebrow{color:var(--accent-2);margin-bottom:8px}
+.sci-src{display:block;margin-top:9px;font-size:10.5px;color:var(--ink-mute);font-style:italic;line-height:1.5}
+.mech{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:2px 0 6px}
+.mech span{font-size:11px;font-weight:500;color:var(--ink);background:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.7);
+  border-radius:100px;padding:5px 11px;white-space:nowrap}
+.mech i{color:var(--accent);font-style:normal;font-weight:700}
+.kv{font-size:12.5px;line-height:1.7}
+.kv b{font-weight:500;color:var(--ink)}
+.deep{margin-top:10px;border-top:1px solid rgba(120,90,160,0.14);padding-top:12px}
 
 /* bottom nav */
 .nav{position:absolute;bottom:0;left:0;right:0;z-index:20;height:78px;display:flex;
@@ -587,20 +599,33 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
         </div>
         <div class="glass" style="padding:18px;margin-bottom:14px">
           <div class="eyebrow" style="margin-bottom:10px">So nutzt du den Verlauf</div>
+          <p class="kv sub">
+            <b>Bei ~3 starten:</b> Du bist hungrig genug, dass Essen gut schmeckt, aber ruhig genug, um langsam zu essen und die Sättigung zu spüren.<br>
+            <b>Nicht unter 2 rutschen:</b> Ab hier isst fast jeder zu schnell und zu viel — die Sättigung hat keine Chance, rechtzeitig anzukommen.<br>
+            <b>Der Test:</b> Echter, angenehmer Hunger kann 10–15 Minuten warten, ohne dass es dramatisch wird.</p>
+        </div>
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">Wie Hunger im Körper entsteht</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7;margin-bottom:12px">
+            Hunger ist keine Willenssache, sondern ein Regelkreis. Vereinfacht läuft er so:</p>
+          <div class="mech">
+            <span>Energie sinkt</span><i>→</i><span>Ghrelin ↑ (Magen)</span><i>→</i><span>Hypothalamus</span><i>→</i><span>Hunger bewusst</span>
+          </div>
           <p class="sub" style="font-size:12.5px;line-height:1.7">
-            <b style="font-weight:500;color:var(--ink)">Bei ~3 starten:</b> Du bist hungrig genug, dass Essen gut schmeckt, aber ruhig genug, um langsam zu essen und die Sättigung zu spüren.<br>
-            <b style="font-weight:500;color:var(--ink)">Nicht unter 2 rutschen:</b> Ab hier isst fast jeder zu schnell und zu viel — die Sättigung hat keine Chance, rechtzeitig anzukommen.<br>
-            <b style="font-weight:500;color:var(--ink)">Der Test:</b> Echter, angenehmer Hunger kann 10–15 Minuten warten, ohne dass es dramatisch wird.</p>
+            <b style="font-weight:500;color:var(--ink)">Ghrelin</b> wird im leeren Magen ausgeschüttet und steigt, je länger die letzte Mahlzeit her ist. Im <b style="font-weight:500;color:var(--ink)">Hypothalamus</b> (Steuerzentrale im Gehirn) treffen zwei Nervenzell-Gruppen aufeinander: die einen rufen „iss" (AgRP/NPY), die anderen „genug" (POMC). Ghrelin verstärkt die erste Gruppe — deshalb baut sich echter Hunger <em>langsam</em> auf und meldet sich in Stufen: zuerst leise (ein Gedanke), dann körperlich (Magen), dann drängend (Energieloch, Gereiztheit).<br><br>
+            Im Hintergrund sitzt <b style="font-weight:500;color:var(--ink)">Leptin</b>, das Hormon deiner Fettspeicher: Es meldet den Langzeit-Füllstand. Sind die Speicher niedrig (z. B. nach einer Diät), sinkt Leptin und der Hunger wird lauter — unabhängig von der einzelnen Mahlzeit.</p>
         </div>
         <div class="glass" style="padding:18px;margin-bottom:14px">
           <div class="eyebrow" style="margin-bottom:10px">Hunger kommt in Wellen</div>
           <p class="sub" style="font-size:12.5px;line-height:1.7">
-            Hunger steigt nicht einfach immer weiter — er kommt als <b style="font-weight:500;color:var(--ink)">Welle</b>: Er baut sich auf, erreicht einen Gipfel und <em>ebbt nach 20–30 Minuten auch ohne Essen wieder ab</em>. Wenn es gerade nicht passt, kannst du eine Welle also entspannt vorbeiziehen lassen — sie kommt wieder, und du verpasst nichts.<br><br>
-            Und: Ghrelin ist auf deine <b style="font-weight:500;color:var(--ink)">gewohnten Essenszeiten trainiert</b>. Der „12-Uhr-Hunger" ist teils echte Gewohnheit deines Hormonsystems — isst du einige Tage anders, verschiebt sich das Signal von selbst. Hunger zur gewohnten Zeit ist deshalb echt, aber verhandelbar.</p>
+            Ghrelin wird <b style="font-weight:500;color:var(--ink)">pulsartig</b> ausgeschüttet, nicht als stetig steigende Linie. Deshalb kommt Hunger als <b style="font-weight:500;color:var(--ink)">Welle</b>: Er baut sich auf, erreicht einen Gipfel und <em>ebbt nach etwa 20–30 Minuten auch ohne Essen wieder ab</em> — der Körper schaltet dann vorübergehend auf gespeicherte Energie um. Wenn es gerade nicht passt, kannst du eine Welle also entspannt vorbeiziehen lassen; sie kommt wieder, und du verpasst nichts.<br><br>
+            Zusätzlich ist Ghrelin auf deine <b style="font-weight:500;color:var(--ink)">gewohnten Essenszeiten konditioniert</b> (ein erlernter Reflex, „cephalische Phase"). Der „12-Uhr-Hunger" ist teils echte Gewohnheit deines Hormonsystems — isst du einige Tage verschoben, wandert das Signal mit. Hunger zur gewohnten Zeit ist deshalb echt, aber verhandelbar.</p>
         </div>
-        <div class="glass" style="padding:18px">
-          <div class="eyebrow" style="margin-bottom:10px">Die Wissenschaft dahinter</div>
-          <p class="sub" style="font-size:12.5px;line-height:1.7">Körperlicher Hunger wird vom Hormon <b style="font-weight:500;color:var(--ink)">Ghrelin</b> aus dem Magen gesteuert. Es steigt allmählich an, wenn die Energiespeicher sinken — deshalb baut sich echter Hunger <em>langsam</em> auf und meldet sich zuerst leise (ein Gedanke), dann körperlich (Magen), dann drängend (Energieloch, Gereiztheit).</p>
+        <div class="sci">
+          <div class="eyebrow">Die Studienlage</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            Dass Ghrelin <em>vor</em> den gewohnten Mahlzeiten ansteigt und nach dem Essen abfällt, ist in kontrollierten Studien gut belegt — der Anstieg folgt dem Essrhythmus, nicht nur dem tatsächlichen Energiemangel. Das ist der messbare Beleg dafür, dass „es ist Zeit"-Hunger und „ich brauche wirklich Energie"-Hunger sich überlagern.
+            <span class="sci-src">Basiert auf der etablierten Ghrelin-/Leptin-Forschung (u. a. Cummings et al., 2001) und dem hypothalamischen AgRP/POMC-Modell der Appetitregulation.</span></p>
         </div>
       </div>
 
@@ -613,23 +638,39 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
         </div>
         <div class="glass" style="padding:18px;margin-bottom:14px">
           <div class="eyebrow" style="margin-bottom:10px">Den letzten Bissen finden (~7)</div>
-          <p class="sub" style="font-size:12.5px;line-height:1.7">
+          <p class="kv sub">
             So fühlt sich der richtige Stopp an:<br>
-            <b style="font-weight:500;color:var(--ink)">Leicht &amp; zufrieden</b> — kein Leere-Gefühl mehr, aber auch keine Schwere.<br>
-            <b style="font-weight:500;color:var(--ink)">Der Drang ist weg</b> — du <em>könntest</em> weiteressen, aber du <em>musst</em> nicht.<br>
-            <b style="font-weight:500;color:var(--ink)">Die 20-Minuten-Frage:</b> „Werde ich in 20 Minuten froh sein, hier gestoppt zu haben?" Wenn ja, war das der letzte Bissen.</p>
+            <b>Leicht &amp; zufrieden</b> — kein Leere-Gefühl mehr, aber auch keine Schwere.<br>
+            <b>Der Drang ist weg</b> — du <em>könntest</em> weiteressen, aber du <em>musst</em> nicht.<br>
+            <b>Die 20-Minuten-Frage:</b> „Werde ich in 20 Minuten froh sein, hier gestoppt zu haben?" Wenn ja, war das der letzte Bissen.</p>
         </div>
-        <div class="glass" style="padding:18px;margin-bottom:14px">
-          <div class="eyebrow" style="margin-bottom:10px">Warum manche Mahlzeiten länger satt machen</div>
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">Wie Sättigung entsteht — in Stufen</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7;margin-bottom:12px">
+            Sättigung ist kein einzelner Schalter, sondern eine Kette von Signalen, die nacheinander eintreffen:</p>
+          <div class="mech">
+            <span>Kauen &amp; Geschmack</span><i>→</i><span>Magen dehnt sich</span><i>→</i><span>Darmhormone</span><i>→</i><span>„genug" im Gehirn</span>
+          </div>
+          <p class="kv sub">
+            <b>Sofort:</b> Kauen und Geschmack melden über den Vagusnerv die erste Rückmeldung ans Gehirn — deshalb wirkt der Geschmacks-Kipppunkt so früh (eigener Tab).<br>
+            <b>Nach Minuten:</b> Dehnungsrezeptoren in der Magenwand registrieren das Volumen.<br>
+            <b>Nach 15–20 Min:</b> Die Darmhormone <b>CCK</b> (Zwölffingerdarm), <b>GLP-1</b> und <b>PYY</b> (unterer Dünndarm) erreichen ihren Höhepunkt und melden verlässlich „satt". Diese Verzögerung ist der Grund, warum schnelles Essen das eigene Signal überholt.</p>
+        </div>
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">Satt werden ≠ satt bleiben</div>
           <p class="sub" style="font-size:12.5px;line-height:1.7">
-            Es gibt zwei Arten von Sättigung: <b style="font-weight:500;color:var(--ink)">satt werden</b> beim Essen (dein Stopp-Signal) und <b style="font-weight:500;color:var(--ink)">satt bleiben</b> danach. Die zweite hängt stark davon ab, <em>was</em> du gegessen hast:<br>
-            <b style="font-weight:500;color:var(--ink)">Lange satt:</b> Eiweiß (am stärksten), Ballaststoffe und Volumen — Gemüse, Hülsenfrüchte, Vollkorn, Kartoffeln, Joghurt, Eier.<br>
-            <b style="font-weight:500;color:var(--ink)">Kurz satt:</b> Flüssigkalorien (Säfte, Limo — der Körper registriert sie kaum) und stark Verarbeitetes ohne Volumen (Gebäck, Süßes, Chips).<br><br>
+            Es gibt zwei getrennte Fähigkeiten: <b style="font-weight:500;color:var(--ink)">satt werden</b> beim Essen (dein Stopp-Signal) und <b style="font-weight:500;color:var(--ink)">satt bleiben</b> danach. Die zweite hängt stark davon ab, <em>was</em> auf dem Teller lag:</p>
+          <p class="kv sub" style="margin-top:10px">
+            <b>Lange satt:</b> Eiweiß (am stärksten), Ballaststoffe und Volumen — Gemüse, Hülsenfrüchte, Vollkorn, Kartoffeln, Joghurt, Eier. Eiweiß löst die stärkste Darmhormon-Antwort aus und braucht lange in der Verdauung.<br>
+            <b>Kurz satt:</b> Flüssigkalorien (Säfte, Limo — der Körper registriert sie kaum, weil Kauen und Volumen fehlen) und stark Verarbeitetes ohne Ballaststoffe (Gebäck, Süßes, Chips).</p>
+          <p class="sub" style="font-size:12.5px;line-height:1.7;margin-top:12px">
             <b style="font-weight:500;color:var(--ink)">Wichtig fürs Vertrauen:</b> Zwei Stunden nach einem Croissant wieder Hunger zu haben ist <em>kein Fehler deiner Wahrnehmung</em> — die Mahlzeit hält schlicht kürzer vor. Deine Skala stimmt.</p>
         </div>
-        <div class="glass" style="padding:18px">
-          <div class="eyebrow" style="margin-bottom:10px">Die Wissenschaft dahinter</div>
-          <p class="sub" style="font-size:12.5px;line-height:1.7">Sättigung entsteht mehrstufig: Dehnungsrezeptoren im Magen plus die Darmhormone <b style="font-weight:500;color:var(--ink)">CCK und PYY</b> melden „genug" ans Gehirn — aber das dauert <b style="font-weight:500;color:var(--ink)">15–20 Minuten</b>. Wer schnell isst, überholt sein eigenes Sättigungssignal. Langsames Essen senkt die Aufnahme pro Mahlzeit um 10–15&nbsp;% — nicht durch Verzicht, sondern weil das Signal rechtzeitig ankommt.</p>
+        <div class="sci">
+          <div class="eyebrow">Die Studienlage</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            In Studien nehmen Menschen, die <b style="font-weight:500;color:var(--ink)">langsam essen</b>, pro Mahlzeit spürbar weniger auf und fühlen sich trotzdem gleich satt — weil das 15–20-Minuten-Signal ankommt, bevor zu viel im Magen ist. Und die <b style="font-weight:500;color:var(--ink)">Protein-Hebel-Hypothese</b> (Simpson &amp; Raubenheimer) beschreibt, warum eiweißarme, stark verarbeitete Kost zum Weiteressen verleitet: Der Körper isst weiter, bis sein Eiweißbedarf gedeckt ist.
+            <span class="sci-src">Sättigungskaskade nach Blundell; sensorische und gastrointestinale Signale integriert im Hirnstamm (Nucleus tractus solitarius).</span></p>
         </div>
       </div>
 
@@ -647,19 +688,36 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
             <tr><td>Danach</td><td>zufrieden</td><td>oft Schuld</td></tr>
           </table>
         </div>
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">Zwei Systeme, zwei Aufgaben</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            Dahinter stecken zwei Steuerungen, die parallel laufen:</p>
+          <p class="kv sub" style="margin-top:10px">
+            <b>Der homöostatische Hunger</b> („Bauch") füllt Energie auf. Er sitzt im Hypothalamus, wird von Ghrelin, Leptin und Blutzucker gesteuert und <em>endet bei Sättigung</em>.<br>
+            <b>Der hedonische Hunger</b> („Kopf") jagt Belohnung, nicht Energie. Er läuft über das Dopamin-Belohnungssystem und wird von Reizen, Emotionen und Gewohnheit ausgelöst — er kennt kein natürliches „genug".</p>
+          <p class="sub" style="font-size:12.5px;line-height:1.7;margin-top:12px">
+            Beide sind normal und beide dürfen sein. Es geht nie ums Verbieten, sondern darum, sie <em>auseinanderhalten</em> zu können — denn nur der Bauch-Hunger schaltet sich über deine Sättigungsskala von selbst ab.</p>
+        </div>
         <div class="glass" style="padding:18px;margin-bottom:14px">
           <div class="eyebrow" style="margin-bottom:10px">Der Apfel-Check</div>
           <p class="serif" style="font-style:italic;font-size:17px;margin-bottom:10px;color:var(--ink)">„Hätte ich jetzt auch Lust auf einen Apfel — oder etwas ganz Einfaches?"</p>
-          <p class="sub" style="font-size:12.5px;line-height:1.7">
-            <b style="font-weight:500;color:var(--ink)">Ja</b> → sehr wahrscheinlich körperlicher Hunger. Der Körper will Energie, kein bestimmtes Erlebnis.<br>
-            <b style="font-weight:500;color:var(--ink)">Nein, es muss die Pizza sein</b> → eher Appetit oder Kopf-Hunger.<br><br>
+          <p class="kv sub">
+            <b>Ja</b> → sehr wahrscheinlich Bauch-Hunger. Der Körper will Energie, kein bestimmtes Erlebnis.<br>
+            <b>Nein, es muss die Pizza sein</b> → eher Appetit oder Kopf-Hunger. Ein Verlangen nach genau einem Lebensmittel ist ein Kennzeichen des Belohnungssystems, nicht des Energiebedarfs.</p>
+          <p class="sub" style="font-size:12.5px;line-height:1.7;margin-top:12px">
             Wichtig: Der Apfel-Check ist ein <em>Hinweisgeber, kein Richter</em>. „Nur Pizza" heißt nicht verboten — Genuss ist legitim. Es geht nur ums <em>Unterscheiden</em>. Auch Schlafmangel, Stress oder Medikamente können die Signale verschieben.</p>
         </div>
-        <div class="glass" style="padding:18px">
+        <div class="glass" style="padding:18px;margin-bottom:14px">
           <div class="eyebrow" style="margin-bottom:10px">Wenn es Kopf-Hunger ist</div>
           <p class="sub" style="font-size:12.5px;line-height:1.7">
             <b style="font-weight:500;color:var(--ink)">Typische Auslöser:</b> Stress, Langeweile, Traurigkeit, Gewohnheit („es ist halt 15 Uhr"), Anblick oder Geruch von Essen, andere essen gerade.<br><br>
-            <b style="font-weight:500;color:var(--ink)">Was hilft:</b> Kurz innehalten und das Gefühl benennen („Ich bin gerade gestresst"). Oft reicht das schon. Wenn du trotzdem isst — iss <em>bewusst und ohne Schuld</em>, und beobachte, wann der erste Genuss nachlässt. Kopf-Hunger hört bei Sättigung nicht von selbst auf; das Erkennen ist dein Stopp-Signal.</p>
+            <b style="font-weight:500;color:var(--ink)">Was hilft:</b> Kurz innehalten und das Gefühl benennen („Ich bin gerade gestresst"). Allein das Benennen nimmt dem Impuls oft die Schärfe (in der Forschung „affect labeling" — Benennen beruhigt die Reaktion). Wenn du trotzdem isst — iss <em>bewusst und ohne Schuld</em>, und beobachte, wann der erste Genuss nachlässt. Kopf-Hunger hört bei Sättigung nicht von selbst auf; das bewusste Erkennen ist hier dein Stopp-Signal.</p>
+        </div>
+        <div class="sci">
+          <div class="eyebrow">Die Studienlage</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            Schon der bloße <b style="font-weight:500;color:var(--ink)">Anblick oder Geruch</b> von appetitlichem Essen lässt Dopamin im Belohnungssystem ansteigen und löst eine „cephalische" Insulin- und Speichel-Antwort aus — der Körper reagiert, obwohl kein Energiemangel besteht. Genau deshalb kann Kopf-Hunger sich so „echt" anfühlen. <b style="font-weight:500;color:var(--ink)">Hyperschmackhafte</b> Speisen (viel Zucker + Fett + Salz zugleich) treffen dieses System besonders stark — das liegt am Essen, nicht an deiner Selbstkontrolle.
+            <span class="sci-src">Homöostatisches vs. hedonisches Essverhalten; mesolimbisches Dopaminsystem (u. a. Berridge &amp; Kringelbach).</span></p>
         </div>
       </div>
 
@@ -677,14 +735,21 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
         </div>
         <div class="glass" style="padding:18px;margin-bottom:14px">
           <div class="eyebrow" style="margin-bottom:10px">So übst du es</div>
-          <p class="sub" style="font-size:12.5px;line-height:1.7">
-            <b style="font-weight:500;color:var(--ink)">1. Der erste Bissen:</b> Iss ihn ganz bewusst — er ist dein Referenzpunkt für „intensiv".<br>
-            <b style="font-weight:500;color:var(--ink)">2. Der Mitte-Check:</b> Frag dich nach der Hälfte einmal: „Schmeckt es noch so gut wie am Anfang?"<br>
-            <b style="font-weight:500;color:var(--ink)">3. Ohne Ablenkung:</b> Ohne Bildschirm schmeckst du den Kipppunkt deutlich früher — Ablenkung überdeckt genau dieses Signal.</p>
+          <p class="kv sub">
+            <b>1. Der erste Bissen:</b> Iss ihn ganz bewusst — er ist dein Referenzpunkt für „intensiv".<br>
+            <b>2. Der Mitte-Check:</b> Frag dich nach der Hälfte einmal: „Schmeckt es noch so gut wie am Anfang?"<br>
+            <b>3. Ohne Ablenkung:</b> Ohne Bildschirm schmeckst du den Kipppunkt deutlich früher — Ablenkung überdeckt genau dieses Signal.</p>
         </div>
-        <div class="glass" style="padding:18px">
-          <div class="eyebrow" style="margin-bottom:10px">Die Wissenschaft dahinter</div>
-          <p class="sub" style="font-size:12.5px;line-height:1.7">Das Phänomen heißt <b style="font-weight:500;color:var(--ink)">sensorspezifische Sättigung</b>: Die Lust auf genau das, was du gerade isst, sinkt messbar mit jedem Bissen — nachweisbar im orbitofrontalen Kortex, lange bevor der Magen „voll" meldet. In Studien war der häufigste Grund, einen Gang zu beenden, nicht „ich bin satt", sondern <em>„ich hatte genug von diesem Geschmack"</em> (40&nbsp;%).</p>
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">Warum ein Dessert trotzdem „reingeht"</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            Kennst du das: pappsatt, aber der Nachtisch schmeckt wieder herrlich? Das ist kein Widerspruch, sondern derselbe Mechanismus. Die Sättigung ist <b style="font-weight:500;color:var(--ink)">sinnesspezifisch</b> — sie betrifft nur den Geschmack, den du gerade hattest (herzhaft), nicht einen neuen (süß). Deshalb ist Abwechslung auf dem Teller ein leiser Antrieb, mehr zu essen: Jede neue Komponente startet den Genuss neu. Für dich heißt das nicht „meiden", sondern nur: Ein wiederkehrender Appetit auf etwas <em>anderes</em> ist oft Neugier, nicht Energiebedarf.</p>
+        </div>
+        <div class="sci">
+          <div class="eyebrow">Die Studienlage</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            Das Phänomen heißt <b style="font-weight:500;color:var(--ink)">sensorspezifische Sättigung</b>, umfassend erforscht von <b style="font-weight:500;color:var(--ink)">Barbara Rolls</b>. Die Lust auf genau das, was du gerade isst, sinkt messbar mit jedem Bissen — der <b style="font-weight:500;color:var(--ink)">orbitofrontale Kortex</b> (die Genuss-Bewertung im Gehirn) feuert für dieselbe Speise schwächer, lange bevor der Magen „voll" meldet. Angeboten wird dann mehr gegessen, je größer die Geschmacksvielfalt ist. Der Kipppunkt „schmeckt nur noch neutral" ist also ein <em>neuronal messbares</em> Sättigungssignal, keine Einbildung.
+            <span class="sci-src">Sensory-specific satiety (Rolls et al.); Belohnungskodierung im orbitofrontalen Kortex.</span></p>
         </div>
       </div>
 
@@ -700,26 +765,32 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
         <div class="glass" style="padding:20px 18px;margin-bottom:14px">
           <div class="eyebrow" style="margin-bottom:10px">Schlafmangel</div>
           <p class="sub" style="font-size:12.5px;line-height:1.7">
-            Schon <b style="font-weight:500;color:var(--ink)">eine kurze Nacht</b> erhöht messbar das Hungerhormon Ghrelin und senkt das Sättigungshormon Leptin. Du bist dann <em>wirklich</em> hungriger — obwohl dein Körper nicht mehr Energie braucht.<br>
+            Schon <b style="font-weight:500;color:var(--ink)">eine kurze Nacht</b> erhöht messbar das Hungerhormon Ghrelin und senkt das Sättigungshormon Leptin. Der Appetit steigt — besonders auf Kalorienreiches — obwohl der Körper nicht mehr Energie braucht. Zusätzlich reagiert das Belohnungssystem übermüdet stärker auf Essensreize.<br>
             <b style="font-weight:500;color:var(--ink)">Praktisch:</b> Nach schlechten Nächten den Hunger etwas skeptischer lesen, bewusst nahrhaft essen — und es als Schlaf-Thema behandeln, nicht als Essens-Thema.</p>
         </div>
         <div class="glass" style="padding:20px 18px;margin-bottom:14px">
           <div class="eyebrow" style="margin-bottom:10px">Zyklus</div>
           <p class="sub" style="font-size:12.5px;line-height:1.7">
-            In der <b style="font-weight:500;color:var(--ink)">zweiten Zyklushälfte</b> (nach dem Eisprung, vor der Periode) steigen Energiebedarf und Appetit messbar an — der Körper verbraucht in dieser Phase tatsächlich mehr.<br>
+            In der <b style="font-weight:500;color:var(--ink)">zweiten Zyklushälfte</b> (Lutealphase, nach dem Eisprung bis zur Periode) hebt Progesteron den Grundumsatz an — der Körper verbraucht in dieser Phase real etwa <b style="font-weight:500;color:var(--ink)">100–300&nbsp;kcal mehr</b> pro Tag. Mehr Hunger und Gelüste sind hier also biologisch begründet. Rund um die Menstruation kann Wassereinlagerung außerdem das Völlegefühl verschieben.<br>
             <b style="font-weight:500;color:var(--ink)">Praktisch:</b> Mehr Hunger in diesen Tagen ist <em>Biologie, kein Kontrollverlust</em>. Ihm zu folgen ist genau das, was intuitives Essen bedeutet.</p>
         </div>
         <div class="glass" style="padding:20px 18px;margin-bottom:14px">
           <div class="eyebrow" style="margin-bottom:10px">Durst</div>
           <p class="sub" style="font-size:12.5px;line-height:1.7">
-            Durst wird häufig als <b style="font-weight:500;color:var(--ink)">diffuser Hunger fehlgedeutet</b> — beide melden sich ähnlich vage.<br>
-            <b style="font-weight:500;color:var(--ink)">Praktisch:</b> Bei unklarem Hunger (kein klares Magengefühl, Wert um 4–5) erst ein Glas Wasser, 10 Minuten warten. Echter Hunger bleibt — Durst verschwindet.</p>
+            Hunger und Durst werden im selben Bereich des Hypothalamus verarbeitet und überlappen sich — Durst wird deshalb häufig als <b style="font-weight:500;color:var(--ink)">diffuser Hunger fehlgedeutet</b>. Beide melden sich ähnlich vage.<br>
+            <b style="font-weight:500;color:var(--ink)">Praktisch:</b> Bei unklarem Hunger (kein klares Magengefühl, Wert um 4–5) erst ein Glas Wasser, 10 Minuten warten. Echter Hunger bleibt — Durst verschwindet. Genau dafür gibt es im Zwischendurch-Check die Antwort „erst ein Glas Wasser".</p>
         </div>
-        <div class="glass" style="padding:20px 18px">
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
           <div class="eyebrow" style="margin-bottom:10px">Stress &amp; Medikamente</div>
           <p class="sub" style="font-size:12.5px;line-height:1.7">
-            <b style="font-weight:500;color:var(--ink)">Akuter Stress</b> schaltet den Hunger oft ab (Kampf-oder-Flucht), <b style="font-weight:500;color:var(--ink)">chronischer Stress</b> (Cortisol) treibt den Appetit — typisch auf süß und fettig. Das ist die Brücke zum Kopf-Hunger: erst benennen, dann entscheiden.<br>
-            Auch <b style="font-weight:500;color:var(--ink)">Medikamente</b> (z. B. manche Antidepressiva, Kortison, hormonelle Verhütung) können Hunger und Sättigung spürbar verschieben — falls sich etwas plötzlich ändert, lohnt der Blick auf diese Ebene.</p>
+            <b style="font-weight:500;color:var(--ink)">Akuter Stress</b> schaltet den Hunger oft ab (Kampf-oder-Flucht, Adrenalin), <b style="font-weight:500;color:var(--ink)">chronischer Stress</b> hält Cortisol hoch und treibt den Appetit — typisch auf süß und fettig, weil der Körper schnell verfügbare Energie sucht. Das ist die Brücke zum Kopf-Hunger: erst benennen, dann entscheiden (mehr dazu im Hormone-Tab, Abschnitt Cortisol).<br>
+            Auch <b style="font-weight:500;color:var(--ink)">Medikamente</b> (z. B. manche Antidepressiva, Kortison, hormonelle Verhütung, Antihistaminika) können Hunger und Sättigung spürbar verschieben — falls sich etwas plötzlich ändert, lohnt der Blick auf diese Ebene, gern ärztlich begleitet.</p>
+        </div>
+        <div class="sci">
+          <div class="eyebrow">Die Studienlage</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            Kontrollierte Schlaflabor-Studien zeigen übereinstimmend: Wer nur wenige Nächte verkürzt schläft, hat <b style="font-weight:500;color:var(--ink)">höheres Ghrelin, niedrigeres Leptin und mehr Appetit</b> — der Effekt ist keine Einbildung, sondern messbar im Blut. Das ist der Kern-Beleg des ganzen Tabs: An solchen Tagen misst dein Gespür richtig, nur die zugrunde liegenden Hormone sind verschoben.
+            <span class="sci-src">Schlaf-Appetit-Zusammenhang u. a. Spiegel et al. (2004) und Taheri et al. (2004); Lutealphase-Thermogenese aus der Zyklusforschung.</span></p>
         </div>
       </div>
 
@@ -731,7 +802,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
             Du darfst <span style="font-style:italic">jederzeit</span> wieder essen.</p>
           <p class="sub" style="font-size:12.5px;line-height:1.7">
             Es gibt keine Regel, die zählt, außer deinem Hunger — <b style="font-weight:500;color:var(--ink)">dein Körper ist der Zeitplan</b>, nicht die Uhr. Bei ~7 aufzuhören ist deshalb kein Verzicht: Es geht nichts verloren. Wenn du um 16:30 wieder hungrig bist, isst du um 16:30. Punkt.<br><br>
-            Stopfen entsteht fast immer aus einem <b style="font-weight:500;color:var(--ink)">Knappheits-Gefühl</b>: „jetzt oder nie", „gleich ist es weg", „später darf ich nicht mehr". Die Forschung zeigt: Genau dieses Gefühl von Verbot und Knappheit macht Essen übermäßig anziehend — und es verschwindet, sobald du dir <em>glaubhaft</em> erlaubst, jederzeit wieder zu essen (im Intuitive Eating heißt das „bedingungslose Erlaubnis").<br><br>
+            Stopfen entsteht fast immer aus einem <b style="font-weight:500;color:var(--ink)">Knappheits-Gefühl</b>: „jetzt oder nie", „gleich ist es weg", „später darf ich nicht mehr". Die Forschung zeigt: Genau dieses Gefühl von Verbot und Knappheit macht Essen übermäßig anziehend — verbotene Lebensmittel gewinnen an Belohnungswert, gerade <em>weil</em> sie verboten sind. Es verschwindet, sobald du dir <em>glaubhaft</em> erlaubst, jederzeit wieder zu essen (im Intuitive Eating heißt das „bedingungslose Erlaubnis").<br><br>
             <b style="font-weight:500;color:var(--ink)">Der Satz für den Moment:</b> <em>„Ich kann wieder essen, sobald ich hungrig bin — auch schon in einer Stunde."</em> Mit diesem Satz ist der letzte Bissen leicht.</p>
         </div>
         <div class="glass" style="padding:20px 18px;margin-bottom:14px">
@@ -760,6 +831,14 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
             Interozeption — das Spüren der eigenen Körpersignale — ist trainierbar wie ein Muskel. Aber genau wie ein Muskel wächst sie langsam. Die ersten ein, zwei Wochen fühlen sich oft holprig an: mal keinen Hunger erkennen, mal die Sättigung verpassen. <b style="font-weight:500;color:var(--ink)">Das ist der normale Anfang, kein Scheitern.</b><br><br>
             Und wenn du eine <b style="font-weight:500;color:var(--ink)">Diät-Vergangenheit</b> hast: Nach Jahren von Regeln und Restriktion sind Hunger- und Sättigungssignale oft gedämpft oder überschießend — anfangs kann der Hunger „zu groß" wirken oder die Sättigung fast stumm sein. Beides <em>normalisiert sich mit regelmäßigem Essen</em>. Der Körper lernt wieder, dass er sich melden darf, weil er verlässlich versorgt wird.<br><br>
             <b style="font-weight:500;color:var(--ink)">Der Maßstab ist nicht Perfektion,</b> sondern: Bemerkst du heute mehr als vor zwei Wochen? Genau dafür ist die Muster-Seite da.</p>
+        </div>
+        <div class="sci" style="margin-top:14px">
+          <div class="eyebrow">Die Studienlage</div>
+          <p class="kv sub">
+            <b>„Was-soll's"-Effekt:</b> In der Restraint-Forschung (Herman &amp; Polivy) essen Menschen, die sich stark beim Essen kontrollieren, nach einem vermeintlichen „Regelbruch" <em>mehr</em> als Ungezügelte — der Bruch selbst löst das Überessen aus, nicht der Hunger.<br>
+            <b>Versunkene Kosten:</b> Der Reflex „das muss ich aufessen" ist ein klassischer Denkfehler — bereits Ausgegebenes lässt sich durch Weitermachen nicht zurückholen.<br>
+            <b>Interozeption ist trainierbar:</b> Die Wahrnehmung innerer Körpersignale lässt sich mit Übung nachweislich verbessern — genau das tust du mit jedem Check-in.
+            <span class="sci-src">Restraint-Theorie (Herman &amp; Polivy); Sunk-Cost-Effekt (Verhaltensökonomie); Interozeptions-Training in der Achtsamkeitsforschung.</span></p>
         </div>
       </div>
 
@@ -793,11 +872,12 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
             <b style="font-weight:500;color:var(--ink)">6 · Reize aufräumen:</b> Snacks aus dem Sichtfeld, Essens-Content entfolgen — jeder Reiz weniger ist eine Schleife weniger.<br>
             <b style="font-weight:500;color:var(--ink)">7 · Gedanken-Wellen ziehen lassen:</b> Ein Essensgedanke ist ein Ereignis, kein Befehl. Wie Hunger-Wellen ebben auch Gedanken-Wellen nach wenigen Minuten ab — der Zwischendurch-Check ist genau dafür da: bemerken, notieren, weiterziehen lassen.</p>
         </div>
-        <div class="glass" style="padding:18px">
-          <div class="eyebrow" style="margin-bottom:10px">Die Wissenschaft dahinter</div>
+        <div class="sci">
+          <div class="eyebrow">Die Studienlage</div>
           <p class="sub" style="font-size:12.5px;line-height:1.7">
-            Dass die GLP-1-Abnehmspritzen bei vielen das Food Noise fast zum Verstummen bringen, zeigt: Das Rauschen ist <b style="font-weight:500;color:var(--ink)">stark hormonell</b> — keine Willensfrage. Dieselben Signalwege lassen sich in kleinerem Maßstab natürlich beeinflussen (Eiweiß, Ballaststoffe, langsames Essen, Schlaf).<br><br>
-            Und aus der anderen Richtung: Im berühmten <b style="font-weight:500;color:var(--ink)">Minnesota-Hunger-Experiment</b> begannen unterversorgte Teilnehmer zwanghaft ans Essen zu denken, Rezepte zu sammeln, von Mahlzeiten zu träumen. Ständige Essensgedanken sind oft ein <em>Versorgungs-Signal</em> — die Antwort ist dann mehr Verlässlichkeit beim Essen, nicht mehr Kontrolle.</p>
+            Der Begriff „Food Noise" wurde bekannt, als Menschen unter <b style="font-weight:500;color:var(--ink)">GLP-1-Medikamenten</b> (Semaglutid &amp; Co.) berichteten, die ständigen Essensgedanken seien plötzlich verstummt. Das ist der stärkste Hinweis, dass das Rauschen <b style="font-weight:500;color:var(--ink)">stark hormonell</b> ist — keine Willensfrage. Dieselben Signalwege lassen sich in kleinerem Maßstab natürlich anstoßen (Eiweiß, Ballaststoffe, langsames Essen, Schlaf).<br><br>
+            Aus der anderen Richtung zeigt das <b style="font-weight:500;color:var(--ink)">Minnesota-Hunger-Experiment</b> (Ancel Keys, 1944/45): Unterversorgte Teilnehmer entwickelten eine zwanghafte Beschäftigung mit Essen — Rezepte sammeln, von Mahlzeiten träumen, endloses Reden übers Essen. Ständige Essensgedanken sind oft ein <em>Versorgungs-Signal</em>. Die Antwort ist dann mehr Verlässlichkeit beim Essen, nicht mehr Kontrolle.
+            <span class="sci-src">GLP-1-Wirkung auf Appetit und „food cravings"; Minnesota Starvation Experiment (Keys et al.).</span></p>
         </div>
       </div>
 
@@ -807,12 +887,14 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
           <div class="row" style="gap:10px;margin-bottom:12px"><div class="bead" style="--c:var(--accent-2);width:26px;height:26px"></div><div class="eyebrow">Deine Hormon-Landkarte</div></div>
           <p class="serif" style="font-size:19px;line-height:1.4;margin-bottom:12px;color:var(--ink)">
             Deine Skala übersetzt, was diese <span style="font-style:italic">Boten</span> melden.</p>
-          <p class="sub" style="font-size:12.5px;line-height:1.7">
-            <b style="font-weight:500;color:var(--ink)">Ghrelin</b> — der Hunger-Bote (Magen). Steigt, wenn Energie fehlt, und ist auf deine Essenszeiten trainiert.<br>
-            <b style="font-weight:500;color:var(--ink)">GLP-1, CCK &amp; PYY</b> — die Sättigungs-Boten (Darm). Melden „genug", brauchen aber 15–20 Minuten.<br>
-            <b style="font-weight:500;color:var(--ink)">Leptin</b> — der Langzeit-Speicherstand (Fettgewebe). Sinkt bei Schlafmangel und Crash-Diäten → mehr Hunger.<br>
-            <b style="font-weight:500;color:var(--ink)">Insulin</b> — der Blutzucker-Manager (Bauchspeicheldrüse).<br>
-            <b style="font-weight:500;color:var(--ink)">Cortisol</b> — das Stresshormon (Nebenniere).<br><br>
+          <p class="kv sub">
+            <b>Ghrelin</b> — der Hunger-Bote (Magen). Steigt, wenn Energie fehlt, und ist auf deine Essenszeiten trainiert.<br>
+            <b>GLP-1, CCK &amp; PYY</b> — die Sättigungs-Boten (Darm). Melden „genug", brauchen aber 15–20 Minuten.<br>
+            <b>Leptin</b> — der Langzeit-Speicherstand (Fettgewebe). Sinkt bei Schlafmangel und Crash-Diäten → mehr Hunger.<br>
+            <b>Insulin</b> — der Blutzucker-Manager (Bauchspeicheldrüse). Räumt Zucker aus dem Blut in die Zellen.<br>
+            <b>Cortisol</b> — das Stresshormon (Nebenniere). Treibt bei Dauerstress den Appetit.<br>
+            <b>Dopamin</b> — kein Hormon, aber der Belohnungs-Bote: verantwortlich für „Lust auf", nicht für „brauche".</p>
+          <p class="sub" style="font-size:12.5px;line-height:1.7;margin-top:12px">
             Keines davon musst du kontrollieren — aber zu wissen, wer gerade „spricht", macht die Signale lesbarer.</p>
         </div>
         <div class="glass" style="padding:20px 18px;margin-bottom:14px">
@@ -842,6 +924,11 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
             <b style="font-weight:500;color:var(--ink)">Echte Pausen</b> — kurz ohne Bildschirm, eine Feierabend-Grenze, die hält.<br>
             <b style="font-weight:500;color:var(--ink)">Kaffee zum Frühstück statt auf leeren Magen</b> — Koffein hebt Cortisol zusätzlich an.<br><br>
             Und wenn du merkst, dass du aus Stress isst: erst benennen, dann entscheiden — ganz ohne Schuld (siehe Bauch oder Kopf).</p>
+        </div>
+        <div class="sci" style="margin-top:14px">
+          <div class="eyebrow">Gut zu wissen</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            Hormone sind <b style="font-weight:500;color:var(--ink)">Stellschrauben, keine Schalter</b> — du beeinflusst sie über Essen, Schlaf, Bewegung und Stress, musst sie aber nie „im Griff haben". Und ein wichtiger Hinweis zur Einordnung: <b style="font-weight:500;color:var(--ink)">Insulin macht nicht per se dick</b>, und ein „perfekter" Blutzucker ist bei Gesunden kein Ziel dieser App. Es geht hier nur darum, die <em>Achterbahn</em> zu vermeiden, die deinen Hunger unruhig und deine Skala schwer lesbar macht. Bei Verdacht auf eine echte Störung (Diabetes, Schilddrüse, PCOS) gehört das ärztlich abgeklärt — nicht über eine Achtsamkeits-App.</p>
         </div>
       </div>
     </section>

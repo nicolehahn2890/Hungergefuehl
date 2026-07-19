@@ -69,7 +69,10 @@ gar nicht mehr zu brauchen.
   nichts genau passt.
 - **Wissen** ist in acht Themen-Tabs gegliedert (Hunger · Sättigung · Bauch
   oder Kopf · Geschmack · Störfaktoren · Denkfallen · Food Noise ·
-  Hormone) — jedes Thema mit
+  Hormone). Jedes Thema folgt derselben Dramaturgie: Kernaussage →
+  Mechanismus/Biologie (teils als kompakte Signal-Kette dargestellt) →
+  Praxis → eine abgesetzte „Studienlage"-Karte mit Quellenhinweis. Jedes
+  Thema mit
   Stufenliste inkl. Skalenwerten, Praxis-Tipps und einer kurzen
   Wissenschafts-Karte. „Denkfallen" behandelt die
   psychologischen Muster: Stopfen aus Knappheits-Gefühl (du darfst jederzeit wieder
