@@ -254,8 +254,8 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
       </div>
 
       <button class="glass" onclick="show('s-markers')" style="padding:16px 18px;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;font-family:inherit">
-        <div><div class="serif" style="font-size:19px;font-weight:500;color:var(--ink)">Merkmale nachlesen</div>
-        <div class="sub" style="font-size:12px">Woran du Hunger &amp; Sättigung erkennst</div></div>
+        <div><div class="serif" style="font-size:19px;font-weight:500;color:var(--ink)">Wissen nachlesen</div>
+        <div class="sub" style="font-size:12px">Hunger, Sättigung, Hormone, Food Noise &amp; Co.</div></div>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
       </button>
     </section>
@@ -564,7 +564,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
     <!-- ============================================================ MERKMALE -->
     <section class="screen" id="s-markers">
       <div class="overline" style="margin-bottom:6px">Nachschlagen</div>
-      <h2 class="title" style="margin-bottom:6px">Merkmale</h2>
+      <h2 class="title" style="margin-bottom:6px">Wissen</h2>
       <p class="sub" style="margin-bottom:16px">Hunger und Sättigung sind ein Verlauf, kein Schalter. Wähle ein Thema:</p>
 
       <div class="chips" id="m-tabs" style="margin-bottom:18px">
@@ -574,6 +574,8 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
         <div class="chip" data-p="m-p-taste">Geschmack</div>
         <div class="chip" data-p="m-p-noise">Störfaktoren</div>
         <div class="chip" data-p="m-p-mind">Denkfallen</div>
+        <div class="chip" data-p="m-p-foodnoise">Food Noise</div>
+        <div class="chip" data-p="m-p-hormone">Hormone</div>
       </div>
 
       <!-- ······················· Panel: Hunger ······················· -->
@@ -760,6 +762,88 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
             <b style="font-weight:500;color:var(--ink)">Der Maßstab ist nicht Perfektion,</b> sondern: Bemerkst du heute mehr als vor zwei Wochen? Genau dafür ist die Muster-Seite da.</p>
         </div>
       </div>
+
+      <!-- ······················· Panel: Food Noise ······················· -->
+      <div class="m-panel" id="m-p-foodnoise" style="display:none">
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="row" style="gap:10px;margin-bottom:12px"><div class="bead" style="--c:var(--accent);width:26px;height:26px"></div><div class="eyebrow">Was ist Food Noise?</div></div>
+          <p class="serif" style="font-size:19px;line-height:1.4;margin-bottom:12px;color:var(--ink)">
+            Ständige Essensgedanken sind keine <span style="font-style:italic">Charakterschwäche.</span></p>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            Food Noise ist das Hintergrundrauschen im Kopf: Gedanken ans nächste Essen, an den Snack im Schrank, an „darf ich das?" — auch wenn der Körper gerade nichts braucht. Der Unterschied zum Hunger: <b style="font-weight:500;color:var(--ink)">Hunger</b> meldet sich aus dem Bauch, kommt in Wellen und endet mit dem Essen. <b style="font-weight:500;color:var(--ink)">Food Noise</b> läuft im Kopf weiter — auch satt.<br><br>
+            Wichtig: Das Rauschen ist zum großen Teil <b style="font-weight:500;color:var(--ink)">Biologie</b> (Hormone, Blutzucker, Reize) plus <b style="font-weight:500;color:var(--ink)">gelernte Verbote</b> — kein Mangel an Disziplin. Und es lässt sich leiser drehen.</p>
+        </div>
+        <div class="glass" style="padding:18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">Was das Rauschen lauter macht</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            <b style="font-weight:500;color:var(--ink)">Verbote &amp; Diät-Regeln:</b> Was verboten ist, wird im Kopf größer — Restriktion ist der stärkste Food-Noise-Verstärker überhaupt.<br>
+            <b style="font-weight:500;color:var(--ink)">Zu wenig oder unregelmäßig essen:</b> Ein unterversorgter Körper schickt pausenlos Essensgedanken — genau das ist seine Aufgabe.<br>
+            <b style="font-weight:500;color:var(--ink)">Blutzucker-Achterbahn:</b> Schnelle Kohlenhydrate allein → Spitze → Absturz → Heißhunger und laute Gedanken (mehr im Hormone-Tab).<br>
+            <b style="font-weight:500;color:var(--ink)">Schlafmangel &amp; Dauerstress:</b> Ghrelin und Cortisol steigen — beide drehen den Appetit-Regler hoch.<br>
+            <b style="font-weight:500;color:var(--ink)">Ständige Reize:</b> Sichtbare Snacks, Essens-Videos, Werbung — jeder Reiz stößt eine kleine „iss was"-Schleife an.</p>
+        </div>
+        <div class="glass" style="padding:18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">Natürliche Wege, es leiser zu drehen</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            <b style="font-weight:500;color:var(--ink)">1 · Regelmäßig &amp; genug essen</b> — der stärkste Hebel. Ein verlässlich versorgter Körper hat keinen Grund, dauernd zu funken.<br>
+            <b style="font-weight:500;color:var(--ink)">2 · Eiweiß, Ballaststoffe &amp; Volumen</b> in jede Mahlzeit — hält länger satt, stabilisiert den Blutzucker und fördert die Sättigungshormone (GLP-1, PYY).<br>
+            <b style="font-weight:500;color:var(--ink)">3 · Nichts verbieten:</b> Die bedingungslose Erlaubnis (siehe Denkfallen) nimmt verbotenen Lebensmitteln ihren Lärm. Was immer erlaubt ist, muss nicht ständig verhandelt werden.<br>
+            <b style="font-weight:500;color:var(--ink)">4 · Schlaf zuerst:</b> Schon eine gute Nacht senkt Ghrelin spürbar — oft der leiseste Morgen seit Langem.<br>
+            <b style="font-weight:500;color:var(--ink)">5 · Stress runterregeln:</b> Ein paar Minuten verlängert ausatmen oder ein kurzer Spaziergang senken Cortisol (mehr im Hormone-Tab).<br>
+            <b style="font-weight:500;color:var(--ink)">6 · Reize aufräumen:</b> Snacks aus dem Sichtfeld, Essens-Content entfolgen — jeder Reiz weniger ist eine Schleife weniger.<br>
+            <b style="font-weight:500;color:var(--ink)">7 · Gedanken-Wellen ziehen lassen:</b> Ein Essensgedanke ist ein Ereignis, kein Befehl. Wie Hunger-Wellen ebben auch Gedanken-Wellen nach wenigen Minuten ab — der Zwischendurch-Check ist genau dafür da: bemerken, notieren, weiterziehen lassen.</p>
+        </div>
+        <div class="glass" style="padding:18px">
+          <div class="eyebrow" style="margin-bottom:10px">Die Wissenschaft dahinter</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            Dass die GLP-1-Abnehmspritzen bei vielen das Food Noise fast zum Verstummen bringen, zeigt: Das Rauschen ist <b style="font-weight:500;color:var(--ink)">stark hormonell</b> — keine Willensfrage. Dieselben Signalwege lassen sich in kleinerem Maßstab natürlich beeinflussen (Eiweiß, Ballaststoffe, langsames Essen, Schlaf).<br><br>
+            Und aus der anderen Richtung: Im berühmten <b style="font-weight:500;color:var(--ink)">Minnesota-Hunger-Experiment</b> begannen unterversorgte Teilnehmer zwanghaft ans Essen zu denken, Rezepte zu sammeln, von Mahlzeiten zu träumen. Ständige Essensgedanken sind oft ein <em>Versorgungs-Signal</em> — die Antwort ist dann mehr Verlässlichkeit beim Essen, nicht mehr Kontrolle.</p>
+        </div>
+      </div>
+
+      <!-- ······················· Panel: Hormone ······················· -->
+      <div class="m-panel" id="m-p-hormone" style="display:none">
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="row" style="gap:10px;margin-bottom:12px"><div class="bead" style="--c:var(--accent-2);width:26px;height:26px"></div><div class="eyebrow">Deine Hormon-Landkarte</div></div>
+          <p class="serif" style="font-size:19px;line-height:1.4;margin-bottom:12px;color:var(--ink)">
+            Deine Skala übersetzt, was diese <span style="font-style:italic">Boten</span> melden.</p>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            <b style="font-weight:500;color:var(--ink)">Ghrelin</b> — der Hunger-Bote (Magen). Steigt, wenn Energie fehlt, und ist auf deine Essenszeiten trainiert.<br>
+            <b style="font-weight:500;color:var(--ink)">GLP-1, CCK &amp; PYY</b> — die Sättigungs-Boten (Darm). Melden „genug", brauchen aber 15–20 Minuten.<br>
+            <b style="font-weight:500;color:var(--ink)">Leptin</b> — der Langzeit-Speicherstand (Fettgewebe). Sinkt bei Schlafmangel und Crash-Diäten → mehr Hunger.<br>
+            <b style="font-weight:500;color:var(--ink)">Insulin</b> — der Blutzucker-Manager (Bauchspeicheldrüse).<br>
+            <b style="font-weight:500;color:var(--ink)">Cortisol</b> — das Stresshormon (Nebenniere).<br><br>
+            Keines davon musst du kontrollieren — aber zu wissen, wer gerade „spricht", macht die Signale lesbarer.</p>
+        </div>
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">GLP-1 — dein „genug"-Hormon</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            GLP-1 wird im Darm ausgeschüttet, sobald Nahrung ankommt: Es bremst die Magenentleerung, meldet Sättigung ans Gehirn und dämpft Essensgedanken. Genau dieses Hormon ahmen die <b style="font-weight:500;color:var(--ink)">Abnehmspritzen</b> (Semaglutid &amp; Co.) in hoher Dosis nach — ohne Wertung: Sie zeigen vor allem, wie mächtig dieser Signalweg ist. Natürlich anstoßen lässt er sich so:<br>
+            <b style="font-weight:500;color:var(--ink)">Eiweiß in jeder Mahlzeit</b> — der stärkste natürliche GLP-1-Reiz (Eier, Joghurt, Quark, Hülsenfrüchte, Fisch, Tofu).<br>
+            <b style="font-weight:500;color:var(--ink)">Ballaststoffe</b> — Hafer, Gemüse, Hülsenfrüchte, Vollkorn: Im Darm entstehen daraus kurzkettige Fettsäuren, die GLP-1 und PYY fördern.<br>
+            <b style="font-weight:500;color:var(--ink)">Langsam essen, gut kauen</b> — GLP-1 braucht Zeit; wer schnell isst, überholt das eigene Signal.<br>
+            <b style="font-weight:500;color:var(--ink)">Volumen</b> — wasser- und ballaststoffreiche Portionen dehnen den Magen: der Startschuss der ganzen Kaskade.</p>
+        </div>
+        <div class="glass" style="padding:20px 18px;margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:10px">Insulin — die Achterbahn vermeiden</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            Schnelle Kohlenhydrate allein (süßes Frühstück, Saft, Weißbrot) treiben den Blutzucker steil hoch — viel Insulin räumt ihn ab, und ~2 Stunden später kommt die <b style="font-weight:500;color:var(--ink)">Delle</b>: Heißhunger, Zittrigkeit, laute Essensgedanken. Der Trick ist nicht Verzicht, sondern <b style="font-weight:500;color:var(--ink)">Kombination</b>:<br>
+            <b style="font-weight:500;color:var(--ink)">Kohlenhydrate selten „nackt"</b> — mit Eiweiß, Fett oder Ballaststoffen zusammen essen.<br>
+            <b style="font-weight:500;color:var(--ink)">Reihenfolge nutzen</b> — Gemüse und Eiweiß zuerst, Kohlenhydrate danach: dämpft den Anstieg messbar.<br>
+            <b style="font-weight:500;color:var(--ink)">10–15 Minuten Bewegung nach dem Essen</b> — die Muskeln nehmen Zucker direkt auf, ganz ohne Insulin-Spitze.<br><br>
+            <b style="font-weight:500;color:var(--ink)">Fürs Gespür wichtig:</b> Heißhunger in der Delle fühlt sich dringend an, ist aber kein ehrlicher Skalen-Hunger. Nach ein paar stabilen Mahlzeiten wird dein Hunger ruhiger — und die Skala wieder lesbar.</p>
+        </div>
+        <div class="glass" style="padding:20px 18px">
+          <div class="eyebrow" style="margin-bottom:10px">Cortisol — wenn Stress mitisst</div>
+          <p class="sub" style="font-size:12.5px;line-height:1.7">
+            Bleibt Cortisol chronisch hoch, steigt der Appetit auf Süßes und Fettiges, der Schlaf wird unruhiger (→ Ghrelin steigt) und das Food Noise lauter. Wie Stress die Signale <em>verschiebt</em>, steht bei Störfaktoren — hier geht es ums <b style="font-weight:500;color:var(--ink)">Senken</b>:<br>
+            <b style="font-weight:500;color:var(--ink)">Verlängert ausatmen</b> — z. B. 4 Sekunden ein, 6–8 Sekunden aus, ein paar Minuten lang: der direkteste Draht zur Beruhigung.<br>
+            <b style="font-weight:500;color:var(--ink)">Tageslicht &amp; Bewegung draußen</b> — gern als Spaziergang nach dem Essen (doppelter Effekt zusammen mit Insulin).<br>
+            <b style="font-weight:500;color:var(--ink)">Echte Pausen</b> — kurz ohne Bildschirm, eine Feierabend-Grenze, die hält.<br>
+            <b style="font-weight:500;color:var(--ink)">Kaffee zum Frühstück statt auf leeren Magen</b> — Koffein hebt Cortisol zusätzlich an.<br><br>
+            Und wenn du merkst, dass du aus Stress isst: erst benennen, dann entscheiden — ganz ohne Schuld (siehe Bauch oder Kopf).</p>
+        </div>
+      </div>
     </section>
 
   </div>
@@ -770,7 +854,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
     <button id="n-patterns" onclick="show('s-patterns')">
       <svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 15l3-4 3 2 4-6"/></svg>Muster</button>
     <button id="n-markers" onclick="show('s-markers')">
-      <svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M9 9h7M9 13h7M9 17h4"/></svg>Merkmale</button>
+      <svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M9 9h7M9 13h7M9 17h4"/></svg>Wissen</button>
   </nav>
 </div>
 
@@ -779,7 +863,7 @@ h2.title{font-family:var(--font-display);font-size:34px;font-weight:500;letter-s
 (function(){const g=document.getElementById('glitter');const P=[[12,18,3],[80,10,3.6],[42,7,2.4],[88,34,4],[22,44,2.8],[68,58,3.4],[16,72,3],[90,80,3.8],[46,88,2.6],[74,92,3.2],[34,26,2.2],[58,20,3]];
 P.forEach(([x,y,s],i)=>{const d=document.createElement('div');d.className='spark';d.style.cssText=`left:${x}%;top:${y}%;width:${s}px;height:${s}px;--tw:${2.4+i*0.35}s;animation-delay:${i*0.3}s`;g.appendChild(d);});})();
 
-/* data — EINE Quelle für Check-in-Regler UND Merkmale-Listen */
+/* data — EINE Quelle für Check-in-Regler UND Wissen-Listen */
 const SCALE=[
  {n:0, t:"Ausgehungert",       d:"Schwach, zittrig, gereizt — viel zu lange gewartet."},
  {n:1, t:"Übermäßig hungrig",  d:"Der Kopf wird leer, nur noch „schnell & viel“ zählt. Konzentration weg, „hangry“. Ab hier isst man fast automatisch zu viel."},
@@ -926,7 +1010,7 @@ function aResult(){
     else if(v>=6&&v<=7.5){verdict.textContent='Die Portion hat gepasst, diesmal.';
       rf.textContent='Du bist zwar im Wohlfühl-Fenster gelandet, aber entschieden hat der Teller und nicht dein Körper. Mit der Zeit geht es darum, dass du diesen Punkt selbst bemerkst. Halte dafür beim nächsten Essen einmal in der Mitte kurz inne und spür nach, noch bevor der Teller leer ist.';}
     else{verdict.textContent='Der Teller hat entschieden.';
-      rf.textContent='Den Teller leer zu essen ist eine antrainierte Gewohnheit und kein Körpersignal, du machst also nichts falsch (mehr dazu unter Merkmale, Denkfallen). Gelandet bist du bei '+fmt(v)+'. Zwei kleine Dinge helfen gegen den Automatismus: weniger auffüllen und dir das Nachnehmen erlauben, und einmal mitten in der Mahlzeit kurz innehalten. Übrig lassen ist übrigens erlaubt.';}}
+      rf.textContent='Den Teller leer zu essen ist eine antrainierte Gewohnheit und kein Körpersignal, du machst also nichts falsch (mehr dazu unter Wissen, Denkfallen). Gelandet bist du bei '+fmt(v)+'. Zwei kleine Dinge helfen gegen den Automatismus: weniger auffüllen und dir das Nachnehmen erlauben, und einmal mitten in der Mahlzeit kurz innehalten. Übrig lassen ist übrigens erlaubt.';}}
   else if(bodyStop){
     if(v>=6&&v<=7.5){verdict.textContent='Genau ins Fenster getroffen.';
       rf.textContent='Dein Körper hat den Stopp bestimmt, und du hast hingehört. Jeder solche Stopp macht das Signal beim nächsten Mal ein Stück deutlicher.';}
@@ -1003,7 +1087,7 @@ function zResult(){
 document.querySelectorAll('#s-markers table tr').forEach((r,i)=>{
   r.querySelectorAll('td').forEach(td=>{td.style.padding='7px 6px';if(i>0)td.style.borderTop='1px solid rgba(120,90,160,0.1)';td.style.color=td.style.color||'var(--ink-soft)';});});
 
-/* Merkmale-Tabs */
+/* Wissen-Tabs */
 document.querySelectorAll('#m-tabs .chip').forEach(c=>{c.onclick=()=>{
   document.querySelectorAll('#m-tabs .chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');
   document.querySelectorAll('.m-panel').forEach(p=>p.style.display='none');

@@ -50,11 +50,16 @@ gar nicht mehr zu brauchen.
   Beobachtungen (Start-Timing, Stopp-Verhalten, Geschmacks-Kipppunkt,
   Zwischendurch-Signale mit häufigstem Signal und Warten-Quote,
   Kopf-Hunger-Zeiten, häufigstes Körpergefühl), „Alle Einträge löschen"
-- **Merkmale** — Nachschlagewerk in sechs Themen-Tabs: Hungerverlauf (inkl.
-  Hunger-Wellen & Gewohnheits-Hunger), Sättigungsverlauf (inkl. satt werden vs.
-  satt bleiben), Bauch- vs. Kopf-Hunger (inkl. Apfel-Check), Geschmacks-Trick,
-  Störfaktoren (Schlaf, Zyklus, Durst, Stress/Medikamente) und Denkfallen
-  (Stopfen, Verschwendung, „Was-soll's"-Effekt, Geduld/Diät-Vergangenheit)
+- **Wissen** (früher „Merkmale") — Nachschlagewerk in acht Themen-Tabs:
+  Hungerverlauf (inkl. Hunger-Wellen & Gewohnheits-Hunger), Sättigungsverlauf
+  (inkl. satt werden vs. satt bleiben), Bauch- vs. Kopf-Hunger (inkl.
+  Apfel-Check), Geschmacks-Trick, Störfaktoren (Schlaf, Zyklus, Durst,
+  Stress/Medikamente), Denkfallen (Stopfen, Verschwendung,
+  „Was-soll's"-Effekt, Geduld/Diät-Vergangenheit), Food Noise (was das
+  Gedanken-Rauschen lauter macht und sieben natürliche Wege, es leiser zu
+  drehen) und Hormone (Landkarte Ghrelin/GLP-1/CCK/PYY/Leptin/Insulin/Cortisol,
+  GLP-1 natürlich fördern, Insulin & Blutzucker-Achterbahn vermeiden,
+  Cortisol senken)
 
 ## Interaktion
 - Skalen sind **ziehbare Regler mit Halbschritten** — man darf bewusst zwischen zwei
@@ -62,8 +67,9 @@ gar nicht mehr zu brauchen.
 - Die Folgefragen bieten **differenzierte, gruppierte Auswahlmöglichkeiten**,
   „bin mir nicht sicher"-Optionen und je ein **optionales Freitextfeld**, falls
   nichts genau passt.
-- **Merkmale** ist in sechs Themen-Tabs gegliedert (Hunger · Sättigung · Bauch
-  oder Kopf · Geschmack · Störfaktoren · Denkfallen) — jedes Thema mit
+- **Wissen** ist in acht Themen-Tabs gegliedert (Hunger · Sättigung · Bauch
+  oder Kopf · Geschmack · Störfaktoren · Denkfallen · Food Noise ·
+  Hormone) — jedes Thema mit
   Stufenliste inkl. Skalenwerten, Praxis-Tipps und einer kurzen
   Wissenschafts-Karte. „Denkfallen" behandelt die
   psychologischen Muster: Stopfen aus Knappheits-Gefühl (du darfst jederzeit wieder
@@ -126,7 +132,13 @@ lange vor, Flüssigkalorien und stark Verarbeitetes kurz. Hunger-Wellen und
 Ghrelin-Gewöhnung an Essenszeiten. Ess-Psychologie im Denkfallen-Tab: Knappheits-/
 Verbots-Effekt und bedingungslose Erlaubnis, versunkene Kosten („Teller leer"-
 Konditionierung), „What-the-hell"-Effekt und die Normalisierung der Signale nach
-Diät-Vergangenheit.
+Diät-Vergangenheit. Food Noise & Hormone: GLP-1/CCK/PYY als Sättigungs-Boten
+und ihre natürliche Förderung (Eiweiß, Ballaststoffe/kurzkettige Fettsäuren,
+langsames Essen, Volumen; GLP-1-Analoga als Beleg für die hormonelle Natur des
+Food Noise), reaktive Unterzuckerung nach schnellen Kohlenhydraten (Kombination,
+Reihenfolge Gemüse/Eiweiß zuerst, Bewegung nach dem Essen), chronisch erhöhtes
+Cortisol und Appetit (verlängertes Ausatmen, Tageslicht/Bewegung, Koffein-Timing)
+sowie das Minnesota-Hunger-Experiment (Essensgedanken als Versorgungs-Signal).
 
 ## Struktur
 ```
